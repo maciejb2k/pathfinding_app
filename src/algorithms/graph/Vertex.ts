@@ -1,10 +1,12 @@
+type VertexOptions = { [key: string]: any };
+
 interface Vertex {
   name: string;
-  options?: object;
+  options: VertexOptions;
 }
 
 class Vertex {
-  constructor(name: string, options?: object) {
+  constructor(name: string, options: VertexOptions = {}) {
     this.name = name;
     this.options = options;
   }
