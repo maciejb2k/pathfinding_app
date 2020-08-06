@@ -5,8 +5,8 @@ import PriorityQueue from "./PriorityQueue";
 
 function Dijkstra(graph: Graph, startVertex: Vertex) {
   const queue = new PriorityQueue<Vertex>();
-  const distances: { [name: string]: number } = {};
-  const previousVertices: { [name: string]: string | null } = {};
+  const distances: { [vertexKey: string]: number } = {};
+  const previousVertices: { [vertexKey: string]: string | null } = {};
   const visitedVertices = {};
 
   Object.keys(graph.vertices).forEach((key: string) => {
