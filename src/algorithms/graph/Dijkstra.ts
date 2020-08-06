@@ -1,5 +1,4 @@
 import Graph from "./Graph";
-import Edge from "./Edge";
 import Vertex from "./Vertex";
 import PriorityQueue from "./PriorityQueue";
 
@@ -8,7 +7,6 @@ function Dijkstra(graph: Graph, startVertex: Vertex) {
   const distances: { [vertexKey: string]: number } = {};
   const previousVertices: { [vertexKey: string]: Vertex | null } = {};
   const visitedVertices: { [vertexKey: string]: boolean } = {};
-  const edges: Edge[] = [];
 
   distances[startVertex.getKey()] = 0;
 
@@ -37,7 +35,6 @@ function Dijkstra(graph: Graph, startVertex: Vertex) {
           if (distanceToNeighbour < distances[neighbour.getKey()]) {
             distances[neighbour.getKey()] = distanceToNeighbour;
             previousVertices[neighbour.getKey()] = currentVertex.value;
-            edges.push(edge);
 
             queue.changePriority(edge.endVertex, distanceToNeighbour);
           }

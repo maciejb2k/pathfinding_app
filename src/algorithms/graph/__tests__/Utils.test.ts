@@ -2,9 +2,10 @@ import Vertex from "algorithms/graph/Vertex";
 import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
 import Dijkstra from "algorithms/graph/Dijkstra";
+import { getPathFromDijkstra } from "algorithms/graph/Utils";
 
-describe("Dijkstra", () => {
-  it("should find paths to all vertices", () => {
+describe("Utils", () => {
+  it("should return vertices and edges", () => {
     const graph = new Graph(true);
 
     const vertex_a = new Vertex("A");
@@ -53,22 +54,30 @@ describe("Dijkstra", () => {
     graph.addEdge(edge_e_b);
     graph.addEdge(edge_b_e);
 
-    const { distances, previousVertices } = Dijkstra(graph, vertex_h);
+    const startVertex = vertex_a;
+    const endVertex = vertex_h;
 
-    expect(distances).toStrictEqual({
-      A: Infinity,
-      B: 13,
-      C: 15,
-      D: 14,
-      E: 10,
-      F: 7,
-      G: 3,
-      H: 0,
-    });
+    const { previousVertices } = Dijkstra(graph, startVertex);
+    const { vertices, edges } = getPathFromDijkstra(
+      graph.edges,
+      previousVertices,
+      endVertex
+    );
 
-    expect(previousVertices.A).toBeNull();
-    expect(previousVertices.B?.getKey()).toBe("E");
-    expect(previousVertices.C?.getKey()).toBe("B");
+    expect(vertices.length).toBe(6);
+    expect(vertices[0].getKey()).toBe("A");
+    expect(vertices[1].getKey()).toBe("B");
+    expect(vertices[2].getKey()).toBe("E");
+    expect(vertices[3].getKey()).toBe("F");
+    expect(vertices[4].getKey()).toBe("G");
+    expect(vertices[5].getKey()).toBe("H");
+
+    expect(edges.length).toBe(5);
+    expect(edges[0].getKey()).toBe("A_B");
+    expect(edges[1].getKey()).toBe("B_E");
+    expect(edges[2].getKey()).toBe("E_F");
+    expect(edges[3].getKey()).toBe("F_G");
+    expect(edges[4].getKey()).toBe("G_H");
   });
 });
 

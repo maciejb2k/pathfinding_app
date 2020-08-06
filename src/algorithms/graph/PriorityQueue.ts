@@ -15,6 +15,7 @@ class PriorityQueue<T> {
   insert(value: T, priority: number) {
     let i = 0;
 
+    // Search for duplicates, only unique values
     for (i = 0; i < this.queue.length; i++) {
       if (this.queue[i].value === value) {
         return false;
@@ -23,6 +24,7 @@ class PriorityQueue<T> {
 
     i = 0;
 
+    // Search for bigger priority, to insert element to that index
     for (i = 0; i < this.queue.length; i++) {
       if (this.queue[i].priority > priority) {
         break;
@@ -56,7 +58,7 @@ class PriorityQueue<T> {
   }
 
   minimum() {
-    return this.isEmpty() ? false : this.queue.slice(-1)[0];
+    return this.isEmpty() ? false : this.queue[0];
   }
 
   isEmpty() {

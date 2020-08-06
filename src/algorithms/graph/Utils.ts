@@ -1,10 +1,11 @@
 import Vertex from "algorithms/graph/Vertex";
-import Graph from "algorithms/graph/Graph";
 import Edge from "algorithms/graph/Edge";
 
 const getPathFromDijkstra = (
-  graph: Graph,
-  previousVertices: { [vertexKey: string]: Vertex | null },
+  edgesList: { [edgeName: string]: Edge },
+  previousVertices: {
+    [vertexKey: string]: Vertex | null;
+  },
   endVertex: Vertex
 ) => {
   const vertices: Vertex[] = [];
@@ -16,22 +17,21 @@ const getPathFromDijkstra = (
     if (nextVertex) {
       vertices.unshift(nextVertex);
       createListOfVertices(nextVertex);
-      return true;
-    } else {
-      return false;
     }
   };
 
   const createListOfEdges = (vertices: Vertex[]) => {
     for (let i = 1; i < vertices.length; i++) {
       let edgeKey = `${vertices[i - 1].getKey()}_${vertices[i].getKey()}`;
-      if (graph.edges[edgeKey]) {
-        edges.push(graph.edges[edgeKey]);
+      if (edgesList[edgeKey]) {
+        edges.push(edgesList[edgeKey]);
       }
     }
   };
 
-  if (createListOfVertices(endVertex)) {
+  createListOfVertices(endVertex);
+
+  if (vertices.length) {
     vertices.push(endVertex);
     createListOfEdges(vertices);
   }
