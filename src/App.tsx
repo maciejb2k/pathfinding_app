@@ -1,9 +1,10 @@
 import React from "react";
-import PriorityQueue from "algorithms/graph/PriorityQueue";
 import Dijkstra from "algorithms/graph/Dijkstra";
 import Vertex from "algorithms/graph/Vertex";
 import Graph from "algorithms/graph/Graph";
 import Edge from "algorithms/graph/Edge";
+
+import { getPathFromDijkstra } from "algorithms/graph/Utils";
 
 function App() {
   const graph = new Graph(true);
@@ -54,15 +55,23 @@ function App() {
   graph.addEdge(edge_e_b);
   graph.addEdge(edge_b_e);
 
-  console.log(graph.printGraph());
+  const startVertex = vertex_a;
+  const endVertex = vertex_h;
 
-  const dijkstra = Dijkstra(graph, vertex_a);
-
-  return (
-    <div className="App">
-      <h1>Siemanko</h1>
-    </div>
+  const { distances, previousVertices } = Dijkstra(graph, startVertex);
+  const { vertices, edges } = getPathFromDijkstra(
+    graph,
+    previousVertices,
+    endVertex
   );
+
+  console.log(graph.printGraph());
+  console.log(distances);
+  console.log(previousVertices);
+  console.log(vertices);
+  console.log(edges);
+
+  return <div className="App"></div>;
 }
 
 export default App;

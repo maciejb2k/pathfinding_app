@@ -1,7 +1,7 @@
 # Wayfinding - Interactive SVG Map
 
-The goal of this project is to made React + Typescript app, which implements Dijkstra algorithm to find shortest path on SVG map.
+The goal of this project is to make React + Typescript app, which implements Dijkstra algorithm to find shortest path on SVG map.
 
-Below I've made UI of how it's going to looks like.
+Below I've made concept UI of how it's going to looks like.
 
-![preview](https://lh3.googleusercontent.com/FyJhB6iVWXGNx3itiKnjUjlIaVi3drysrDHyY186JS7T1QRRMILXukXqUW2l_x9-_TIHwZmgh83hlQ=w1919-h947-rw)
+![preview](https://user-images.githubusercontent.com/6316812/89515470-6b846280-d7d7-11ea-9627-3ebcf6e9ced7.jpg)

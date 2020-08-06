@@ -5,40 +5,62 @@
 class PriorityQueue<T> {
   queue: {
     value: T;
-    key: number;
+    priority: number;
   }[];
 
   constructor() {
     this.queue = [];
   }
 
-  insert(arg: T, key: number) {
+  insert(value: T, priority: number) {
     let i = 0;
+
     for (i = 0; i < this.queue.length; i++) {
-      if (this.queue[i].key > key) {
+      if (this.queue[i].value === value) {
+        return false;
+      }
+    }
+
+    i = 0;
+
+    for (i = 0; i < this.queue.length; i++) {
+      if (this.queue[i].priority > priority) {
         break;
       }
     }
 
     this.queue.splice(i, 0, {
-      value: arg,
-      key,
+      value,
+      priority,
     });
+
+    return true;
   }
 
-  changePriority() {}
-  remove() {}
+  remove(value: T) {
+    for (let i = 0; i < this.queue.length; i++) {
+      let current = this.queue[i];
+      if (current.value === value) {
+        this.queue.splice(i, 1);
+      }
+    }
+  }
+
+  changePriority(value: T, newPriority: number) {
+    this.remove(value);
+    this.insert(value, newPriority);
+  }
 
   pop() {
-    return this.isEmpty() ? this.queue.splice(-1)[0] : false;
+    return this.isEmpty() ? false : this.queue.shift();
   }
 
   minimum() {
-    return this.isEmpty() ? this.queue.slice(-1)[0] : false;
+    return this.isEmpty() ? false : this.queue.slice(-1)[0];
   }
 
   isEmpty() {
-    return this.queue.length ? true : false;
+    return this.queue.length ? false : true;
   }
 
   size() {

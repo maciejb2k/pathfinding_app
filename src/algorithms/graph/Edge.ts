@@ -6,7 +6,7 @@ interface Edge {
   startVertex: Vertex;
   endVertex: Vertex;
   options: EdgeOptions;
-  weight?: number;
+  weight: number;
 }
 
 class Edge {
