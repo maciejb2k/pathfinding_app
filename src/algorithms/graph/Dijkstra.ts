@@ -2,7 +2,7 @@ import Graph from "./Graph";
 import Vertex from "./Vertex";
 import PriorityQueue from "./PriorityQueue";
 
-function Dijkstra(graph: Graph, startVertex: Vertex) {
+function dijkstra(graph: Graph, startVertex: Vertex) {
   const queue = new PriorityQueue<Vertex>();
   const distances: { [vertexKey: string]: number } = {};
   const previousVertices: { [vertexKey: string]: Vertex | null } = {};
@@ -51,4 +51,4 @@ function Dijkstra(graph: Graph, startVertex: Vertex) {
   };
 }
 
-export default Dijkstra;
+export default dijkstra;

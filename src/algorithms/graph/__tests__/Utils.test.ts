@@ -1,7 +1,7 @@
 import Vertex from "algorithms/graph/Vertex";
 import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
-import Dijkstra from "algorithms/graph/Dijkstra";
+import dijkstra from "algorithms/graph/Dijkstra";
 import { getPathFromDijkstra } from "algorithms/graph/Utils";
 
 describe("Utils", () => {
@@ -57,7 +57,7 @@ describe("Utils", () => {
     const startVertex = vertex_a;
     const endVertex = vertex_h;
 
-    const { previousVertices } = Dijkstra(graph, startVertex);
+    const { previousVertices } = dijkstra(graph, startVertex);
     const { vertices, edges } = getPathFromDijkstra(
       graph.edges,
       previousVertices,
