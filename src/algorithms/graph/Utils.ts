@@ -1,5 +1,21 @@
 import Vertex from "algorithms/graph/Vertex";
 import Edge from "algorithms/graph/Edge";
+import Graph from "algorithms/graph/Graph";
+import { mapData } from "components/Map/mapData";
+
+const getGraphFromJSON = (data: mapData) => {
+  const vertices: { [key: string]: Vertex } = {};
+  const graph = new Graph(true);
+
+  let vertex: Vertex;
+  Object.values(data.v).forEach((key: string) => {
+    vertex = new Vertex(key);
+    vertices[key] = vertex;
+    graph.addVertex(vertex);
+  });
+
+  return graph;
+};
 
 const getPathFromDijkstra = (
   edgesList: { [edgeName: string]: Edge },
@@ -42,4 +58,4 @@ const getPathFromDijkstra = (
   };
 };
 
-export { getPathFromDijkstra };
+export { getPathFromDijkstra, getGraphFromJSON };

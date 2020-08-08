@@ -1,29 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { getGraphFromJSON } from "algorithms/graph/Utils";
+import { mapData } from "components/Map/mapData";
 
 function App() {
-  const vertices: any = React.useRef({});
-
-  React.useEffect(() => {
-    console.log(vertices.current);
+  useEffect(() => {
+    console.log(getGraphFromJSON(mapData));
   }, []);
 
-  const vertexRefCallback = (el: HTMLElement | null) => {
-    if (el && el.dataset.vertexKey) {
-      vertices.current[el.dataset.vertexKey] = el;
-    }
-  };
-
-  return (
-    <div className="App">
-      <div className="svg">
-        <div
-          className="Vertex"
-          data-vertex-key="A_01"
-          ref={vertexRefCallback}
-        />
-      </div>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
