@@ -3,15 +3,27 @@ import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
 import { mapData } from "components/Map/mapData";
 
-const getGraphFromJSON = (data: mapData) => {
-  const vertices: { [key: string]: Vertex } = {};
-  const graph = new Graph(true);
+const getGraphFromJSON = (map: mapData, isDirected = false) => {
+  const graph = new Graph(isDirected);
 
-  let vertex: Vertex;
-  Object.values(data.v).forEach((key: string) => {
-    vertex = new Vertex(key);
-    vertices[key] = vertex;
+  Object.values(map.v).forEach((v: any) => {
+    let key = v.key.trim().toLowerCase();
+    let vertex = new Vertex(key, { ...v.options });
     graph.addVertex(vertex);
+  });
+
+  Object.values(map.e).forEach((e: any) => {
+    let [startVertex, endVertex] = e.key
+      .split("__")
+      .map((item: string) => item.trim().toLowerCase());
+
+    let edge = new Edge(
+      graph.getVertices()[startVertex],
+      graph.getVertices()[endVertex],
+      e.weight
+    );
+
+    graph.addEdge(edge);
   });
 
   return graph;
@@ -38,7 +50,7 @@ const getPathFromDijkstra = (
 
   const createListOfEdges = (vertices: Vertex[]) => {
     for (let i = 1; i < vertices.length; i++) {
-      let edgeKey = `${vertices[i - 1].getKey()}_${vertices[i].getKey()}`;
+      let edgeKey = `${vertices[i - 1].getKey()}__${vertices[i].getKey()}`;
       if (edgesList[edgeKey]) {
         edges.push(edgesList[edgeKey]);
       }

@@ -6,7 +6,7 @@ import { getPathFromDijkstra } from "algorithms/graph/Utils";
 
 describe("Utils", () => {
   it("should return vertices and edges", () => {
-    const graph = new Graph(true);
+    const graph = new Graph();
 
     const vertex_a = new Vertex("A");
     const vertex_b = new Vertex("B");
@@ -73,11 +73,11 @@ describe("Utils", () => {
     expect(vertices[5].getKey()).toBe("H");
 
     expect(edges.length).toBe(5);
-    expect(edges[0].getKey()).toBe("A_B");
-    expect(edges[1].getKey()).toBe("B_E");
-    expect(edges[2].getKey()).toBe("E_F");
-    expect(edges[3].getKey()).toBe("F_G");
-    expect(edges[4].getKey()).toBe("G_H");
+    expect(edges[0].getKey()).toBe("A__B");
+    expect(edges[1].getKey()).toBe("B__E");
+    expect(edges[2].getKey()).toBe("E__F");
+    expect(edges[3].getKey()).toBe("F__G");
+    expect(edges[4].getKey()).toBe("G__H");
   });
 });
 

@@ -5,7 +5,7 @@ import dijkstra from "algorithms/graph/Dijkstra";
 
 describe("Dijkstra", () => {
   it("should find paths to all vertices", () => {
-    const graph = new Graph(true);
+    const graph = new Graph();
 
     const vertex_a = new Vertex("A");
     const vertex_b = new Vertex("B");
