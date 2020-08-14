@@ -4,4 +4,4 @@ The goal of this project is to make React + Typescript app, which implements Dij
 
 Below I've made concept UI of how it's going to looks like.
 
-![preview](https://user-images.githubusercontent.com/6316812/89515470-6b846280-d7d7-11ea-9627-3ebcf6e9ced7.jpg)
+![preview](https://user-images.githubusercontent.com/6316812/90241083-a5361880-de2a-11ea-843b-d3b08a6e83ca.jpg)
