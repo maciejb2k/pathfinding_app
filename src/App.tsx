@@ -13,11 +13,15 @@ function App() {
 
   useEffect(() => {
     const graph = getGraphFromJSON(mapData);
-    const { previousVertices } = dijkstra(graph, graph.getVertices()["v_1"]);
+
+    const startVertex = graph.getVertices()["v_1"];
+    const endVertex = graph.getVertices()["v_9"];
+
+    const { previousVertices } = dijkstra(graph, startVertex);
     const { vertices } = getPathFromDijkstra(
       graph.edges,
       previousVertices,
-      graph.getVertices()["v_8"]
+      endVertex
     );
 
     setVertices(vertices);
