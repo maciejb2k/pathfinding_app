@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     const graph = getGraphFromJSON(mapData);
 
-    const startVertex = graph.getVertices()["v_1"];
+    const startVertex = graph.getVertices()["v_53"];
     const endVertex = graph.getVertices()["v_9"];
 
     const { previousVertices } = dijkstra(graph, startVertex);
@@ -26,6 +26,8 @@ function App() {
 
     setVertices(vertices);
   }, []);
+
+  console.log(vertices);
 
   return (
     <div className="App">

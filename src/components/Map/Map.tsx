@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import Vertex from "algorithms/graph/Vertex";
 import { gsap } from "gsap";
-import { mapData as m } from "./mapData";
 import classNames from "classnames";
 
-import "./Map.scss";
+import Vertex from "algorithms/graph/Vertex";
+import SvgComponent from "./SvgComponent";
+import { mapData } from "./mapData";
 
 function Map(props: any) {
   const { verticesList } = props;
 
+  const map = React.useRef<{ [key: string]: HTMLElement }>(null);
   const vertices = React.useRef<{ [key: string]: HTMLElement }>({});
   const edges = React.useRef<{ [key: string]: HTMLElement }>({});
-
-  console.log(vertices, edges);
 
   React.useEffect(() => {
     if (verticesList) {
@@ -21,7 +20,7 @@ function Map(props: any) {
         nodes.push(vertices.current[vertex.getKey()]);
       });
 
-      gsap.to(nodes, { opacity: 1, backgroundColor: "green", display: "flex" });
+      gsap.to(nodes, { opacity: 1, fill: "green", display: "flex" });
     }
   }, [verticesList]);
 
@@ -43,149 +42,12 @@ function Map(props: any) {
 
   return (
     <div className="Map">
-      <div className="Vertices">
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_1.key}
-          ref={vertexRefCallback}
-        >
-          v_1
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_2.key}
-          ref={vertexRefCallback}
-        >
-          v_2
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_3.key}
-          ref={vertexRefCallback}
-        >
-          v_3
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_4.key}
-          ref={vertexRefCallback}
-        >
-          v_4
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_5.key}
-          ref={vertexRefCallback}
-        >
-          v_5
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_6.key}
-          ref={vertexRefCallback}
-        >
-          v_6
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_7.key}
-          ref={vertexRefCallback}
-        >
-          v_7
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_8.key}
-          ref={vertexRefCallback}
-        >
-          v_8
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_9.key}
-          ref={vertexRefCallback}
-        >
-          v_9
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_10.key}
-          ref={vertexRefCallback}
-        >
-          v_10
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_11.key}
-          ref={vertexRefCallback}
-        >
-          v_11
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_12.key}
-          ref={vertexRefCallback}
-        >
-          v_12
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_13.key}
-          ref={vertexRefCallback}
-        >
-          v_13
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_14.key}
-          ref={vertexRefCallback}
-        >
-          v_14
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_15.key}
-          ref={vertexRefCallback}
-        >
-          v_15
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_16.key}
-          ref={vertexRefCallback}
-        >
-          v_16
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_17.key}
-          ref={vertexRefCallback}
-        >
-          v_17
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_18.key}
-          ref={vertexRefCallback}
-        >
-          v_18
-        </div>
-        <div
-          className={classNames("Vertex")}
-          data-vertex-key={m.v.v_19.key}
-          ref={vertexRefCallback}
-        >
-          v_19
-        </div>
-      </div>
-
-      <div className="Edges">
-        <div
-          className="Edge"
-          data-edge-keys={m.e.v_1__v_2.key}
-          ref={edgeRefCallback}
-        />
-      </div>
+      <SvgComponent
+        mapData={mapData}
+        mapRef={map}
+        vertexRefCallback={vertexRefCallback}
+        edgeRefCallback={edgeRefCallback}
+      />
     </div>
   );
 }
