@@ -1,7 +1,14 @@
 .Vertex {
-  display: none;
+  opacity: 0;
+  fill: #e4e4e4;
 }
 
 .Edge {
-  display: none;
+  fill: #84d08c;
+  opacity: 0;
+}
+
+.Object {
+  fill: #d6ebff;
+  stroke: #87b6e2;
 }

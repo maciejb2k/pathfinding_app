@@ -7,29 +7,62 @@ import Edge from "algorithms/graph/Edge";
 import SvgComponent from "./SvgComponent";
 import { mapData } from "./mapData";
 
+import { getGraphFromJSON, getPathFromDijkstra } from "algorithms/graph/Utils";
+
+import Graph from "algorithms/graph/Graph";
+import dijkstra from "algorithms/graph/Dijkstra";
+
 function Map(props: any) {
-  const { verticesList, edgesList } = props;
+  const [verticesList, setVerticesList]: any = useState<any>();
+  const [edgesList, setEdgesList]: any = useState<any>();
 
   const map = React.useRef<{ [key: string]: HTMLElement }>(null);
   const vertices = React.useRef<{ [key: string]: HTMLElement }>({});
   const edges = React.useRef<{ [key: string]: HTMLElement }>({});
 
-  console.log(edgesList, edges);
+  const [pathTimeline] = React.useState<GSAPTimeline>(
+    gsap.timeline({
+      paused: true,
+    })
+  );
+
+  useEffect(() => {
+    const graph = getGraphFromJSON(mapData);
+
+    const startVertex = graph.getVertices()["v_95"];
+    const endVertex = graph.getVertices()["v_37"];
+
+    const { previousVertices } = dijkstra(graph, startVertex);
+    const { vertices, edges } = getPathFromDijkstra(
+      graph.edges,
+      previousVertices,
+      endVertex
+    );
+
+    setVerticesList(vertices);
+    setEdgesList(edges);
+  }, []);
 
   React.useEffect(() => {
-    if (edgesList) {
-      let nodes: any = [];
+    if (edgesList && pathTimeline) {
       edgesList.forEach((edge: Edge) => {
+        let key: string;
+
         if (edge.getKey() in edges.current) {
-          nodes.push(edges.current[edge.getKey()]);
+          key = edge.getKey();
         } else {
-          nodes.push(edges.current[edge.getReverseKey()]);
+          key = edge.getReverseKey();
         }
+
+        pathTimeline.to(edges.current[key], {
+          opacity: 1,
+          duration: 0.03,
+        });
       });
 
-      gsap.to(nodes, { opacity: 1, fill: "blue", display: "flex" });
+      pathTimeline.resume();
     }
-  }, [edgesList]);
+  }, [edgesList, pathTimeline]);
 
   const vertexRefCallback = (el: HTMLElement | null) => {
     if (el && el.dataset.vertexKey) {
@@ -47,13 +80,48 @@ function Map(props: any) {
     }
   };
 
+  const showAllVertices = () => {
+    Object.values(vertices.current).forEach((vertex: HTMLElement) => {
+      gsap.to(vertex, { opacity: 1 });
+    });
+  };
+
+  const hideAllVertices = () => {
+    Object.values(vertices.current).forEach((vertex: HTMLElement) => {
+      gsap.to(vertex, { opacity: 0 });
+    });
+  };
+
+  const showAllEdges = () => {
+    Object.values(edges.current).forEach((edges: HTMLElement) => {
+      gsap.to(edges, { opacity: 1 });
+    });
+  };
+
+  const hideAllEdges = () => {
+    Object.values(edges.current).forEach((edge: HTMLElement) => {
+      gsap.to(edge, { opacity: 0 });
+    });
+  };
+
+  const onVertexClick = (e: Event) => {};
+
+  const onObjectClick = (e: Event) => {};
+
   return (
     <div className="Map">
+      <button onClick={showAllVertices}>Show All Vertices</button>
+      <button onClick={hideAllVertices}>Hide All Vertices</button>
+      <button onClick={showAllEdges}>Show All Edges</button>
+      <button onClick={hideAllEdges}>Hide All Edges</button>
+
       <SvgComponent
         mapData={mapData}
         mapRef={map}
         vertexRefCallback={vertexRefCallback}
         edgeRefCallback={edgeRefCallback}
+        onVertexClick={onVertexClick}
+        onObjectClick={onObjectClick}
       />
     </div>
   );

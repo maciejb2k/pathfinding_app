@@ -4,20 +4,16 @@ import classNames from "classnames";
 import styles from "./Map.module.scss";
 
 function SvgComponent(props: any) {
-  const { mapData: m }: any = props;
-  const { vertexRefCallback }: any = props;
-  const { edgeRefCallback }: any = props;
-
-  console.log(styles);
+  const {
+    mapData: m,
+    vertexRefCallback,
+    edgeRefCallback,
+    onVertexClick,
+    onObjectClick,
+  }: any = props;
 
   return (
-    <svg
-      width={1113}
-      height={773}
-      viewBox="0 0 1113 773"
-      fill="none"
-      {...props}
-    >
+    <svg width={1113} height={773} viewBox="0 0 1113 773" fill="none">
       <g id="prefix__Map">
         <g id="prefix__floor" filter="url(#prefix__filter0_d)">
           <path d="M1057.5 55H55v663h715l287.5-220.5V55z" fill="#fff" />
@@ -2007,6 +2003,7 @@ function SvgComponent(props: any) {
             data-vertex-key={m.v.v_11.key}
             ref={vertexRefCallback}
             className={classNames(styles["Vertex"])}
+            onClick={onVertexClick}
           />
           <circle
             id="prefix__v_10"
@@ -2102,333 +2099,291 @@ function SvgComponent(props: any) {
         <g id="prefix__Objects">
           <path
             id="prefix__o_43"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M156.5 411.5h27v204h-27z"
+            data-object-key={m.o.o_43.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_42"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M626.501 411.5h27v204h-27z"
+            data-object-key={m.o.o_42.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_41"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M658.267 516.5h27.235v99h-27.235z"
+            data-object-key={m.o.o_41.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_40"
             d="M156.5 156.5h59v204h-59v-204z"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
+            data-object-key={m.o.o_40.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_39"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M658.5 156.5h27v204h-27z"
+            data-object-key={m.o.o_39.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_38"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M188.265 411.5H215.5v99h-27.235z"
+            data-object-key={m.o.o_38.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_37"
             transform="rotate(-90 266.5 614.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 614.5h27.235v99H266.5z"
+            data-object-key={m.o.o_37.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_36"
             transform="rotate(-90 266.5 582.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 582.5h27v204h-27z"
+            data-object-key={m.o.o_36.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_35"
             transform="rotate(-90 371.5 614.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 614.5h27v204h-27z"
+            data-object-key={m.o.o_35.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_34"
             transform="rotate(-90 266.5 323.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 323.5h27.235v99H266.5z"
+            data-object-key={m.o.o_34.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_33"
             transform="rotate(-90 266.5 291.735)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 291.735h27.235v99H266.5z"
+            data-object-key={m.o.o_33.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_32"
             transform="rotate(-90 371.5 291.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 291.5h27v204h-27z"
+            data-object-key={m.o.o_32.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_31"
             transform="rotate(-90 736.5 291.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 291.5h27v204h-27z"
+            data-object-key={m.o.o_31.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_30"
             transform="rotate(-90 371.5 323.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 323.5h27.235v99H371.5z"
+            data-object-key={m.o.o_30.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_29"
             transform="rotate(-90 841.5 323.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M841.5 323.5h27.235v99H841.5z"
+            data-object-key={m.o.o_29.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_28"
             transform="rotate(-90 371.5 400.735)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 400.735h27.235v204H371.5z"
+            data-object-key={m.o.o_28.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_27"
             transform="rotate(-90 266.5 506.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 506.5h27v204h-27z"
+            data-object-key={m.o.o_27.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_26"
             transform="rotate(-90 371.5 474.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 474.5h27v204h-27z"
+            data-object-key={m.o.o_26.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_25"
             transform="rotate(-90 476.5 506.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M476.5 506.5h27.235v99H476.5z"
+            data-object-key={m.o.o_25.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_24"
             transform="rotate(-90 266.5 183.735)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M266.5 183.735h27.235v99H266.5z"
+            data-object-key={m.o.o_24.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_23"
             transform="rotate(-90 736.5 215.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 215.5h27.235v99H736.5z"
+            data-object-key={m.o.o_23.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_22"
             transform="rotate(-90 736.5 183.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 183.5h27v204h-27z"
+            data-object-key={m.o.o_22.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_21"
             transform="rotate(-90 736.5 433.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 433.5h27.235v99H736.5z"
+            data-object-key={m.o.o_21.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_20"
             transform="rotate(-90 841.5 433.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M841.5 433.5h27.235v99H841.5z"
+            data-object-key={m.o.o_20.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_19"
             transform="rotate(-90 736.5 511.735)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 511.735h27.235v99H736.5z"
+            data-object-key={m.o.o_19.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_18"
             transform="rotate(-90 736.5 543.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 543.5h27v49h-27z"
+            data-object-key={m.o.o_18.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_17"
             transform="rotate(-90 736.5 401.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M736.5 401.5h27v204h-27z"
+            data-object-key={m.o.o_17.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_16"
             transform="rotate(-90 371.5 215.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 215.5h27.235v99H371.5z"
+            data-object-key={m.o.o_16.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_15"
             transform="rotate(-90 476.5 215.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M476.5 215.5h27.235v99H476.5z"
+            data-object-key={m.o.o_15.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_14"
             transform="rotate(-90 371.5 183.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M371.5 183.5h27v204h-27z"
+            data-object-key={m.o.o_14.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_13"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M626.5 156.5h27.235v99H626.5z"
+            data-object-key={m.o.o_13.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_12"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M61.5 466.5h10v149h-10z"
+            data-object-key={m.o.o_12.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_11"
             transform="rotate(-90 312.5 711.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M312.5 711.5h10v442h-10z"
+            data-object-key={m.o.o_11.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_10"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M61.5 156.5h10v149h-10z"
+            data-object-key={m.o.o_10.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_9"
             transform="rotate(-90 311.5 71.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M311.5 71.5h10v304h-10z"
+            data-object-key={m.o.o_9.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_8"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M1040.5 156.5h10v167h-10z"
+            data-object-key={m.o.o_8.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_7"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M1040.5 329.5h10v149h-10z"
+            data-object-key={m.o.o_7.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_6"
             transform="rotate(-90 156.5 71.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M156.5 71.5h10v149h-10z"
+            data-object-key={m.o.o_6.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_5"
             transform="rotate(-90 157.5 711.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M157.5 711.5h10v149h-10z"
+            data-object-key={m.o.o_5.key}
+            className={classNames(styles["Object"])}
           />
           <path
             id="prefix__o_4"
             transform="rotate(-90 621.5 71.5)"
-            fill="#D6EBFF"
-            stroke="#87B6E2"
             d="M621.5 71.5h10v304h-10z"
+            data-object-key={m.o.o_4.key}
+            className={classNames(styles["Object"])}
           />
-          <g id="prefix__o_3">
-            <mask id="prefix__path-245-inside-1" fill="#fff">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M72 61H61v90h11V72h79V61H72z"
-              />
-            </mask>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M72 61H61v90h11V72h79V61H72z"
-              fill="#D6EBFF"
-            />
-            <path
-              d="M61 61v-1h-1v1h1zm11 0h1v-1h-1v1zm-11 90h-1v1h1v-1zm11 0v1h1v-1h-1zm0-79v-1h-1v1h1zm79 0v1h1v-1h-1zm0-11h1v-1h-1v1zm-79 0h-1v1h1v-1zm-11 1h11v-2H61v2zm1-1h-2 2zm0 11V61h-2v11h2zm0 79V72h-2v79h2zm10-1H61v2h11v-2zm-1-78v79h2V72h-2zm80-1H72v2h79v-2zm-1-10v11h2V61h-2zm-78 1h79v-2H72v2zm-1-1h2-2z"
-              fill="#87B6E2"
-              mask="url(#prefix__path-245-inside-1)"
-            />
-          </g>
-          <g id="prefix__o_2">
-            <mask id="prefix__path-247-inside-2" fill="#fff">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M1051 72V61H931v11h109v79h11V72z"
-              />
-            </mask>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M1051 72V61H931v11h109v79h11V72z"
-              fill="#D6EBFF"
-            />
-            <path
-              d="M1051 61h1v-1h-1v1zm0 11v1h1v-1h-1zm0-11v1-1zm-120 0v-1h-1v1h1zm0 11h-1v1h1v-1zm109 0h1v-1h-1v1zm0 79h-1v1h1v-1zm11 0v1h1v-1h-1zm0-79v-1h-1v1h1zm-1-11v11h2V61h-2zm1 1v-2 2zm-11 0h11v-2h-11v2zm-109 0h109v-2H931v2zm1 10V61h-2v11h2zm108-1H931v2h109v-2zm1 80V72h-2v79h2zm10-1h-11v2h11v-2zm-1-78v79h2V72h-2zm1-1v2-2z"
-              fill="#87B6E2"
-              mask="url(#prefix__path-247-inside-2)"
-            />
-          </g>
-          <g id="prefix__o_1">
-            <mask id="prefix__path-249-inside-3" fill="#fff">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M61 701v11h91v-11H72v-80H61v80z"
-              />
-            </mask>
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M61 701v11h91v-11H72v-80H61v80z"
-              fill="#D6EBFF"
-            />
-            <path
-              d="M61 712h-1v1h1v-1zm0-11h-1 1zm91 11v1h1v-1h-1zm0-11h1v-1h-1v1zm-80 0h-1v1h1v-1zm0-80h1v-1h-1v1zm-11 0v-1h-1v1h1zm1 91v-11h-2v11h2zm-1-1v2-2zm11 0H61v2h11v-2zm80 0H72v2h80v-2zm-1-10v11h2v-11h-2zm-79 1h80v-2H72v2zm-1-81v80h2v-80h-2zm-10 1h11v-2H61v2zm1 79v-80h-2v80h2z"
-              fill="#87B6E2"
-              mask="url(#prefix__path-249-inside-3)"
-            />
-          </g>
+          <path
+            id="o_3"
+            d="M72 71.5H71.5V72V150.5H61.5V61.5L150.5 61.5V71.5L72 71.5Z"
+            data-object-key={m.o.o_3.key}
+            className={classNames(styles["Object"])}
+          />
+          <path
+            id="o_2"
+            d="M1040.5 72V71.5H1040L931.5 71.5L931.5 61.5L1050.5 61.5L1050.5 150.5H1040.5V72Z"
+            data-object-key={m.o.o_2.key}
+            className={classNames(styles["Object"])}
+          />
+          <path
+            id="o_1"
+            d="M71.5 701V701.5H72H151.5V711.5H61.5L61.5 621.5L71.5 621.5L71.5 701Z"
+            data-object-key={m.o.o_1.key}
+            className={classNames(styles["Object"])}
+          />
         </g>
       </g>
       <defs>
