@@ -1,11 +1,11 @@
 import Vertex from "algorithms/graph/Vertex";
 import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
-import Dijkstra from "algorithms/graph/Dijkstra";
+import dijkstra from "algorithms/graph/Dijkstra";
 
 describe("Dijkstra", () => {
   it("should find paths to all vertices", () => {
-    const graph = new Graph(true);
+    const graph = new Graph();
 
     const vertex_a = new Vertex("A");
     const vertex_b = new Vertex("B");
@@ -53,7 +53,7 @@ describe("Dijkstra", () => {
     graph.addEdge(edge_e_b);
     graph.addEdge(edge_b_e);
 
-    const { distances, previousVertices } = Dijkstra(graph, vertex_h);
+    const { distances, previousVertices } = dijkstra(graph, vertex_h);
 
     expect(distances).toStrictEqual({
       A: Infinity,

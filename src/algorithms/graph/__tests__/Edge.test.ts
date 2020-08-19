@@ -5,14 +5,14 @@ describe("Edge", () => {
   it("returns proper key", () => {
     const edge = new Edge(new Vertex("A"), new Vertex("B"), 5);
 
-    expect(edge.getKey()).toBe("A_B");
+    expect(edge.getKey()).toBe("A__B");
   });
 
   it("reverses edge", () => {
     const edge = new Edge(new Vertex("A"), new Vertex("B"), 5);
     const newEdge = edge.reverse();
 
-    expect(newEdge.getKey()).toBe("B_A");
+    expect(newEdge.getKey()).toBe("B__A");
   });
 });
 

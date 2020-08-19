@@ -32,7 +32,11 @@ class Edge {
   }
 
   getKey() {
-    return `${this.startVertex}_${this.endVertex}`;
+    return `${this.startVertex}__${this.endVertex}`;
+  }
+
+  getReverseKey() {
+    return `${this.endVertex}__${this.startVertex}`;
   }
 
   toString() {

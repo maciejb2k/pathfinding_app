@@ -11,10 +11,8 @@ interface Graph {
   isDirected: boolean;
 }
 
-// TODO - Add non-direction, because now graph is only directed
-
 class Graph {
-  constructor(isDirected: boolean = false, options: GraphOptions = {}) {
+  constructor(isDirected: boolean = true, options: GraphOptions = {}) {
     this.isDirected = isDirected;
     this.vertices = {};
     this.edges = {};
@@ -43,6 +41,7 @@ class Graph {
 
     const key = vertex.getKey();
 
+    // Refactor to only neighbours
     // Loops through ajdency list linearly to match key
     Object.keys(this.adjencyList).forEach((startVertex) => {
       Object.keys(this.adjencyList[startVertex]).forEach((endVertex) => {
@@ -54,36 +53,65 @@ class Graph {
 
     delete this.vertices[key];
     delete this.adjencyList[key];
+
     return true;
   }
 
+  // TODO REFACTOR !!!
   addEdge(edge: Edge) {
     const [startVertex, endVertex] = this.getVerticesFromEdge(edge);
-    const edgeKey = edge.getKey();
-
-    // Checks whether edge arleady exist
-    if (edgeKey in this.edges) {
-      return false;
-    }
 
     // Checks whether vertices exists in graph
     if (!(startVertex in this.vertices) || !(endVertex in this.vertices)) {
       return false;
     }
 
-    this.edges[edgeKey] = edge;
-    this.adjencyList[startVertex][endVertex] = edge;
+    if (this.isDirected) {
+      if (edge.getKey() in this.edges) {
+        return false;
+      }
+
+      this.edges[edge.getKey()] = edge;
+
+      this.adjencyList[startVertex][endVertex] = edge;
+    } else {
+      const reverseEdge: Edge = edge.reverse();
+
+      if (edge.getKey() in this.edges || reverseEdge.getKey() in this.edges) {
+        return false;
+      }
+
+      this.edges[edge.getKey()] = edge;
+      this.edges[reverseEdge.getKey()] = reverseEdge;
+
+      this.adjencyList[startVertex][endVertex] = edge;
+      this.adjencyList[endVertex][startVertex] = reverseEdge;
+    }
+
     return true;
   }
 
+  // TODO REFACTOR !!!
   delEdge(edge: Edge) {
     const [startVertex, endVertex] = this.getVerticesFromEdge(edge);
     const key = edge.getKey();
 
-    if (key in this.edges) {
-      delete this.adjencyList[startVertex][endVertex];
-      delete this.edges[key];
-      return true;
+    if (this.isDirected) {
+      if (key in this.edges) {
+        delete this.adjencyList[startVertex][endVertex];
+        delete this.edges[key];
+        return true;
+      }
+    } else {
+      const reverseEdge: Edge = edge.reverse();
+      if (key in this.edges && reverseEdge.getKey() in this.edges) {
+        delete this.adjencyList[startVertex][endVertex];
+        delete this.adjencyList[endVertex][startVertex];
+
+        delete this.edges[key];
+        delete this.edges[reverseEdge.getKey()];
+        return true;
+      }
     }
 
     return false;
