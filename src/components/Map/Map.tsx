@@ -3,26 +3,33 @@ import { gsap } from "gsap";
 import classNames from "classnames";
 
 import Vertex from "algorithms/graph/Vertex";
+import Edge from "algorithms/graph/Edge";
 import SvgComponent from "./SvgComponent";
 import { mapData } from "./mapData";
 
 function Map(props: any) {
-  const { verticesList } = props;
+  const { verticesList, edgesList } = props;
 
   const map = React.useRef<{ [key: string]: HTMLElement }>(null);
   const vertices = React.useRef<{ [key: string]: HTMLElement }>({});
   const edges = React.useRef<{ [key: string]: HTMLElement }>({});
 
+  console.log(edgesList, edges);
+
   React.useEffect(() => {
-    if (verticesList) {
+    if (edgesList) {
       let nodes: any = [];
-      verticesList.forEach((vertex: Vertex) => {
-        nodes.push(vertices.current[vertex.getKey()]);
+      edgesList.forEach((edge: Edge) => {
+        if (edge.getKey() in edges.current) {
+          nodes.push(edges.current[edge.getKey()]);
+        } else {
+          nodes.push(edges.current[edge.getReverseKey()]);
+        }
       });
 
-      gsap.to(nodes, { opacity: 1, fill: "green", display: "flex" });
+      gsap.to(nodes, { opacity: 1, fill: "blue", display: "flex" });
     }
-  }, [verticesList]);
+  }, [edgesList]);
 
   const vertexRefCallback = (el: HTMLElement | null) => {
     if (el && el.dataset.vertexKey) {

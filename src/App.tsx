@@ -10,28 +10,28 @@ import dijkstra from "algorithms/graph/Dijkstra";
 
 function App() {
   const [vertices, setVertices]: any = useState<any>();
+  const [edges, setEdges]: any = useState<any>();
 
   useEffect(() => {
     const graph = getGraphFromJSON(mapData);
 
-    const startVertex = graph.getVertices()["v_53"];
-    const endVertex = graph.getVertices()["v_9"];
+    const startVertex = graph.getVertices()["v_75"];
+    const endVertex = graph.getVertices()["v_7"];
 
     const { previousVertices } = dijkstra(graph, startVertex);
-    const { vertices } = getPathFromDijkstra(
+    const { vertices, edges } = getPathFromDijkstra(
       graph.edges,
       previousVertices,
       endVertex
     );
 
     setVertices(vertices);
+    setEdges(edges);
   }, []);
-
-  console.log(vertices);
 
   return (
     <div className="App">
-      <Map verticesList={vertices} />
+      <Map verticesList={vertices} edgesList={edges} />
     </div>
   );
 }
