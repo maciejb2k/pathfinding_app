@@ -1,0 +1,11 @@
+@import "styles/variables.scss";
+
+// Default colors
+:root {
+  --color-bg: #{$color-bg--light};
+}
+
+// Dark theme colors
+[data-theme="dark"] {
+  --color-bg: #{$color-bg--dark};
+}

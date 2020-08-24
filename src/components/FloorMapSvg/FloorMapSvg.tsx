@@ -1,15 +1,14 @@
 import * as React from "react";
 import classNames from "classnames";
 
-import styles from "./Map.module.scss";
+import styles from "./FloorMapSvg.module.scss";
 
-function SvgComponent(props: any) {
+function FloorMapSvg(props: any) {
   const {
     mapData: m,
     vertexRefCallback,
     edgeRefCallback,
     onVertexClick,
-    onObjectClick,
   }: any = props;
 
   return (
@@ -2412,4 +2411,4 @@ function SvgComponent(props: any) {
   );
 }
 
-export default SvgComponent;
+export default FloorMapSvg;

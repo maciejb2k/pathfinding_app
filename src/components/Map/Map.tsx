@@ -1,18 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import classNames from "classnames";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-import Vertex from "algorithms/graph/Vertex";
-import Edge from "algorithms/graph/Edge";
-import SvgComponent from "./SvgComponent";
+import FloorMapSvg from "components/FloorMapSvg";
 import { mapData } from "./mapData";
-
+import Edge from "algorithms/graph/Edge";
 import { getGraphFromJSON, getPathFromDijkstra } from "algorithms/graph/Utils";
-
-import Graph from "algorithms/graph/Graph";
 import dijkstra from "algorithms/graph/Dijkstra";
 
-function Map(props: any) {
+function Map() {
   const [verticesList, setVerticesList]: any = useState<any>();
   const [edgesList, setEdgesList]: any = useState<any>();
 
@@ -30,7 +26,7 @@ function Map(props: any) {
     const graph = getGraphFromJSON(mapData);
 
     const startVertex = graph.getVertices()["v_95"];
-    const endVertex = graph.getVertices()["v_37"];
+    const endVertex = graph.getVertices()["v_6"];
 
     const { previousVertices } = dijkstra(graph, startVertex);
     const { vertices, edges } = getPathFromDijkstra(
@@ -114,15 +110,18 @@ function Map(props: any) {
       <button onClick={hideAllVertices}>Hide All Vertices</button>
       <button onClick={showAllEdges}>Show All Edges</button>
       <button onClick={hideAllEdges}>Hide All Edges</button>
-
-      <SvgComponent
-        mapData={mapData}
-        mapRef={map}
-        vertexRefCallback={vertexRefCallback}
-        edgeRefCallback={edgeRefCallback}
-        onVertexClick={onVertexClick}
-        onObjectClick={onObjectClick}
-      />
+      <TransformWrapper>
+        <TransformComponent>
+          <FloorMapSvg
+            mapData={mapData}
+            mapRef={map}
+            vertexRefCallback={vertexRefCallback}
+            edgeRefCallback={edgeRefCallback}
+            onVertexClick={onVertexClick}
+            onObjectClick={onObjectClick}
+          />
+        </TransformComponent>
+      </TransformWrapper>
     </div>
   );
 }
