@@ -1,0 +1,37 @@
+@import-normalize;
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+#app {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Montserrat";
+  font-size: 1.6rem;
+}
+
+// Override for my theme
+.react-transform-component,
+.react-transform-element {
+  width: 100% !important;
+  height: 100% !important;
+}

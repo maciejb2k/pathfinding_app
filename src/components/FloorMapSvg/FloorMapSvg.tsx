@@ -12,7 +12,7 @@ function FloorMapSvg(props: any) {
   }: any = props;
 
   return (
-    <svg width={1113} height={773} viewBox="0 0 1113 773" fill="none">
+    <svg width={1013} height={673} viewBox="0 0 1113 773" fill="none">
       <g id="prefix__Map">
         <g id="prefix__floor" filter="url(#prefix__filter0_d)">
           <path d="M1057.5 55H55v663h715l287.5-220.5V55z" fill="#fff" />
@@ -2370,6 +2370,9 @@ function FloorMapSvg(props: any) {
             d="M72 71.5H71.5V72V150.5H61.5V61.5L150.5 61.5V71.5L72 71.5Z"
             data-object-key={m.o.o_3.key}
             className={classNames(styles["Object"])}
+            onClick={(e: any) => {
+              console.log(e);
+            }}
           />
           <path
             id="o_2"

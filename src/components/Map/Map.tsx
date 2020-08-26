@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { TransformComponent } from "react-zoom-pan-pinch";
 
-import FloorMapSvg from "components/FloorMapSvg";
 import { mapData } from "./mapData";
-import Edge from "algorithms/graph/Edge";
+import FloorMapSvg from "components/FloorMapSvg";
 import { getGraphFromJSON, getPathFromDijkstra } from "algorithms/graph/Utils";
+import Edge from "algorithms/graph/Edge";
 import dijkstra from "algorithms/graph/Dijkstra";
 
-function Map() {
+import styles from "./Map.module.scss";
+
+function Map(props: any) {
   const [verticesList, setVerticesList]: any = useState<any>();
   const [edgesList, setEdgesList]: any = useState<any>();
 
@@ -105,13 +107,9 @@ function Map() {
   const onObjectClick = (e: Event) => {};
 
   return (
-    <div className="Map">
-      <button onClick={showAllVertices}>Show All Vertices</button>
-      <button onClick={hideAllVertices}>Hide All Vertices</button>
-      <button onClick={showAllEdges}>Show All Edges</button>
-      <button onClick={hideAllEdges}>Hide All Edges</button>
-      <TransformWrapper>
-        <TransformComponent>
+    <>
+      <TransformComponent>
+        <div className={styles["Map"]}>
           <FloorMapSvg
             mapData={mapData}
             mapRef={map}
@@ -120,9 +118,9 @@ function Map() {
             onVertexClick={onVertexClick}
             onObjectClick={onObjectClick}
           />
-        </TransformComponent>
-      </TransformWrapper>
-    </div>
+        </div>
+      </TransformComponent>
+    </>
   );
 }
 

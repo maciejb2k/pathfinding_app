@@ -1,18 +1,266 @@
 import React from "react";
-import i18n from "utils/i18n";
-
-import { useTranslation } from "react-i18next";
+import {
+  FiSearch,
+  FiChevronRight,
+  FiUser,
+  FiSettings,
+  FiMenu,
+  FiNavigation,
+  FiCircle,
+} from "react-icons/fi";
+import classnames from "classnames";
+import { TransformWrapper } from "react-zoom-pan-pinch";
 
 import Map from "components/Map";
 
-function Layout() {
-  const { t } = useTranslation();
+import styles from "./Layout.module.scss";
 
+function Layout() {
   return (
-    <>
-      <p>{t("hello")}</p>
-      <Map></Map>
-    </>
+    <div className={styles["Layout"]}>
+      <div className={styles["Sidebar"]}>
+        <header className={styles["Header"]}>
+          <h1 className={styles["Header-title"]}>
+            Mapa <b>Marketu</b>
+          </h1>
+          <p className={styles["Header-text"]}>ul. Przykładowa 123, Rzeszów</p>
+        </header>
+        <div className={styles["Search"]}>
+          <input
+            type="text"
+            className={styles["Search-input"]}
+            placeholder="np. Czekolada"
+          />
+          <button className={styles["Search-submit"]}>
+            <FiSearch className={styles["Search-submitIcon"]} />
+          </button>
+        </div>
+        <div className={styles["Buttons"]}>
+          <button
+            className={classnames({
+              [styles["Button"]]: true,
+              [styles["Button--active"]]: true,
+            })}
+          >
+            Alfabetycznie
+          </button>
+          <button
+            className={classnames({
+              [styles["Button"]]: true,
+              [styles["Button--active"]]: false,
+            })}
+          >
+            Kategoriami
+          </button>
+        </div>
+        <div className={styles["Categories"]}>
+          <div className={styles["Category"]}>
+            <header className={styles["CategoryHeader"]}>
+              <h2 className={styles["CategoryHeader-title"]}>
+                A
+                <span className={styles["CategoryHeader-results"]}>
+                  - 14 wyników
+                </span>
+              </h2>
+            </header>
+            <div className={styles["CategoryGroup"]}>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles["Category"]}>
+            <header className={styles["CategoryHeader"]}>
+              <h2 className={styles["CategoryHeader-title"]}>
+                A
+                <span className={styles["CategoryHeader-results"]}>
+                  - 14 wyników
+                </span>
+              </h2>
+            </header>
+            <div className={styles["CategoryGroup"]}>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={styles["Category"]}>
+            <header className={styles["CategoryHeader"]}>
+              <h2 className={styles["CategoryHeader-title"]}>
+                A
+                <span className={styles["CategoryHeader-results"]}>
+                  - 14 wyników
+                </span>
+              </h2>
+            </header>
+            <div className={styles["CategoryGroup"]}>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+              <div className={styles["CategoryItem"]}>
+                <div className={styles["CategoryItem-photo"]}></div>
+                <div className={styles["CategoryItem-text"]}>
+                  <h3 className={styles["CategoryItem-title"]}>Czekolada</h3>
+                  <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
+                </div>
+                <div className={styles["CategoryItem-link"]}>
+                  <FiChevronRight />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className={styles["Footer"]}>
+          <p className={styles["Footer-text"]}>
+            Made to learn <b>React & Typescript</b>
+          </p>
+        </footer>
+      </div>
+      <div className={styles["Main"]}>
+        <TransformWrapper>
+          <div className={styles["Controls"]}>
+            <div className={styles["ControlsUpperLeft"]}>
+              <div className={styles["ControlsMenu"]}>
+                <button
+                  className={classnames({
+                    [styles["ControlsButton"]]: true,
+                    [styles["ControlsButton--hamburger"]]: true,
+                  })}
+                >
+                  <FiMenu />
+                </button>
+              </div>
+              <div className={styles["ControlsSearch"]}>
+                <div className={styles["ControlsSearch-icon"]}>
+                  <FiCircle />
+                </div>
+                <input
+                  type="text"
+                  className={styles["ControlsSearch-input"]}
+                  placeholder="Punkt Końcowy"
+                />
+                <button className={styles["ControlsSearch-submit"]}>
+                  <FiNavigation />
+                </button>
+              </div>
+            </div>
+            <div className={styles["ControlsUpperRight"]}></div>
+            <div className={styles["ControlsLowerRight"]}>
+              <div className={styles["ControlsButtons"]}>
+                <button
+                  className={classnames({
+                    [styles["ControlsButton"]]: true,
+                    [styles["ControlsButton--zoom"]]: true,
+                  })}
+                >
+                  +
+                </button>
+                <button
+                  className={classnames({
+                    [styles["ControlsButton"]]: true,
+                    [styles["ControlsButton--zoom"]]: true,
+                  })}
+                >
+                  -
+                </button>
+              </div>
+              <div className={styles["ControlsButtons"]}>
+                <button
+                  className={classnames({
+                    [styles["ControlsButton"]]: true,
+                    [styles["ControlsButton--options"]]: true,
+                  })}
+                >
+                  <FiUser />
+                </button>
+                <button
+                  className={classnames({
+                    [styles["ControlsButton"]]: true,
+                    [styles["ControlsButton--options"]]: true,
+                  })}
+                >
+                  <FiSettings />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className={styles["Map"]}>
+            <Map />
+          </div>
+        </TransformWrapper>
+      </div>
+    </div>
   );
 }
 

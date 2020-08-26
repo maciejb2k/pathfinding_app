@@ -3,10 +3,16 @@ import classNames from "classnames";
 
 import styles from "./App.module.scss";
 
-function App() {
-  const [theme] = useState("light");
+import Layout from "containers/Layout";
 
-  return <div className={classNames(styles["app"])} data-theme={theme}></div>;
+function App() {
+  const [theme] = useState<string>("light");
+
+  return (
+    <div id="app" data-theme={theme}>
+      <Layout />
+    </div>
+  );
 }
 
 export default App;
