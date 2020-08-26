@@ -35,3 +35,30 @@ body {
   width: 100% !important;
   height: 100% !important;
 }
+
+.ReactModal__Overlay {
+  opacity: 0;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ModalOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  transition: opacity 200ms ease-in-out;
+  background: rgba(0, 0, 0, 0.4) !important;
+  z-index: 10;
+}

@@ -10,12 +10,23 @@ import {
 } from "react-icons/fi";
 import classnames from "classnames";
 import { TransformWrapper } from "react-zoom-pan-pinch";
+import Modal from "react-modal";
 
 import Map from "components/Map";
 
 import styles from "./Layout.module.scss";
 
 function Layout() {
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
   return (
     <div className={styles["Layout"]}>
       <div className={styles["Sidebar"]}>
@@ -249,6 +260,7 @@ function Layout() {
                     [styles["ControlsButton"]]: true,
                     [styles["ControlsButton--options"]]: true,
                   })}
+                  onClick={openModal}
                 >
                   <FiSettings />
                 </button>
@@ -260,6 +272,18 @@ function Layout() {
           </div>
         </TransformWrapper>
       </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        closeTimeoutMS={200}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        className={classnames(styles["Modal--settings"])}
+        overlayClassName="ModalOverlay"
+      >
+        <h2>Ustawienia</h2>
+        <p>Jacek Sasin przejebał 70 mln na wybory.</p>
+      </Modal>
     </div>
   );
 }
