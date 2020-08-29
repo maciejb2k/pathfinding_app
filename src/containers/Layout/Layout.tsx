@@ -11,6 +11,7 @@ import {
 import classnames from "classnames";
 import { TransformWrapper } from "react-zoom-pan-pinch";
 import Modal from "react-modal";
+import Flag from "react-world-flags";
 
 import Map from "components/Map";
 
@@ -281,8 +282,46 @@ function Layout() {
         className={classnames(styles["Modal--settings"])}
         overlayClassName="ModalOverlay"
       >
-        <h2>Ustawienia</h2>
-        <p>Jacek Sasin przejebał 70 mln na wybory.</p>
+        <div className={styles["Settings"]}>
+          <h2 className={styles["Settings-title"]}>Ustawienia</h2>
+          <div className={styles["SettingsItem"]}>
+            <div className={styles["SettingsItem-info"]}>
+              <h3 className={styles["SettingsItem-title"]}>Ciemny Motyw</h3>
+              <p className={styles["SettingsItem-text"]}>
+                Przełączanie motywu między jasnym a ciemnym.
+              </p>
+            </div>
+            <div
+              className={classnames(
+                styles["SettingsItem-input"],
+                styles["Switch"]
+              )}
+            >
+              <input
+                type="checkbox"
+                id="ThemeSwitch"
+                className={styles["Switch-input"]}
+              />
+              <label htmlFor="ThemeSwitch" className={styles["Switch-label"]}>
+                Zmień Motyw
+              </label>
+            </div>
+          </div>
+          <div className={styles["SettingsItem"]}>
+            <div className={styles["SettingsItem-info"]}>
+              <h3 className={styles["SettingsItem-title"]}>Język</h3>
+              <p className={styles["SettingsItem-text"]}>
+                Zmiana języka witryny.
+              </p>
+            </div>
+            <div className={styles["SettingsItem-input"]}>
+              <select className={styles["SelectLang"]}>
+                <option value="pl">PL</option>
+                <option value="en">EN</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </Modal>
     </div>
   );
