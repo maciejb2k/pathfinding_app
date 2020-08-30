@@ -4,11 +4,15 @@
 }
 
 .Edge {
-  fill: #84d08c;
+  fill: #2ecc71;
   opacity: 0;
 }
 
 .Object {
   fill: #d6ebff;
   stroke: #87b6e2;
+}
+
+.Object--active {
+  fill: red;
 }

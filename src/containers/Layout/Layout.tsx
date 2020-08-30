@@ -235,6 +235,7 @@ function Layout() {
                     [styles["ControlsButton"]]: true,
                     [styles["ControlsButton--zoom"]]: true,
                   })}
+                  aria-label="Zoom In"
                 >
                   +
                 </button>
@@ -243,6 +244,7 @@ function Layout() {
                     [styles["ControlsButton"]]: true,
                     [styles["ControlsButton--zoom"]]: true,
                   })}
+                  aria-label="Zoom Out"
                 >
                   -
                 </button>
@@ -253,6 +255,7 @@ function Layout() {
                     [styles["ControlsButton"]]: true,
                     [styles["ControlsButton--options"]]: true,
                   })}
+                  aria-label="Get starting point on map"
                 >
                   <FiUser />
                 </button>
@@ -262,6 +265,7 @@ function Layout() {
                     [styles["ControlsButton--options"]]: true,
                   })}
                   onClick={openModal}
+                  aria-label="Open Settings"
                 >
                   <FiSettings />
                 </button>
@@ -278,7 +282,7 @@ function Layout() {
         isOpen={modalIsOpen}
         closeTimeoutMS={200}
         onRequestClose={closeModal}
-        contentLabel="Example Modal"
+        contentLabel="Site Settings"
         className={classnames(styles["Modal--settings"])}
         overlayClassName="ModalOverlay"
       >
@@ -300,11 +304,13 @@ function Layout() {
               <input
                 type="checkbox"
                 id="ThemeSwitch"
-                className={styles["Switch-input"]}
+                className={classnames(styles["Switch-input"], "sr-only")}
               />
-              <label htmlFor="ThemeSwitch" className={styles["Switch-label"]}>
-                Zmień Motyw
-              </label>
+              <label
+                htmlFor="ThemeSwitch"
+                className={styles["Switch-label"]}
+                aria-label="Zmien motyw"
+              ></label>
             </div>
           </div>
           <div className={styles["SettingsItem"]}>

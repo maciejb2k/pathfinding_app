@@ -17,6 +17,7 @@ function Map(props: any) {
   const map = React.useRef<{ [key: string]: HTMLElement }>(null);
   const vertices = React.useRef<{ [key: string]: HTMLElement }>({});
   const edges = React.useRef<{ [key: string]: HTMLElement }>({});
+  const objects = React.useRef<{ [key: string]: HTMLElement }>({});
 
   const [pathTimeline] = React.useState<GSAPTimeline>(
     gsap.timeline({
@@ -28,7 +29,7 @@ function Map(props: any) {
     const graph = getGraphFromJSON(mapData);
 
     const startVertex = graph.getVertices()["v_95"];
-    const endVertex = graph.getVertices()["v_6"];
+    const endVertex = graph.getVertices()["v_16"];
 
     const { previousVertices } = dijkstra(graph, startVertex);
     const { vertices, edges } = getPathFromDijkstra(
@@ -41,7 +42,7 @@ function Map(props: any) {
     setEdgesList(edges);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (edgesList && pathTimeline) {
       edgesList.forEach((edge: Edge) => {
         let key: string;
@@ -58,9 +59,20 @@ function Map(props: any) {
         });
       });
 
+      const lastVertex = verticesList[verticesList.length - 1];
+
+      if (objects && lastVertex.options && lastVertex.options.object) {
+        const mapObject = objects.current[lastVertex.options.object];
+        pathTimeline.to(mapObject, {
+          duration: 0.5,
+          fill: "#C7FFCC",
+          stroke: "#4FBA5A",
+        });
+      }
+
       pathTimeline.resume();
     }
-  }, [edgesList, pathTimeline]);
+  }, [edgesList, pathTimeline, verticesList]);
 
   const vertexRefCallback = (el: HTMLElement | null) => {
     if (el && el.dataset.vertexKey) {
@@ -69,42 +81,19 @@ function Map(props: any) {
     }
   };
 
-  const edgeRefCallback = (el: HTMLElement | null) => {
-    if (el && el.dataset.edgeKeys) {
-      el.dataset.edgeKeys.split(",").forEach((key: string) => {
-        key = key.trim().toLowerCase();
-        edges.current[key] = el;
-      });
+  const objectRefCallback = (el: HTMLElement | null) => {
+    if (el && el.dataset.objectKey) {
+      let key = el.dataset.objectKey.trim().toLowerCase();
+      objects.current[key] = el;
     }
   };
 
-  const showAllVertices = () => {
-    Object.values(vertices.current).forEach((vertex: HTMLElement) => {
-      gsap.to(vertex, { opacity: 1 });
-    });
+  const edgeRefCallback = (el: HTMLElement | null) => {
+    if (el && el.dataset.edgeKey) {
+      let key = el.dataset.edgeKey.trim().toLowerCase();
+      edges.current[key] = el;
+    }
   };
-
-  const hideAllVertices = () => {
-    Object.values(vertices.current).forEach((vertex: HTMLElement) => {
-      gsap.to(vertex, { opacity: 0 });
-    });
-  };
-
-  const showAllEdges = () => {
-    Object.values(edges.current).forEach((edges: HTMLElement) => {
-      gsap.to(edges, { opacity: 1 });
-    });
-  };
-
-  const hideAllEdges = () => {
-    Object.values(edges.current).forEach((edge: HTMLElement) => {
-      gsap.to(edge, { opacity: 0 });
-    });
-  };
-
-  const onVertexClick = (e: Event) => {};
-
-  const onObjectClick = (e: Event) => {};
 
   return (
     <>
@@ -115,8 +104,7 @@ function Map(props: any) {
             mapRef={map}
             vertexRefCallback={vertexRefCallback}
             edgeRefCallback={edgeRefCallback}
-            onVertexClick={onVertexClick}
-            onObjectClick={onObjectClick}
+            objectRefCallback={objectRefCallback}
           />
         </div>
       </TransformComponent>

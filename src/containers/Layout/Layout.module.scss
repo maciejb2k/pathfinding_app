@@ -396,6 +396,11 @@
         }
       }
 
+      .SettingsItem-input {
+        display: flex;
+        align-items: center;
+      }
+
       .SelectLang {
         border: 1px solid #e1e2e2;
         padding: 10px;
@@ -404,10 +409,6 @@
 
       .Switch {
         .Switch-input {
-          width: 0;
-          height: 0;
-          visibility: hidden;
-
           &:checked + .Switch-label {
             background: #1b78d0;
           }
@@ -416,11 +417,14 @@
             left: calc(100% - 5px);
             transform: translateX(-100%);
           }
+
+          &:focus + .Switch-label {
+            outline: #5d9dd5 solid 2px;
+          }
         }
 
         .Switch-label {
           cursor: pointer;
-          text-indent: -9999px;
           width: 60px;
           height: 30px;
           background: #e1e2e2;
@@ -440,6 +444,10 @@
             transition: 0.3s;
           }
         }
+      }
+
+      .ThemeSwitch-input:focus + .ThemeSwitch-label {
+        background: red;
       }
 
       &:not(:last-child) {

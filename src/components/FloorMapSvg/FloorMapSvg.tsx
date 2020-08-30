@@ -8,6 +8,7 @@ function FloorMapSvg(props: any) {
     mapData: m,
     vertexRefCallback,
     edgeRefCallback,
+    objectRefCallback,
     onVertexClick,
   }: any = props;
 
@@ -30,7 +31,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={157}
             rx={0.5}
-            data-edge-keys={m.e.v_96__v_79.key}
+            data-edge-key={m.e.v_96__v_79.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -41,7 +42,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={126}
             rx={0.5}
-            data-edge-keys={m.e.v_79__v_75.key}
+            data-edge-key={m.e.v_79__v_75.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -52,7 +53,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={135}
             rx={0.5}
-            data-edge-keys={m.e.v_69__v_67.key}
+            data-edge-key={m.e.v_69__v_67.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -63,7 +64,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={65}
             rx={0.5}
-            data-edge-keys={m.e.v_72__v_71.key}
+            data-edge-key={m.e.v_72__v_71.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -74,7 +75,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_29__v_28.key}
+            data-edge-key={m.e.v_29__v_28.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -85,7 +86,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_26__v_27.key}
+            data-edge-key={m.e.v_26__v_27.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -96,7 +97,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_26__v_25.key}
+            data-edge-key={m.e.v_26__v_25.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -107,7 +108,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={65}
             rx={0.5}
-            data-edge-keys={m.e.v_74__v_70.key}
+            data-edge-key={m.e.v_74__v_70.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -118,7 +119,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={40}
             rx={0.5}
-            data-edge-keys={m.e.v_74__v_73.key}
+            data-edge-key={m.e.v_74__v_73.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -129,7 +130,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={40}
             rx={0.5}
-            data-edge-keys={m.e.v_15__v_14.key}
+            data-edge-key={m.e.v_15__v_14.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -140,7 +141,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_19__v_18.key}
+            data-edge-key={m.e.v_19__v_18.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -151,7 +152,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_17__v_16.key}
+            data-edge-key={m.e.v_17__v_16.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -162,7 +163,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={41}
             rx={0.5}
-            data-edge-keys={m.e.v_4__v_3.key}
+            data-edge-key={m.e.v_4__v_3.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -173,7 +174,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_4__v_2.key}
+            data-edge-key={m.e.v_4__v_2.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -184,7 +185,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={65}
             rx={0.5}
-            data-edge-keys={m.e.v_13__v_12.key}
+            data-edge-key={m.e.v_13__v_12.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -195,7 +196,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={40}
             rx={0.5}
-            data-edge-keys={m.e.v_69__v_68.key}
+            data-edge-key={m.e.v_69__v_68.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -206,7 +207,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={135}
             rx={0.5}
-            data-edge-keys={m.e.v_24__v_21.key}
+            data-edge-key={m.e.v_24__v_21.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -217,7 +218,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={106}
             rx={0.5}
-            data-edge-keys={m.e.v_45__v_24.key}
+            data-edge-key={m.e.v_45__v_24.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -228,7 +229,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={43}
             rx={0.5}
-            data-edge-keys={m.e.v_44__v_45.key}
+            data-edge-key={m.e.v_44__v_45.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -239,7 +240,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_44__v_53.key}
+            data-edge-key={m.e.v_44__v_53.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -250,7 +251,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={108}
             rx={0.5}
-            data-edge-keys={m.e.v_81__v_53.key}
+            data-edge-key={m.e.v_81__v_53.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -261,7 +262,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={133}
             rx={0.5}
-            data-edge-keys={m.e.v_82__v_81.key}
+            data-edge-key={m.e.v_82__v_81.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -272,7 +273,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={98}
             rx={0.5}
-            data-edge-keys={m.e.v_36__v_34.key}
+            data-edge-key={m.e.v_36__v_34.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -283,7 +284,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={106}
             rx={0.5}
-            data-edge-keys={m.e.v_42__v_36.key}
+            data-edge-key={m.e.v_42__v_36.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -294,7 +295,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={37}
             rx={0.5}
-            data-edge-keys={m.e.v_33__v_32.key}
+            data-edge-key={m.e.v_33__v_32.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -305,7 +306,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_41__v_40.key}
+            data-edge-key={m.e.v_41__v_40.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -316,7 +317,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={42}
             rx={0.5}
-            data-edge-keys={m.e.v_41__v_39.key}
+            data-edge-key={m.e.v_41__v_39.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -327,7 +328,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={42}
             rx={0.5}
-            data-edge-keys={m.e.v_38__v_37.key}
+            data-edge-key={m.e.v_38__v_37.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -338,7 +339,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={75}
             rx={0.5}
-            data-edge-keys={m.e.v_42__v_43.key}
+            data-edge-key={m.e.v_42__v_43.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -349,7 +350,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_43__v_1.key}
+            data-edge-key={m.e.v_43__v_1.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -360,7 +361,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={111}
             rx={0.5}
-            data-edge-keys={m.e.v_20__v_1.key}
+            data-edge-key={m.e.v_20__v_1.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -371,7 +372,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={111}
             rx={0.5}
-            data-edge-keys={m.e.v_8__v_5.key}
+            data-edge-key={m.e.v_8__v_5.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -382,7 +383,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={55}
             rx={0.5}
-            data-edge-keys={m.e.v_5__v_7.key}
+            data-edge-key={m.e.v_5__v_7.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -393,7 +394,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={58}
             rx={0.5}
-            data-edge-keys={m.e.v_7__v_31.key}
+            data-edge-key={m.e.v_7__v_31.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -404,7 +405,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={135}
             rx={0.5}
-            data-edge-keys={m.e.v_20__v_15.key}
+            data-edge-key={m.e.v_20__v_15.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -415,7 +416,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={135}
             rx={0.5}
-            data-edge-keys={m.e.v_11__v_8.key}
+            data-edge-key={m.e.v_11__v_8.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -426,7 +427,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={106}
             rx={0.5}
-            data-edge-keys={m.e.v_67__v_66.key}
+            data-edge-key={m.e.v_67__v_66.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -437,7 +438,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={36}
             rx={0.5}
-            data-edge-keys={m.e.v_51__v_50.key}
+            data-edge-key={m.e.v_51__v_50.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -448,7 +449,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={43}
             rx={0.5}
-            data-edge-keys={m.e.v_47__v_46.key}
+            data-edge-key={m.e.v_47__v_46.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -459,7 +460,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_55__v_54.key}
+            data-edge-key={m.e.v_55__v_54.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -470,7 +471,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_30__v_48.key}
+            data-edge-key={m.e.v_30__v_48.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -481,7 +482,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={36}
             rx={0.5}
-            data-edge-keys={m.e.v_52__v_49.key}
+            data-edge-key={m.e.v_52__v_49.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -492,7 +493,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={43}
             rx={0.5}
-            data-edge-keys={m.e.v_65__v_66.key}
+            data-edge-key={m.e.v_65__v_66.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -503,7 +504,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_65__v_56.key}
+            data-edge-key={m.e.v_65__v_56.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -514,7 +515,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={38}
             rx={0.5}
-            data-edge-keys={m.e.v_56__v_64.key}
+            data-edge-key={m.e.v_56__v_64.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -525,7 +526,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={71}
             rx={0.5}
-            data-edge-keys={m.e.v_62__v_64.key}
+            data-edge-key={m.e.v_62__v_64.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -536,7 +537,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={133}
             rx={0.5}
-            data-edge-keys={m.e.v_89__v_62.key}
+            data-edge-key={m.e.v_89__v_62.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -547,7 +548,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={45}
             rx={0.5}
-            data-edge-keys={m.e.v_89__v_88.key}
+            data-edge-key={m.e.v_89__v_88.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -558,7 +559,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={63}
             rx={0.5}
-            data-edge-keys={m.e.v_86__v_85.key}
+            data-edge-key={m.e.v_86__v_85.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -569,7 +570,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={63}
             rx={0.5}
-            data-edge-keys={m.e.v_83__v_84.key}
+            data-edge-key={m.e.v_83__v_84.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -580,7 +581,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={45}
             rx={0.5}
-            data-edge-keys={m.e.v_84__v_87.key}
+            data-edge-key={m.e.v_84__v_87.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -591,7 +592,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_61__v_59.key}
+            data-edge-key={m.e.v_61__v_59.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -602,7 +603,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_58__v_57.key}
+            data-edge-key={m.e.v_58__v_57.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -613,7 +614,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={39}
             rx={0.5}
-            data-edge-keys={m.e.v_61__v_60.key}
+            data-edge-key={m.e.v_61__v_60.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -624,7 +625,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={129}
             rx={0.5}
-            data-edge-keys={m.e.v_91__v_94.key}
+            data-edge-key={m.e.v_91__v_94.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -635,7 +636,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={45}
             rx={0.5}
-            data-edge-keys={m.e.v_91__v_90.key}
+            data-edge-key={m.e.v_91__v_90.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -646,7 +647,7 @@ function FloorMapSvg(props: any) {
             width={1}
             height={149}
             rx={0.5}
-            data-edge-keys={m.e.v_96__v_94.key}
+            data-edge-key={m.e.v_96__v_94.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -658,7 +659,7 @@ function FloorMapSvg(props: any) {
             height={132}
             rx={0.5}
             transform="rotate(90 241 105)"
-            data-edge-keys={m.e.v_75__v_69.key}
+            data-edge-key={m.e.v_75__v_69.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -670,7 +671,7 @@ function FloorMapSvg(props: any) {
             height={44}
             rx={0.5}
             transform="rotate(90 110 105)"
-            data-edge-keys={m.e.v_75__v_76.key}
+            data-edge-key={m.e.v_75__v_76.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -682,7 +683,7 @@ function FloorMapSvg(props: any) {
             height={132}
             rx={0.5}
             transform="rotate(90 241 386)"
-            data-edge-keys={m.e.v_96__v_65.key}
+            data-edge-key={m.e.v_96__v_65.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -694,7 +695,7 @@ function FloorMapSvg(props: any) {
             height={39}
             rx={0.5}
             transform="rotate(90 241 460)"
-            data-edge-keys={m.e.v_64__v_63.key}
+            data-edge-key={m.e.v_64__v_63.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -706,7 +707,7 @@ function FloorMapSvg(props: any) {
             height={62}
             rx={0.5}
             transform="rotate(90 171 534)"
-            data-edge-keys={m.e.v_92__v_94.key}
+            data-edge-key={m.e.v_92__v_94.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -718,7 +719,7 @@ function FloorMapSvg(props: any) {
             height={44}
             rx={0.5}
             transform="rotate(90 110 534)"
-            data-edge-keys={m.e.v_94__v_93.key}
+            data-edge-key={m.e.v_94__v_93.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -730,7 +731,7 @@ function FloorMapSvg(props: any) {
             height={35}
             rx={0.5}
             transform="rotate(90 110 386)"
-            data-edge-keys={m.e.v_95__v_96.key}
+            data-edge-key={m.e.v_95__v_96.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -742,7 +743,7 @@ function FloorMapSvg(props: any) {
             height={77}
             rx={0.5}
             transform="rotate(90 317.001 344)"
-            data-edge-keys={m.e.v_52__v_66.key}
+            data-edge-key={m.e.v_52__v_66.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -754,7 +755,7 @@ function FloorMapSvg(props: any) {
             height={77}
             rx={0.5}
             transform="rotate(90 317.001 239)"
-            data-edge-keys={m.e.v_30__v_67.key}
+            data-edge-key={m.e.v_30__v_67.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -766,7 +767,7 @@ function FloorMapSvg(props: any) {
             height={77}
             rx={0.5}
             transform="rotate(90 186 230)"
-            data-edge-keys={m.e.v_79__v_78.key}
+            data-edge-key={m.e.v_79__v_78.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -778,7 +779,7 @@ function FloorMapSvg(props: any) {
             height={44}
             rx={0.5}
             transform="rotate(90 110 230)"
-            data-edge-keys={m.e.v_79__v_77.key}
+            data-edge-key={m.e.v_79__v_77.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -790,7 +791,7 @@ function FloorMapSvg(props: any) {
             height={106}
             rx={0.5}
             transform="rotate(90 422.001 239)"
-            data-edge-keys={m.e.v_29__v_30.key}
+            data-edge-key={m.e.v_29__v_30.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -802,7 +803,7 @@ function FloorMapSvg(props: any) {
             height={105}
             rx={0.5}
             transform="rotate(90 526.001 239)"
-            data-edge-keys={m.e.v_26__v_29.key}
+            data-edge-key={m.e.v_26__v_29.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -814,7 +815,7 @@ function FloorMapSvg(props: any) {
             height={76}
             rx={0.5}
             transform="rotate(90 601 239)"
-            data-edge-keys={m.e.v_24__v_26.key}
+            data-edge-key={m.e.v_24__v_26.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -826,7 +827,7 @@ function FloorMapSvg(props: any) {
             height={40}
             rx={0.5}
             transform="rotate(90 640 239)"
-            data-edge-keys={m.e.v_24__v_23.key}
+            data-edge-key={m.e.v_24__v_23.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -838,7 +839,7 @@ function FloorMapSvg(props: any) {
             height={41}
             rx={0.5}
             transform="rotate(90 712 239)"
-            data-edge-keys={m.e.v_20__v_22.key}
+            data-edge-key={m.e.v_20__v_22.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -850,7 +851,7 @@ function FloorMapSvg(props: any) {
             height={106}
             rx={0.5}
             transform="rotate(90 422 344)"
-            data-edge-keys={m.e.v_51__v_52.key}
+            data-edge-key={m.e.v_51__v_52.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -862,7 +863,7 @@ function FloorMapSvg(props: any) {
             height={55}
             rx={0.5}
             transform="rotate(90 476 344)"
-            data-edge-keys={m.e.v_47__v_51.key}
+            data-edge-key={m.e.v_47__v_51.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -874,7 +875,7 @@ function FloorMapSvg(props: any) {
             height={126}
             rx={0.5}
             transform="rotate(90 601 344)"
-            data-edge-keys={m.e.v_45__v_47.key}
+            data-edge-key={m.e.v_45__v_47.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -886,7 +887,7 @@ function FloorMapSvg(props: any) {
             height={128}
             rx={0.5}
             transform="rotate(90 601 423)"
-            data-edge-keys={m.e.v_55__v_53.key}
+            data-edge-key={m.e.v_55__v_53.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -898,7 +899,7 @@ function FloorMapSvg(props: any) {
             height={76}
             rx={0.5}
             transform="rotate(90 601 530)"
-            data-edge-keys={m.e.v_81__v_58.key}
+            data-edge-key={m.e.v_81__v_58.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -910,7 +911,7 @@ function FloorMapSvg(props: any) {
             height={40}
             rx={0.5}
             transform="rotate(90 640 530)"
-            data-edge-keys={m.e.v_81__v_80.key}
+            data-edge-key={m.e.v_81__v_80.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -922,7 +923,7 @@ function FloorMapSvg(props: any) {
             height={158}
             rx={0.5}
             transform="rotate(90 526 530)"
-            data-edge-keys={m.e.v_58__v_61.key}
+            data-edge-key={m.e.v_58__v_61.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -934,7 +935,7 @@ function FloorMapSvg(props: any) {
             height={129}
             rx={0.5}
             transform="rotate(90 369.007 530)"
-            data-edge-keys={m.e.v_61__v_62.key}
+            data-edge-key={m.e.v_61__v_62.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -946,14 +947,14 @@ function FloorMapSvg(props: any) {
             height={77}
             rx={0.5}
             transform="rotate(90 317.007 662)"
-            data-edge-keys={m.e.v_86__v_89.key}
+            data-edge-key={m.e.v_86__v_89.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
           <g id="prefix__e_25">
             <path
               d="M394.749 662v1H316.5a.5.5 0 010-1h78.249zM473.5 662a.5.5 0 010 1h-78.751v-1H473.5z"
-              data-edge-keys={m.e.v_84__v_86.key}
+              data-edge-key={m.e.v_84__v_86.key}
               ref={edgeRefCallback}
               className={classNames(styles["Edge"])}
             />
@@ -961,7 +962,7 @@ function FloorMapSvg(props: any) {
           <g id="prefix__e_24">
             <path
               d="M536.799 662v1h-63.297a.5.5 0 010-1h63.297zM600.502 662a.5.5 0 110 1h-63.703v-1h63.703z"
-              data-edge-keys={m.e.v_82__v_84.key}
+              data-edge-key={m.e.v_82__v_84.key}
               ref={edgeRefCallback}
               className={classNames(styles["Edge"])}
             />
@@ -969,7 +970,7 @@ function FloorMapSvg(props: any) {
           <g id="prefix__e_23">
             <path
               d="M655.822 662v1H600.5a.5.5 0 010-1h55.322zM711.5 662a.5.5 0 010 1h-55.678v-1H711.5z"
-              data-edge-keys={m.e.v_34__v_82.key}
+              data-edge-key={m.e.v_34__v_82.key}
               ref={edgeRefCallback}
               className={classNames(styles["Edge"])}
             />
@@ -982,7 +983,7 @@ function FloorMapSvg(props: any) {
             height={132}
             rx={0.5}
             transform="rotate(90 241.007 662)"
-            data-edge-keys={m.e.v_89__v_91.key}
+            data-edge-key={m.e.v_89__v_91.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -994,7 +995,7 @@ function FloorMapSvg(props: any) {
             height={234}
             rx={0.5}
             transform="rotate(90 474 423)"
-            data-edge-keys={m.e.v_56__v_55.key}
+            data-edge-key={m.e.v_56__v_55.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1006,7 +1007,7 @@ function FloorMapSvg(props: any) {
             height={77}
             rx={0.5}
             transform="rotate(90 317 105)"
-            data-edge-keys={m.e.v_69__v_72.key}
+            data-edge-key={m.e.v_69__v_72.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1018,7 +1019,7 @@ function FloorMapSvg(props: any) {
             height={148}
             rx={0.5}
             transform="rotate(90 464 105)"
-            data-edge-keys={m.e.v_72__v_74.key}
+            data-edge-key={m.e.v_72__v_74.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1030,7 +1031,7 @@ function FloorMapSvg(props: any) {
             height={138}
             rx={0.5}
             transform="rotate(90 601 105)"
-            data-edge-keys={m.e.v_74__v_21.key}
+            data-edge-key={m.e.v_74__v_21.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1042,7 +1043,7 @@ function FloorMapSvg(props: any) {
             height={112}
             rx={0.5}
             transform="rotate(90 712.003 105)"
-            data-edge-keys={m.e.v_21__v_15.key}
+            data-edge-key={m.e.v_21__v_15.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1054,7 +1055,7 @@ function FloorMapSvg(props: any) {
             height={75}
             rx={0.5}
             transform="rotate(90 786.002 239)"
-            data-edge-keys={m.e.v_19__v_20.key}
+            data-edge-key={m.e.v_19__v_20.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1066,7 +1067,7 @@ function FloorMapSvg(props: any) {
             height={54}
             rx={0.5}
             transform="rotate(90 839.001 239)"
-            data-edge-keys={m.e.v_17__v_19.key}
+            data-edge-key={m.e.v_17__v_19.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1078,7 +1079,7 @@ function FloorMapSvg(props: any) {
             height={153}
             rx={0.5}
             transform="rotate(90 991 239)"
-            data-edge-keys={m.e.v_8__v_17.key}
+            data-edge-key={m.e.v_8__v_17.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1090,7 +1091,7 @@ function FloorMapSvg(props: any) {
             height={101}
             rx={0.5}
             transform="rotate(90 991 349)"
-            data-edge-keys={m.e.v_4__v_5.key}
+            data-edge-key={m.e.v_4__v_5.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1102,7 +1103,7 @@ function FloorMapSvg(props: any) {
             height={56}
             rx={0.5}
             transform="rotate(90 1046 403)"
-            data-edge-keys={m.e.v_7__v_6.key}
+            data-edge-key={m.e.v_7__v_6.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1114,7 +1115,7 @@ function FloorMapSvg(props: any) {
             height={180}
             rx={0.5}
             transform="rotate(90 891 349)"
-            data-edge-keys={m.e.v_1__v_4.key}
+            data-edge-key={m.e.v_1__v_4.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1126,7 +1127,7 @@ function FloorMapSvg(props: any) {
             height={75}
             rx={0.5}
             transform="rotate(90 786 460)"
-            data-edge-keys={m.e.v_41__v_42.key}
+            data-edge-key={m.e.v_41__v_42.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1138,7 +1139,7 @@ function FloorMapSvg(props: any) {
             height={50}
             rx={0.5}
             transform="rotate(90 761 565)"
-            data-edge-keys={m.e.v_36__v_33.key}
+            data-edge-key={m.e.v_36__v_33.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1150,7 +1151,7 @@ function FloorMapSvg(props: any) {
             height={41}
             rx={0.5}
             transform="rotate(90 712 565)"
-            data-edge-keys={m.e.v_36__v_35.key}
+            data-edge-key={m.e.v_36__v_35.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1162,7 +1163,7 @@ function FloorMapSvg(props: any) {
             height={106}
             rx={0.5}
             transform="rotate(90 891 460)"
-            data-edge-keys={m.e.v_38__v_41.key}
+            data-edge-key={m.e.v_38__v_41.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1174,7 +1175,7 @@ function FloorMapSvg(props: any) {
             height={101}
             rx={0.5}
             transform="rotate(90 991 460)"
-            data-edge-keys={m.e.v_31__v_38.key}
+            data-edge-key={m.e.v_31__v_38.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1186,7 +1187,7 @@ function FloorMapSvg(props: any) {
             height={112}
             rx={0.5}
             transform="rotate(90 712 386)"
-            data-edge-keys={m.e.v_43__v_44.key}
+            data-edge-key={m.e.v_43__v_44.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1198,7 +1199,7 @@ function FloorMapSvg(props: any) {
             height={128}
             rx={0.5}
             transform="rotate(90 839 105)"
-            data-edge-keys={m.e.v_15__v_13.key}
+            data-edge-key={m.e.v_15__v_13.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1210,7 +1211,7 @@ function FloorMapSvg(props: any) {
             height={153}
             rx={0.5}
             transform="rotate(90 991 105)"
-            data-edge-keys={m.e.v_13__v_11.key}
+            data-edge-key={m.e.v_13__v_11.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1222,7 +1223,7 @@ function FloorMapSvg(props: any) {
             height={56}
             rx={0.5}
             transform="rotate(90 1046 105)"
-            data-edge-keys={m.e.v_11__v_10.key}
+            data-edge-key={m.e.v_11__v_10.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -1234,7 +1235,7 @@ function FloorMapSvg(props: any) {
             height={56}
             rx={0.5}
             transform="rotate(90 1046 239)"
-            data-edge-keys={m.e.v_8__v_9.key}
+            data-edge-key={m.e.v_8__v_9.key}
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
@@ -2101,36 +2102,42 @@ function FloorMapSvg(props: any) {
             d="M156.5 411.5h27v204h-27z"
             data-object-key={m.o.o_43.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_42"
             d="M626.501 411.5h27v204h-27z"
             data-object-key={m.o.o_42.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_41"
             d="M658.267 516.5h27.235v99h-27.235z"
             data-object-key={m.o.o_41.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_40"
             d="M156.5 156.5h59v204h-59v-204z"
             data-object-key={m.o.o_40.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_39"
             d="M658.5 156.5h27v204h-27z"
             data-object-key={m.o.o_39.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_38"
             d="M188.265 411.5H215.5v99h-27.235z"
             data-object-key={m.o.o_38.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_37"
@@ -2138,6 +2145,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 614.5h27.235v99H266.5z"
             data-object-key={m.o.o_37.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_36"
@@ -2145,6 +2153,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 582.5h27v204h-27z"
             data-object-key={m.o.o_36.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_35"
@@ -2152,6 +2161,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 614.5h27v204h-27z"
             data-object-key={m.o.o_35.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_34"
@@ -2159,6 +2169,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 323.5h27.235v99H266.5z"
             data-object-key={m.o.o_34.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_33"
@@ -2166,6 +2177,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 291.735h27.235v99H266.5z"
             data-object-key={m.o.o_33.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_32"
@@ -2173,6 +2185,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 291.5h27v204h-27z"
             data-object-key={m.o.o_32.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_31"
@@ -2180,6 +2193,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 291.5h27v204h-27z"
             data-object-key={m.o.o_31.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_30"
@@ -2187,6 +2201,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 323.5h27.235v99H371.5z"
             data-object-key={m.o.o_30.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_29"
@@ -2194,6 +2209,7 @@ function FloorMapSvg(props: any) {
             d="M841.5 323.5h27.235v99H841.5z"
             data-object-key={m.o.o_29.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_28"
@@ -2201,6 +2217,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 400.735h27.235v204H371.5z"
             data-object-key={m.o.o_28.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_27"
@@ -2208,6 +2225,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 506.5h27v204h-27z"
             data-object-key={m.o.o_27.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_26"
@@ -2215,6 +2233,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 474.5h27v204h-27z"
             data-object-key={m.o.o_26.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_25"
@@ -2222,6 +2241,7 @@ function FloorMapSvg(props: any) {
             d="M476.5 506.5h27.235v99H476.5z"
             data-object-key={m.o.o_25.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_24"
@@ -2229,6 +2249,7 @@ function FloorMapSvg(props: any) {
             d="M266.5 183.735h27.235v99H266.5z"
             data-object-key={m.o.o_24.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_23"
@@ -2236,6 +2257,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 215.5h27.235v99H736.5z"
             data-object-key={m.o.o_23.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_22"
@@ -2243,6 +2265,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 183.5h27v204h-27z"
             data-object-key={m.o.o_22.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_21"
@@ -2250,6 +2273,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 433.5h27.235v99H736.5z"
             data-object-key={m.o.o_21.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_20"
@@ -2257,6 +2281,7 @@ function FloorMapSvg(props: any) {
             d="M841.5 433.5h27.235v99H841.5z"
             data-object-key={m.o.o_20.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_19"
@@ -2264,6 +2289,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 511.735h27.235v99H736.5z"
             data-object-key={m.o.o_19.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_18"
@@ -2271,6 +2297,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 543.5h27v49h-27z"
             data-object-key={m.o.o_18.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_17"
@@ -2278,6 +2305,7 @@ function FloorMapSvg(props: any) {
             d="M736.5 401.5h27v204h-27z"
             data-object-key={m.o.o_17.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_16"
@@ -2285,6 +2313,7 @@ function FloorMapSvg(props: any) {
             d="M371.5 215.5h27.235v99H371.5z"
             data-object-key={m.o.o_16.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_15"
@@ -2292,6 +2321,7 @@ function FloorMapSvg(props: any) {
             d="M476.5 215.5h27.235v99H476.5z"
             data-object-key={m.o.o_15.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_14"
@@ -2299,18 +2329,21 @@ function FloorMapSvg(props: any) {
             d="M371.5 183.5h27v204h-27z"
             data-object-key={m.o.o_14.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_13"
             d="M626.5 156.5h27.235v99H626.5z"
             data-object-key={m.o.o_13.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_12"
             d="M61.5 466.5h10v149h-10z"
             data-object-key={m.o.o_12.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_11"
@@ -2318,12 +2351,14 @@ function FloorMapSvg(props: any) {
             d="M312.5 711.5h10v442h-10z"
             data-object-key={m.o.o_11.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_10"
             d="M61.5 156.5h10v149h-10z"
             data-object-key={m.o.o_10.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_9"
@@ -2331,18 +2366,21 @@ function FloorMapSvg(props: any) {
             d="M311.5 71.5h10v304h-10z"
             data-object-key={m.o.o_9.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_8"
             d="M1040.5 156.5h10v167h-10z"
             data-object-key={m.o.o_8.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_7"
             d="M1040.5 329.5h10v149h-10z"
             data-object-key={m.o.o_7.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_6"
@@ -2350,6 +2388,7 @@ function FloorMapSvg(props: any) {
             d="M156.5 71.5h10v149h-10z"
             data-object-key={m.o.o_6.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_5"
@@ -2357,6 +2396,7 @@ function FloorMapSvg(props: any) {
             d="M157.5 711.5h10v149h-10z"
             data-object-key={m.o.o_5.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="prefix__o_4"
@@ -2364,27 +2404,28 @@ function FloorMapSvg(props: any) {
             d="M621.5 71.5h10v304h-10z"
             data-object-key={m.o.o_4.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="o_3"
             d="M72 71.5H71.5V72V150.5H61.5V61.5L150.5 61.5V71.5L72 71.5Z"
             data-object-key={m.o.o_3.key}
             className={classNames(styles["Object"])}
-            onClick={(e: any) => {
-              console.log(e);
-            }}
+            ref={objectRefCallback}
           />
           <path
             id="o_2"
             d="M1040.5 72V71.5H1040L931.5 71.5L931.5 61.5L1050.5 61.5L1050.5 150.5H1040.5V72Z"
             data-object-key={m.o.o_2.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
           <path
             id="o_1"
             d="M71.5 701V701.5H72H151.5V711.5H61.5L61.5 621.5L71.5 621.5L71.5 701Z"
             data-object-key={m.o.o_1.key}
             className={classNames(styles["Object"])}
+            ref={objectRefCallback}
           />
         </g>
       </g>
