@@ -123,6 +123,7 @@
     margin-bottom: 40px;
     overflow-y: scroll;
     padding-right: 20px;
+    display: none;
 
     .CategoryHeader {
       padding-bottom: 10px;
@@ -206,6 +207,10 @@
       background-color: darkgrey;
       border-radius: 10px;
     }
+  }
+
+  .Categories--active {
+    display: block;
   }
 
   .Footer {

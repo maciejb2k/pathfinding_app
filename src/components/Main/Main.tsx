@@ -35,8 +35,6 @@ function Main(props: AppProps) {
     openModal,
   } = props;
 
-  console.log(props);
-
   return (
     <div className={styles["Main"]}>
       <TransformWrapper>

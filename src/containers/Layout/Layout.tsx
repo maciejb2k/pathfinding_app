@@ -10,9 +10,11 @@ import styles from "./Layout.module.scss";
 function Layout(props: any) {
   return (
     <div className={styles["Layout"]}>
+      {/* Page layout */}
       <Sidebar />
       <Main />
 
+      {/* List of modals on page */}
       <ModalSettings />
     </div>
   );

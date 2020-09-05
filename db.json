@@ -95,6 +95,10 @@
     {
       "id": 24,
       "name": "kasa"
+    },
+    {
+      "id": 25,
+      "name": "owoce i warzywa"
     }
   ],
   "products": [
@@ -253,7 +257,7 @@
     },
     {
       "id": 30,
-      "categoryId": 3,
+      "categoryId": 25,
       "objectId": "o_30"
     },
     {
@@ -273,7 +277,7 @@
     },
     {
       "id": 34,
-      "categoryId": 3,
+      "categoryId": 25,
       "objectId": "o_34"
     },
     {
