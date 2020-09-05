@@ -1,12 +1,20 @@
 import { combineReducers } from "redux";
 import { History } from "history";
 
-import settingsReducer from "reducers/settings";
+import { settings, IState as SettingsState } from "./settings/reducer";
+import { sidebar, IState as SidebarState } from "./sidebar/reducer";
+import { modals, IState as ModalState } from "./modals/reducer";
 
-export interface State {}
+export interface AppState {
+  settings: SettingsState;
+  sidebar: SidebarState;
+  modals: ModalState;
+}
 
-const rootReducer = combineReducers<State>({
-  settingsReducer,
+const rootReducer = combineReducers<AppState>({
+  settings,
+  sidebar,
+  modals,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

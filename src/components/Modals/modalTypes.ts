@@ -1,0 +1,1 @@
+export const MODAL_SETTINGS = "MODAL_SETTINGS";

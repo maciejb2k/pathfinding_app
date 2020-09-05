@@ -1,12 +1,23 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-
-import styles from "./App.module.scss";
+import React, { useEffect } from "react";
 
 import Layout from "containers/Layout";
+import { initLocalStorageSettings } from "utils/initLocalStorage";
 
-function App() {
-  const [theme] = useState<string>("light");
+type AppProps = {
+  storeState: {
+    theme: string;
+    lang: string;
+  };
+};
+
+function App(props: AppProps) {
+  const {
+    storeState: { theme },
+  } = props;
+
+  useEffect(() => {
+    initLocalStorageSettings();
+  }, []);
 
   return (
     <div id="app" data-theme={theme}>

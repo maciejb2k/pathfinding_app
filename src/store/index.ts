@@ -22,4 +22,13 @@ const configureStore = () => {
   return store;
 };
 
-export default configureStore();
+const store = configureStore();
+
+store.subscribe(() => {
+  const { settings } = store.getState();
+
+  localStorage.setItem("lang", settings.lang);
+  localStorage.setItem("theme", settings.theme);
+});
+
+export default store;

@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 
 import { AppState } from "store/rootReducer";
 
-import App from "./App";
+import Sidebar from "./Sidebar";
 
-const mapStateToProps = ({ settings }: AppState) => ({
-  storeState: settings,
+const mapStateToProps = ({ sidebar }: AppState) => ({
+  storeState: sidebar,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = null;
 
 const enhancer = compose(connect(mapStateToProps, mapDispatchToProps));
 
-export default enhancer(App);
+export default enhancer(Sidebar);
