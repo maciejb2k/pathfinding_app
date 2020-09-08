@@ -1,21 +1,39 @@
-import * as React from "react";
+import React from "react";
 import classNames from "classnames";
+
+import { mapData as m } from "components/Map/mapData";
+
+import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
+import { openModal } from "store/modals/actions";
 
 import styles from "./FloorMapSvg.module.scss";
 
-function FloorMapSvg(props: any) {
+type AppProps = {
+  vertexRefCallback: any;
+  edgeRefCallback: any;
+  objectRefCallback: any;
+  openModal: typeof openModal;
+};
+
+function FloorMapSvg(props: AppProps) {
   const {
-    mapData: m,
     vertexRefCallback,
     edgeRefCallback,
     objectRefCallback,
-    onVertexClick,
-  }: any = props;
+    openModal,
+  } = props;
+
+  const onObjectClick = (e: React.MouseEvent<SVGPathElement>) => {
+    e.preventDefault();
+
+    const objId = e.currentTarget.id;
+    openModal<string>({ modalName: MODAL_OBJECT_INFO, data: objId });
+  };
 
   return (
-    <svg width={1013} height={673} viewBox="0 0 1113 773" fill="none">
-      <g id="prefix__Map">
-        <g id="prefix__floor" filter="url(#prefix__filter0_d)">
+    <svg viewBox="0 0 1113 773" className={styles["FloorMap"]}>
+      <g id="Map">
+        <g id="floor" filter="url(#filter0_d)">
           <path d="M1057.5 55H55v663h715l287.5-220.5V55z" fill="#fff" />
           <path
             d="M1057.5 55H55v663h715l287.5-220.5V55z"
@@ -23,9 +41,9 @@ function FloorMapSvg(props: any) {
             strokeWidth={10}
           />
         </g>
-        <g id="prefix__Edges" fill="#000">
+        <g id="Edges" fill="#000">
           <rect
-            id="prefix__e_107"
+            id="e_107"
             x={109}
             y={230}
             width={1}
@@ -36,7 +54,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_106"
+            id="e_106"
             x={109}
             y={105}
             width={1}
@@ -47,7 +65,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_105"
+            id="e_105"
             x={240}
             y={105}
             width={1}
@@ -58,7 +76,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_104"
+            id="e_104"
             x={316}
             y={105}
             width={1}
@@ -69,7 +87,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_103"
+            id="e_103"
             x={421}
             y={201}
             width={1}
@@ -80,7 +98,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_102"
+            id="e_102"
             x={525}
             y={201}
             width={1}
@@ -91,7 +109,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_101"
+            id="e_101"
             x={525}
             y={239}
             width={1}
@@ -102,7 +120,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_100"
+            id="e_100"
             x={463}
             y={105}
             width={1}
@@ -113,7 +131,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_99"
+            id="e_99"
             x={463}
             y={66}
             width={1}
@@ -124,7 +142,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_98"
+            id="e_98"
             x={711}
             y={66}
             width={1}
@@ -135,7 +153,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_97"
+            id="e_97"
             x={785}
             y={201}
             width={1}
@@ -146,7 +164,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_96"
+            id="e_96"
             x={838}
             y={239}
             width={1}
@@ -157,7 +175,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_95"
+            id="e_95"
             x={890}
             y={309}
             width={1}
@@ -168,7 +186,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_94"
+            id="e_94"
             x={890}
             y={349}
             width={1}
@@ -179,7 +197,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_93"
+            id="e_93"
             x={838}
             y={105}
             width={1}
@@ -190,7 +208,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_92"
+            id="e_92"
             x={240}
             y={66}
             width={1}
@@ -201,7 +219,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_91"
+            id="e_91"
             x={600}
             y={105}
             width={1}
@@ -212,7 +230,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_90"
+            id="e_90"
             x={600}
             y={239}
             width={1}
@@ -223,7 +241,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_89"
+            id="e_89"
             x={600}
             y={344}
             width={1}
@@ -234,7 +252,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_88"
+            id="e_88"
             x={600}
             y={386}
             width={1}
@@ -245,7 +263,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_87"
+            id="e_87"
             x={600}
             y={423}
             width={1}
@@ -256,7 +274,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_86"
+            id="e_86"
             x={600}
             y={530}
             width={1}
@@ -267,7 +285,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_85"
+            id="e_85"
             x={711}
             y={565}
             width={1}
@@ -278,7 +296,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_84"
+            id="e_84"
             x={711}
             y={460}
             width={1}
@@ -289,7 +307,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_83"
+            id="e_83"
             x={760}
             y={529}
             width={1}
@@ -300,7 +318,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_82"
+            id="e_82"
             x={785}
             y={460}
             width={1}
@@ -311,7 +329,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_81"
+            id="e_81"
             x={785}
             y={419}
             width={1}
@@ -322,7 +340,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_80"
+            id="e_80"
             x={890}
             y={419}
             width={1}
@@ -333,7 +351,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_79"
+            id="e_79"
             x={711}
             y={386}
             width={1}
@@ -344,7 +362,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_78"
+            id="e_78"
             x={711}
             y={349}
             width={1}
@@ -355,7 +373,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_77"
+            id="e_77"
             x={711}
             y={239}
             width={1}
@@ -366,7 +384,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_76"
+            id="e_76"
             x={990}
             y={239}
             width={1}
@@ -377,7 +395,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_75"
+            id="e_75"
             x={990}
             y={349}
             width={1}
@@ -388,7 +406,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_74"
+            id="e_74"
             x={990}
             y={403}
             width={1}
@@ -399,7 +417,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_73"
+            id="e_73"
             x={711}
             y={105}
             width={1}
@@ -410,7 +428,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_72"
+            id="e_72"
             x={990}
             y={105}
             width={1}
@@ -421,7 +439,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_71"
+            id="e_71"
             x={240}
             y={239}
             width={1}
@@ -432,7 +450,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_70"
+            id="e_70"
             x={421}
             y={309}
             width={1}
@@ -443,7 +461,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_69"
+            id="e_69"
             x={475}
             y={344}
             width={1}
@@ -454,7 +472,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_68"
+            id="e_68"
             x={473}
             y={423}
             width={1}
@@ -465,7 +483,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_67"
+            id="e_67"
             x={316}
             y={239}
             width={1}
@@ -476,7 +494,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_66"
+            id="e_66"
             x={316}
             y={309}
             width={1}
@@ -487,7 +505,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_65"
+            id="e_65"
             x={240}
             y={344}
             width={1}
@@ -498,7 +516,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_64"
+            id="e_64"
             x={240}
             y={386}
             width={1}
@@ -509,7 +527,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_63"
+            id="e_63"
             x={240}
             y={423}
             width={1}
@@ -520,7 +538,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_62"
+            id="e_62"
             x={240}
             y={460}
             width={1}
@@ -531,7 +549,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_61"
+            id="e_61"
             x={240}
             y={530}
             width={1}
@@ -542,7 +560,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_60"
+            id="e_60"
             x={240}
             y={662}
             width={1}
@@ -553,7 +571,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_59"
+            id="e_59"
             x={316}
             y={600}
             width={1}
@@ -564,7 +582,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_58"
+            id="e_58"
             x={473}
             y={600}
             width={1}
@@ -575,7 +593,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_57"
+            id="e_57"
             x={473}
             y={662}
             width={1}
@@ -586,7 +604,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_56"
+            id="e_56"
             x={368}
             y={530}
             width={1}
@@ -597,7 +615,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_55"
+            id="e_55"
             x={525}
             y={492}
             width={1}
@@ -608,7 +626,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_54"
+            id="e_54"
             x={368}
             y={492}
             width={1}
@@ -619,7 +637,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_53"
+            id="e_53"
             x={109}
             y={534}
             width={1}
@@ -630,7 +648,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_52"
+            id="e_52"
             x={109}
             y={662}
             width={1}
@@ -641,7 +659,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_51"
+            id="e_51"
             x={109}
             y={386}
             width={1}
@@ -652,7 +670,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_50"
+            id="e_50"
             x={241}
             y={105}
             width={1}
@@ -664,7 +682,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_49"
+            id="e_49"
             x={110}
             y={105}
             width={1}
@@ -676,7 +694,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_48"
+            id="e_48"
             x={241}
             y={386}
             width={1}
@@ -688,7 +706,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_47"
+            id="e_47"
             x={241}
             y={460}
             width={1}
@@ -700,7 +718,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_46"
+            id="e_46"
             x={171}
             y={534}
             width={1}
@@ -712,7 +730,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_45"
+            id="e_45"
             x={110}
             y={534}
             width={1}
@@ -724,7 +742,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_44"
+            id="e_44"
             x={110}
             y={386}
             width={1}
@@ -736,7 +754,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_43"
+            id="e_43"
             x={317.001}
             y={344}
             width={1}
@@ -748,7 +766,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_42"
+            id="e_42"
             x={317.001}
             y={239}
             width={1}
@@ -760,7 +778,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_41"
+            id="e_41"
             x={186}
             y={230}
             width={1}
@@ -772,7 +790,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_40"
+            id="e_40"
             x={110}
             y={230}
             width={1}
@@ -784,7 +802,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_39"
+            id="e_39"
             x={422.001}
             y={239}
             width={1}
@@ -796,7 +814,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_38"
+            id="e_38"
             x={526.001}
             y={239}
             width={1}
@@ -808,7 +826,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_37"
+            id="e_37"
             x={601}
             y={239}
             width={1}
@@ -820,7 +838,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_36"
+            id="e_36"
             x={640}
             y={239}
             width={1}
@@ -832,7 +850,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_35"
+            id="e_35"
             x={712}
             y={239}
             width={1}
@@ -844,7 +862,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_34"
+            id="e_34"
             x={422}
             y={344}
             width={1}
@@ -856,7 +874,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_33"
+            id="e_33"
             x={476}
             y={344}
             width={1}
@@ -868,7 +886,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_32"
+            id="e_32"
             x={601}
             y={344}
             width={1}
@@ -880,7 +898,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_31"
+            id="e_31"
             x={601}
             y={423}
             width={1}
@@ -892,7 +910,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_30"
+            id="e_30"
             x={601}
             y={530}
             width={1}
@@ -904,7 +922,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_29"
+            id="e_29"
             x={640}
             y={530}
             width={1}
@@ -916,7 +934,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_28"
+            id="e_28"
             x={526}
             y={530}
             width={1}
@@ -928,7 +946,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_27"
+            id="e_27"
             x={369.007}
             y={530}
             width={1}
@@ -940,7 +958,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_26"
+            id="e_26"
             x={317.007}
             y={662}
             width={1}
@@ -951,7 +969,7 @@ function FloorMapSvg(props: any) {
             ref={edgeRefCallback}
             className={classNames(styles["Edge"])}
           />
-          <g id="prefix__e_25">
+          <g id="e_25">
             <path
               d="M394.749 662v1H316.5a.5.5 0 010-1h78.249zM473.5 662a.5.5 0 010 1h-78.751v-1H473.5z"
               data-edge-key={m.e.v_84__v_86.key}
@@ -959,7 +977,7 @@ function FloorMapSvg(props: any) {
               className={classNames(styles["Edge"])}
             />
           </g>
-          <g id="prefix__e_24">
+          <g id="e_24">
             <path
               d="M536.799 662v1h-63.297a.5.5 0 010-1h63.297zM600.502 662a.5.5 0 110 1h-63.703v-1h63.703z"
               data-edge-key={m.e.v_82__v_84.key}
@@ -967,7 +985,7 @@ function FloorMapSvg(props: any) {
               className={classNames(styles["Edge"])}
             />
           </g>
-          <g id="prefix__e_23">
+          <g id="e_23">
             <path
               d="M655.822 662v1H600.5a.5.5 0 010-1h55.322zM711.5 662a.5.5 0 010 1h-55.678v-1H711.5z"
               data-edge-key={m.e.v_34__v_82.key}
@@ -976,7 +994,7 @@ function FloorMapSvg(props: any) {
             />
           </g>
           <rect
-            id="prefix__e_22"
+            id="e_22"
             x={241.007}
             y={662}
             width={1}
@@ -988,7 +1006,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_21"
+            id="e_21"
             x={474}
             y={423}
             width={1}
@@ -1000,7 +1018,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_20"
+            id="e_20"
             x={317}
             y={105}
             width={1}
@@ -1012,7 +1030,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_19"
+            id="e_19"
             x={464}
             y={105}
             width={1}
@@ -1024,7 +1042,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_18"
+            id="e_18"
             x={601}
             y={105}
             width={1}
@@ -1036,7 +1054,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_17"
+            id="e_17"
             x={712.003}
             y={105}
             width={1}
@@ -1048,7 +1066,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_16"
+            id="e_16"
             x={786.002}
             y={239}
             width={1}
@@ -1060,7 +1078,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_15"
+            id="e_15"
             x={839.001}
             y={239}
             width={1}
@@ -1072,7 +1090,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_14"
+            id="e_14"
             x={991}
             y={239}
             width={1}
@@ -1084,7 +1102,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_13"
+            id="e_13"
             x={991}
             y={349}
             width={1}
@@ -1096,7 +1114,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_12"
+            id="e_12"
             x={1046}
             y={403}
             width={1}
@@ -1108,7 +1126,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_11"
+            id="e_11"
             x={891}
             y={349}
             width={1}
@@ -1120,7 +1138,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_10"
+            id="e_10"
             x={786}
             y={460}
             width={1}
@@ -1132,7 +1150,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_9"
+            id="e_9"
             x={761}
             y={565}
             width={1}
@@ -1144,7 +1162,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_8"
+            id="e_8"
             x={712}
             y={565}
             width={1}
@@ -1156,7 +1174,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_7"
+            id="e_7"
             x={891}
             y={460}
             width={1}
@@ -1168,7 +1186,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_6"
+            id="e_6"
             x={991}
             y={460}
             width={1}
@@ -1180,7 +1198,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_5"
+            id="e_5"
             x={712}
             y={386}
             width={1}
@@ -1192,7 +1210,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_4"
+            id="e_4"
             x={839}
             y={105}
             width={1}
@@ -1204,7 +1222,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_3"
+            id="e_3"
             x={991}
             y={105}
             width={1}
@@ -1216,7 +1234,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_2"
+            id="e_2"
             x={1046}
             y={105}
             width={1}
@@ -1228,7 +1246,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
           <rect
-            id="prefix__e_1"
+            id="e_1"
             x={1046}
             y={239}
             width={1}
@@ -1240,9 +1258,9 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Edge"])}
           />
         </g>
-        <g id="prefix__Vertices">
+        <g id="Vertices">
           <circle
-            id="prefix__v_96"
+            id="v_96"
             cx={109.5}
             cy={386.5}
             r={4.5}
@@ -1251,7 +1269,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_95"
+            id="v_95"
             cx={75.5}
             cy={386.5}
             r={4.5}
@@ -1260,7 +1278,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_94"
+            id="v_94"
             cx={109.5}
             cy={534.5}
             r={4.5}
@@ -1269,7 +1287,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_93"
+            id="v_93"
             cx={66.5}
             cy={534.5}
             r={4.5}
@@ -1278,7 +1296,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_92"
+            id="v_92"
             cx={170.5}
             cy={534.5}
             r={4.5}
@@ -1287,7 +1305,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_91"
+            id="v_91"
             cx={109.5}
             cy={662.5}
             r={4.5}
@@ -1296,7 +1314,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_90"
+            id="v_90"
             cx={109.5}
             cy={706.5}
             r={4.5}
@@ -1305,7 +1323,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_89"
+            id="v_89"
             cx={240.5}
             cy={662.5}
             r={4.5}
@@ -1314,7 +1332,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_88"
+            id="v_88"
             cx={240.5}
             cy={706.5}
             r={4.5}
@@ -1323,7 +1341,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_87"
+            id="v_87"
             cx={473.5}
             cy={706.5}
             r={4.5}
@@ -1332,7 +1350,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_86"
+            id="v_86"
             cx={316.5}
             cy={662.5}
             r={4.5}
@@ -1341,7 +1359,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_85"
+            id="v_85"
             cx={316.5}
             cy={600.5}
             r={4.5}
@@ -1350,7 +1368,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_84"
+            id="v_84"
             cx={473.5}
             cy={662.5}
             r={4.5}
@@ -1359,7 +1377,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_83"
+            id="v_83"
             cx={473.5}
             cy={600.5}
             r={4.5}
@@ -1368,7 +1386,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_82"
+            id="v_82"
             cx={600.5}
             cy={662.5}
             r={4.5}
@@ -1377,7 +1395,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_81"
+            id="v_81"
             cx={600.5}
             cy={530.5}
             r={4.5}
@@ -1386,7 +1404,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_80"
+            id="v_80"
             cx={639.5}
             cy={530.5}
             r={4.5}
@@ -1395,7 +1413,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_79"
+            id="v_79"
             cx={109.5}
             cy={230.5}
             r={4.5}
@@ -1404,7 +1422,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_78"
+            id="v_78"
             cx={185.5}
             cy={230.5}
             r={4.5}
@@ -1413,7 +1431,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_77"
+            id="v_77"
             cx={66.5}
             cy={230.5}
             r={4.5}
@@ -1422,7 +1440,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_76"
+            id="v_76"
             cx={66.5}
             cy={105.5}
             r={4.5}
@@ -1431,7 +1449,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_75"
+            id="v_75"
             cx={109.5}
             cy={105.5}
             r={4.5}
@@ -1440,7 +1458,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_74"
+            id="v_74"
             cx={463.5}
             cy={105.5}
             r={4.5}
@@ -1449,7 +1467,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_73"
+            id="v_73"
             cx={463.5}
             cy={66.5}
             r={4.5}
@@ -1458,7 +1476,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_72"
+            id="v_72"
             cx={316.5}
             cy={105.5}
             r={4.5}
@@ -1467,7 +1485,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_71"
+            id="v_71"
             cx={316.5}
             cy={169.5}
             r={4.5}
@@ -1476,7 +1494,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_70"
+            id="v_70"
             cx={463.5}
             cy={169.5}
             r={4.5}
@@ -1485,7 +1503,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_69"
+            id="v_69"
             cx={240.5}
             cy={105.5}
             r={4.5}
@@ -1494,7 +1512,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_68"
+            id="v_68"
             cx={240.5}
             cy={66.5}
             r={4.5}
@@ -1503,7 +1521,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_67"
+            id="v_67"
             cx={240.5}
             cy={239.5}
             r={4.5}
@@ -1512,7 +1530,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_66"
+            id="v_66"
             cx={240.5}
             cy={344.5}
             r={4.5}
@@ -1521,7 +1539,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_65"
+            id="v_65"
             cx={240.5}
             cy={386.5}
             r={4.5}
@@ -1530,7 +1548,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_64"
+            id="v_64"
             cx={240.5}
             cy={460.5}
             r={4.5}
@@ -1539,7 +1557,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_63"
+            id="v_63"
             cx={202.5}
             cy={460.5}
             r={4.5}
@@ -1548,7 +1566,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_62"
+            id="v_62"
             cx={240.5}
             cy={530.5}
             r={4.5}
@@ -1557,7 +1575,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_61"
+            id="v_61"
             cx={368.5}
             cy={530.5}
             r={4.5}
@@ -1566,7 +1584,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_60"
+            id="v_60"
             cx={368.5}
             cy={492.5}
             r={4.5}
@@ -1575,7 +1593,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_59"
+            id="v_59"
             cx={368.5}
             cy={568.5}
             r={4.5}
@@ -1584,7 +1602,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_58"
+            id="v_58"
             cx={525.5}
             cy={530.5}
             r={4.5}
@@ -1593,7 +1611,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_57"
+            id="v_57"
             cx={525.5}
             cy={492.5}
             r={4.5}
@@ -1602,7 +1620,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_56"
+            id="v_56"
             cx={240.5}
             cy={423.5}
             r={4.5}
@@ -1611,7 +1629,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_55"
+            id="v_55"
             cx={473.5}
             cy={423.5}
             r={4.5}
@@ -1620,7 +1638,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_54"
+            id="v_54"
             cx={473.5}
             cy={460.5}
             r={4.5}
@@ -1629,7 +1647,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_53"
+            id="v_53"
             cx={600.5}
             cy={423.5}
             r={4.5}
@@ -1638,7 +1656,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_52"
+            id="v_52"
             cx={316.5}
             cy={344.5}
             r={4.5}
@@ -1647,7 +1665,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_51"
+            id="v_51"
             cx={421.5}
             cy={344.5}
             r={4.5}
@@ -1656,7 +1674,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_50"
+            id="v_50"
             cx={421.5}
             cy={309.5}
             r={4.5}
@@ -1665,7 +1683,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_49"
+            id="v_49"
             cx={316.5}
             cy={309.5}
             r={4.5}
@@ -1674,7 +1692,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_48"
+            id="v_48"
             cx={316.5}
             cy={277.5}
             r={4.5}
@@ -1683,7 +1701,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_47"
+            id="v_47"
             cx={475.5}
             cy={344.5}
             r={4.5}
@@ -1692,7 +1710,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_46"
+            id="v_46"
             cx={475.5}
             cy={386.5}
             r={4.5}
@@ -1701,7 +1719,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_45"
+            id="v_45"
             cx={600.5}
             cy={344.5}
             r={4.5}
@@ -1710,7 +1728,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_44"
+            id="v_44"
             cx={600.5}
             cy={386.5}
             r={4.5}
@@ -1719,7 +1737,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_43"
+            id="v_43"
             cx={711.5}
             cy={386.5}
             r={4.5}
@@ -1728,7 +1746,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_42"
+            id="v_42"
             cx={711.5}
             cy={460.5}
             r={4.5}
@@ -1737,7 +1755,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_41"
+            id="v_41"
             cx={785.5}
             cy={460.5}
             r={4.5}
@@ -1746,7 +1764,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_40"
+            id="v_40"
             cx={785.5}
             cy={497.5}
             r={4.5}
@@ -1755,7 +1773,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_39"
+            id="v_39"
             cx={785.5}
             cy={419.5}
             r={4.5}
@@ -1764,7 +1782,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_38"
+            id="v_38"
             cx={890.5}
             cy={460.5}
             r={4.5}
@@ -1773,7 +1791,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_37"
+            id="v_37"
             cx={890.5}
             cy={419.5}
             r={4.5}
@@ -1782,7 +1800,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_36"
+            id="v_36"
             cx={711.5}
             cy={565.5}
             r={4.5}
@@ -1791,7 +1809,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_35"
+            id="v_35"
             cx={671.5}
             cy={565.5}
             r={4.5}
@@ -1800,7 +1818,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_34"
+            id="v_34"
             cx={711.5}
             cy={662.5}
             r={4.5}
@@ -1809,7 +1827,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_33"
+            id="v_33"
             cx={760.5}
             cy={565.5}
             r={4.5}
@@ -1818,7 +1836,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_32"
+            id="v_32"
             cx={760.5}
             cy={529.5}
             r={4.5}
@@ -1827,14 +1845,14 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <path
-            id="prefix__v_31"
+            id="v_31"
             d="M995 460.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
             data-vertex-key={m.v.v_31.key}
             ref={vertexRefCallback}
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_30"
+            id="v_30"
             cx={316.5}
             cy={239.5}
             r={4.5}
@@ -1843,7 +1861,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_29"
+            id="v_29"
             r={4.5}
             transform="matrix(1 0 0 -1 421.5 239.5)"
             data-vertex-key={m.v.v_29.key}
@@ -1851,7 +1869,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_28"
+            id="v_28"
             r={4.5}
             transform="matrix(1 0 0 -1 421.5 201.5)"
             data-vertex-key={m.v.v_28.key}
@@ -1859,7 +1877,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_27"
+            id="v_27"
             r={4.5}
             transform="matrix(1 0 0 -1 525.5 201.5)"
             data-vertex-key={m.v.v_27.key}
@@ -1867,7 +1885,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_26"
+            id="v_26"
             r={4.5}
             transform="matrix(1 0 0 -1 525.5 239.5)"
             data-vertex-key={m.v.v_26.key}
@@ -1875,7 +1893,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_25"
+            id="v_25"
             r={4.5}
             transform="matrix(1 0 0 -1 525.5 277.5)"
             data-vertex-key={m.v.v_25.key}
@@ -1883,7 +1901,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_24"
+            id="v_24"
             r={4.5}
             transform="matrix(1 0 0 -1 600.5 239.5)"
             data-vertex-key={m.v.v_24.key}
@@ -1891,7 +1909,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_23"
+            id="v_23"
             r={4.5}
             transform="matrix(1 0 0 -1 639.5 239.5)"
             data-vertex-key={m.v.v_23.key}
@@ -1899,7 +1917,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_22"
+            id="v_22"
             r={4.5}
             transform="matrix(1 0 0 -1 671.5 239.5)"
             data-vertex-key={m.v.v_22.key}
@@ -1907,7 +1925,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_21"
+            id="v_21"
             r={4.5}
             transform="matrix(1 0 0 -1 600.5 105.5)"
             data-vertex-key={m.v.v_21.key}
@@ -1915,7 +1933,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_20"
+            id="v_20"
             cx={711.5}
             cy={239.5}
             r={4.5}
@@ -1924,7 +1942,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_19"
+            id="v_19"
             cx={785.5}
             cy={239.5}
             r={4.5}
@@ -1933,7 +1951,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_18"
+            id="v_18"
             cx={785.5}
             cy={201.5}
             r={4.5}
@@ -1942,7 +1960,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_17"
+            id="v_17"
             cx={838.5}
             cy={239.5}
             r={4.5}
@@ -1951,7 +1969,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_16"
+            id="v_16"
             cx={838.5}
             cy={277.5}
             r={4.5}
@@ -1960,7 +1978,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_15"
+            id="v_15"
             cx={711.5}
             cy={105.5}
             r={4.5}
@@ -1969,7 +1987,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_14"
+            id="v_14"
             cx={711.5}
             cy={66.5}
             r={4.5}
@@ -1978,7 +1996,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_13"
+            id="v_13"
             cx={838.5}
             cy={105.5}
             r={4.5}
@@ -1987,7 +2005,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_12"
+            id="v_12"
             cx={838.5}
             cy={169.5}
             r={4.5}
@@ -1996,17 +2014,16 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_11"
+            id="v_11"
             cx={990.5}
             cy={105.5}
             r={4.5}
             data-vertex-key={m.v.v_11.key}
             ref={vertexRefCallback}
             className={classNames(styles["Vertex"])}
-            onClick={onVertexClick}
           />
           <circle
-            id="prefix__v_10"
+            id="v_10"
             cx={1045.5}
             cy={105.5}
             r={4.5}
@@ -2015,7 +2032,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_9"
+            id="v_9"
             cx={1045.5}
             cy={239.5}
             r={4.5}
@@ -2024,7 +2041,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_8"
+            id="v_8"
             cx={990.5}
             cy={239.5}
             r={4.5}
@@ -2033,7 +2050,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_7"
+            id="v_7"
             cx={990.5}
             cy={403.5}
             r={4.5}
@@ -2042,7 +2059,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_6"
+            id="v_6"
             cx={1045.5}
             cy={403.5}
             r={4.5}
@@ -2051,7 +2068,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_5"
+            id="v_5"
             cx={990.5}
             cy={349.5}
             r={4.5}
@@ -2060,7 +2077,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_4"
+            id="v_4"
             cx={890.5}
             cy={349.5}
             r={4.5}
@@ -2069,7 +2086,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_3"
+            id="v_3"
             cx={890.5}
             cy={309.5}
             r={4.5}
@@ -2078,7 +2095,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_2"
+            id="v_2"
             cx={890.5}
             cy={387.5}
             r={4.5}
@@ -2087,7 +2104,7 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
           <circle
-            id="prefix__v_1"
+            id="v_1"
             cx={711.5}
             cy={349.5}
             r={4.5}
@@ -2096,315 +2113,355 @@ function FloorMapSvg(props: any) {
             className={classNames(styles["Vertex"])}
           />
         </g>
-        <g id="prefix__Objects">
+        <g id="Objects">
           <path
-            id="prefix__o_43"
+            id="o_43"
             d="M156.5 411.5h27v204h-27z"
             data-object-key={m.o.o_43.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_42"
+            id="o_42"
             d="M626.501 411.5h27v204h-27z"
             data-object-key={m.o.o_42.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_41"
+            id="o_41"
             d="M658.267 516.5h27.235v99h-27.235z"
             data-object-key={m.o.o_41.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_40"
+            id="o_40"
             d="M156.5 156.5h59v204h-59v-204z"
             data-object-key={m.o.o_40.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_39"
+            id="o_39"
             d="M658.5 156.5h27v204h-27z"
             data-object-key={m.o.o_39.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_38"
+            id="o_38"
             d="M188.265 411.5H215.5v99h-27.235z"
             data-object-key={m.o.o_38.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_37"
+            id="o_37"
             transform="rotate(-90 266.5 614.5)"
             d="M266.5 614.5h27.235v99H266.5z"
             data-object-key={m.o.o_37.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_36"
+            id="o_36"
             transform="rotate(-90 266.5 582.5)"
             d="M266.5 582.5h27v204h-27z"
             data-object-key={m.o.o_36.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_35"
+            id="o_35"
             transform="rotate(-90 371.5 614.5)"
             d="M371.5 614.5h27v204h-27z"
             data-object-key={m.o.o_35.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_34"
+            id="o_34"
             transform="rotate(-90 266.5 323.5)"
             d="M266.5 323.5h27.235v99H266.5z"
             data-object-key={m.o.o_34.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_33"
+            id="o_33"
             transform="rotate(-90 266.5 291.735)"
             d="M266.5 291.735h27.235v99H266.5z"
             data-object-key={m.o.o_33.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_32"
+            id="o_32"
             transform="rotate(-90 371.5 291.5)"
             d="M371.5 291.5h27v204h-27z"
             data-object-key={m.o.o_32.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_31"
+            id="o_31"
             transform="rotate(-90 736.5 291.5)"
             d="M736.5 291.5h27v204h-27z"
             data-object-key={m.o.o_31.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_30"
+            id="o_30"
             transform="rotate(-90 371.5 323.5)"
             d="M371.5 323.5h27.235v99H371.5z"
             data-object-key={m.o.o_30.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_29"
+            id="o_29"
             transform="rotate(-90 841.5 323.5)"
             d="M841.5 323.5h27.235v99H841.5z"
             data-object-key={m.o.o_29.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_28"
+            id="o_28"
             transform="rotate(-90 371.5 400.735)"
             d="M371.5 400.735h27.235v204H371.5z"
             data-object-key={m.o.o_28.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_27"
+            id="o_27"
             transform="rotate(-90 266.5 506.5)"
             d="M266.5 506.5h27v204h-27z"
             data-object-key={m.o.o_27.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_26"
+            id="o_26"
             transform="rotate(-90 371.5 474.5)"
             d="M371.5 474.5h27v204h-27z"
             data-object-key={m.o.o_26.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_25"
+            id="o_25"
             transform="rotate(-90 476.5 506.5)"
             d="M476.5 506.5h27.235v99H476.5z"
             data-object-key={m.o.o_25.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_24"
+            id="o_24"
             transform="rotate(-90 266.5 183.735)"
             d="M266.5 183.735h27.235v99H266.5z"
             data-object-key={m.o.o_24.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_23"
+            id="o_23"
             transform="rotate(-90 736.5 215.5)"
             d="M736.5 215.5h27.235v99H736.5z"
             data-object-key={m.o.o_23.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_22"
+            id="o_22"
             transform="rotate(-90 736.5 183.5)"
             d="M736.5 183.5h27v204h-27z"
             data-object-key={m.o.o_22.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_21"
+            id="o_21"
             transform="rotate(-90 736.5 433.5)"
             d="M736.5 433.5h27.235v99H736.5z"
             data-object-key={m.o.o_21.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_20"
+            id="o_20"
             transform="rotate(-90 841.5 433.5)"
             d="M841.5 433.5h27.235v99H841.5z"
             data-object-key={m.o.o_20.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_19"
+            id="o_19"
             transform="rotate(-90 736.5 511.735)"
             d="M736.5 511.735h27.235v99H736.5z"
             data-object-key={m.o.o_19.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_18"
+            id="o_18"
             transform="rotate(-90 736.5 543.5)"
             d="M736.5 543.5h27v49h-27z"
             data-object-key={m.o.o_18.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_17"
+            id="o_17"
             transform="rotate(-90 736.5 401.5)"
             d="M736.5 401.5h27v204h-27z"
             data-object-key={m.o.o_17.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_16"
+            id="o_16"
             transform="rotate(-90 371.5 215.5)"
             d="M371.5 215.5h27.235v99H371.5z"
             data-object-key={m.o.o_16.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_15"
+            id="o_15"
             transform="rotate(-90 476.5 215.5)"
             d="M476.5 215.5h27.235v99H476.5z"
             data-object-key={m.o.o_15.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_14"
+            id="o_14"
             transform="rotate(-90 371.5 183.5)"
             d="M371.5 183.5h27v204h-27z"
             data-object-key={m.o.o_14.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_13"
+            id="o_13"
             d="M626.5 156.5h27.235v99H626.5z"
             data-object-key={m.o.o_13.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_12"
+            id="o_12"
             d="M61.5 466.5h10v149h-10z"
             data-object-key={m.o.o_12.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_11"
+            id="o_11"
             transform="rotate(-90 312.5 711.5)"
             d="M312.5 711.5h10v442h-10z"
             data-object-key={m.o.o_11.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_10"
+            id="o_10"
             d="M61.5 156.5h10v149h-10z"
             data-object-key={m.o.o_10.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_9"
+            id="o_9"
             transform="rotate(-90 311.5 71.5)"
             d="M311.5 71.5h10v304h-10z"
             data-object-key={m.o.o_9.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_8"
+            id="o_8"
             d="M1040.5 156.5h10v167h-10z"
             data-object-key={m.o.o_8.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_7"
+            id="o_7"
             d="M1040.5 329.5h10v149h-10z"
             data-object-key={m.o.o_7.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_6"
+            id="o_6"
             transform="rotate(-90 156.5 71.5)"
             d="M156.5 71.5h10v149h-10z"
             data-object-key={m.o.o_6.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_5"
+            id="o_5"
             transform="rotate(-90 157.5 711.5)"
             d="M157.5 711.5h10v149h-10z"
             data-object-key={m.o.o_5.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
-            id="prefix__o_4"
+            id="o_4"
             transform="rotate(-90 621.5 71.5)"
             d="M621.5 71.5h10v304h-10z"
             data-object-key={m.o.o_4.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
             id="o_3"
@@ -2412,6 +2469,7 @@ function FloorMapSvg(props: any) {
             data-object-key={m.o.o_3.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
             id="o_2"
@@ -2419,6 +2477,7 @@ function FloorMapSvg(props: any) {
             data-object-key={m.o.o_2.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
           <path
             id="o_1"
@@ -2426,12 +2485,13 @@ function FloorMapSvg(props: any) {
             data-object-key={m.o.o_1.key}
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
+            onClick={onObjectClick}
           />
         </g>
       </g>
       <defs>
         <filter
-          id="prefix__filter0_d"
+          id="filter0_d"
           x={0}
           y={0}
           width={1112.5}

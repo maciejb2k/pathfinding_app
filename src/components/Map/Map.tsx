@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import { TransformComponent } from "react-zoom-pan-pinch";
 
-import { mapData } from "./mapData";
 import FloorMapSvg from "components/FloorMapSvg";
-import { getGraphFromJSON, getPathFromDijkstra } from "algorithms/graph/Utils";
+import { getPathFromDijkstra } from "algorithms/graph/Utils";
+import { IState as GraphState } from "store/graph/reducer";
+import { getDijkstra } from "store/graph/actions";
+
 import Edge from "algorithms/graph/Edge";
 import dijkstra from "algorithms/graph/Dijkstra";
 
 import styles from "./Map.module.scss";
 
-function Map(props: any) {
+type AppProps = {
+  graph: GraphState;
+  getDijkstra: typeof getDijkstra;
+};
+
+function Map(props: AppProps) {
+  const {
+    graph: { graph },
+    getDijkstra,
+  } = props;
+
   const [verticesList, setVerticesList]: any = useState<any>();
   const [edgesList, setEdgesList]: any = useState<any>();
 
-  const map = React.useRef<{ [key: string]: HTMLElement }>(null);
   const vertices = React.useRef<{ [key: string]: HTMLElement }>({});
   const edges = React.useRef<{ [key: string]: HTMLElement }>({});
   const objects = React.useRef<{ [key: string]: HTMLElement }>({});
@@ -26,21 +36,30 @@ function Map(props: any) {
   );
 
   useEffect(() => {
-    const graph = getGraphFromJSON(mapData);
+    if (graph) {
+      getDijkstra({
+        startVertexKey: "v_95",
+        endVertexKey: "v_16",
+      });
+    }
+  }, [getDijkstra, graph]);
 
-    const startVertex = graph.getVertices()["v_95"];
-    const endVertex = graph.getVertices()["v_16"];
+  useEffect(() => {
+    if (graph) {
+      const startVertex = graph.getVertices()["v_95"];
+      const endVertex = graph.getVertices()["v_16"];
 
-    const { previousVertices } = dijkstra(graph, startVertex);
-    const { vertices, edges } = getPathFromDijkstra(
-      graph.edges,
-      previousVertices,
-      endVertex
-    );
+      const { previousVertices } = dijkstra(graph, startVertex);
+      const { vertices, edges } = getPathFromDijkstra(
+        graph.getEdges(),
+        previousVertices,
+        endVertex
+      );
 
-    setVerticesList(vertices);
-    setEdgesList(edges);
-  }, []);
+      setVerticesList(vertices);
+      setEdgesList(edges);
+    }
+  }, [graph]);
 
   useEffect(() => {
     if (edgesList && pathTimeline) {
@@ -97,17 +116,13 @@ function Map(props: any) {
 
   return (
     <>
-      <TransformComponent>
-        <div className={styles["Map"]}>
-          <FloorMapSvg
-            mapData={mapData}
-            mapRef={map}
-            vertexRefCallback={vertexRefCallback}
-            edgeRefCallback={edgeRefCallback}
-            objectRefCallback={objectRefCallback}
-          />
-        </div>
-      </TransformComponent>
+      <div className={styles["Map"]}>
+        <FloorMapSvg
+          vertexRefCallback={vertexRefCallback}
+          edgeRefCallback={edgeRefCallback}
+          objectRefCallback={objectRefCallback}
+        />
+      </div>
     </>
   );
 }

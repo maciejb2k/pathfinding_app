@@ -5,11 +5,13 @@ import { Action } from "store/actions";
 export type IState = {
   readonly activeModal: string;
   readonly isOpen: boolean;
+  readonly data: any;
 };
 
 export const initialState: IState = {
   activeModal: "",
   isOpen: false,
+  data: null,
 };
 
 export const modals: Reducer<IState, Action> = (
@@ -20,13 +22,15 @@ export const modals: Reducer<IState, Action> = (
     case OPEN_MODAL:
       return {
         ...state,
-        activeModal: action.payload,
+        activeModal: action.payload.modalName,
+        data: action.payload.data,
         isOpen: true,
       };
     case CLOSE_MODAL:
       return {
         ...state,
         activeModal: "",
+        data: null,
         isOpen: false,
       };
     default:

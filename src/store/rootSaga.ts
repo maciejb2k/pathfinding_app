@@ -1,6 +1,8 @@
 import { all, fork } from "redux-saga/effects";
 
-const sagas: any[] = [];
+import { graphRootSaga } from "store/graph/sagas";
+
+const sagas = [graphRootSaga];
 
 export default function* rootSaga() {
   yield all(sagas.map((saga) => fork(saga)));

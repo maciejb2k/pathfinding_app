@@ -1,3 +1,10 @@
+.FloorMap {
+  width: 1150px;
+  height: auto;
+  fill: none;
+  margin-top: 50px;
+}
+
 .Vertex {
   opacity: 0;
   fill: #e4e4e4;
@@ -11,6 +18,12 @@
 .Object {
   fill: #d6ebff;
   stroke: #87b6e2;
+  transition: 0.1s all;
+
+  &:hover {
+    cursor: pointer;
+    fill: #b2d5f6;
+  }
 }
 
 .Object--active {
