@@ -20,8 +20,10 @@ import Vertex from "algorithms/graph/Vertex";
 export function* getPath(action: Action<Route>) {
   try {
     if (action.payload) {
-      const { graph } = yield select((state: AppState) => state.graph);
-      const { startVertexKey, endVertexKey } = action.payload;
+      const { graph, startVertex: startVertexKey } = yield select(
+        (state: AppState) => state.graph
+      );
+      const { endVertexKey } = action.payload;
 
       const startVertex: Vertex = graph.getVertices()[startVertexKey];
       const endVertex: Vertex = graph.getVertices()[endVertexKey];

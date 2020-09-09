@@ -21,13 +21,11 @@
   }
 }
 
-.StartVertex {
+.Vertex--active {
   opacity: 1;
   cursor: pointer;
   position: relative;
-}
-
-.StartVertex--active {
+  fill: #2ecc71;
 }
 
 .Edge {

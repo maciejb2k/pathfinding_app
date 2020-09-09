@@ -5,6 +5,8 @@ import { mapData as m } from "components/Map/mapData";
 
 import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
 import { openModal } from "store/modals/actions";
+import { setStartVertex } from "store/graph/actions";
+import { IState as GraphState } from "store/graph/reducer";
 
 import styles from "./FloorMapSvg.module.scss";
 
@@ -12,7 +14,9 @@ type AppProps = {
   vertexRefCallback: any;
   edgeRefCallback: any;
   objectRefCallback: any;
+  graph: GraphState;
   openModal: typeof openModal;
+  setStartVertex: typeof setStartVertex;
 };
 
 function FloorMapSvg(props: AppProps) {
@@ -20,7 +24,9 @@ function FloorMapSvg(props: AppProps) {
     vertexRefCallback,
     edgeRefCallback,
     objectRefCallback,
+    graph: { startVertex, isEditMode },
     openModal,
+    setStartVertex,
   } = props;
 
   const onObjectClick = (e: React.MouseEvent<SVGPathElement>) => {
@@ -28,6 +34,15 @@ function FloorMapSvg(props: AppProps) {
 
     const objId = e.currentTarget.id;
     openModal<string>({ modalName: MODAL_OBJECT_INFO, data: objId });
+  };
+
+  const onVertexClick = (e: React.MouseEvent<SVGElement>) => {
+    e.preventDefault();
+
+    if (isEditMode) {
+      const vertexKey = e.currentTarget.id;
+      setStartVertex(vertexKey);
+    }
   };
 
   return (
@@ -1266,7 +1281,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_96.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_96.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_95"
@@ -1276,11 +1295,11 @@ function FloorMapSvg(props: AppProps) {
             data-vertex-key={m.v.v_95.key}
             data-tooltip="Jesteś tutaj"
             ref={vertexRefCallback}
-            className={classNames(
-              styles["Vertex"],
-              styles["StartVertex"],
-              styles["StartVertex--active"]
-            )}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_95.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_94"
@@ -1289,7 +1308,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_94.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_94.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_93"
@@ -1298,7 +1321,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_93.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_93.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_92"
@@ -1307,7 +1334,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_92.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_92.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_91"
@@ -1316,7 +1347,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_91.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_91.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_90"
@@ -1325,7 +1360,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_90.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_90.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_89"
@@ -1334,7 +1373,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_89.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_89.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_88"
@@ -1343,7 +1386,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_88.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_88.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_87"
@@ -1352,7 +1399,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_87.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_87.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_86"
@@ -1361,7 +1412,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_86.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_86.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_85"
@@ -1370,7 +1425,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_85.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_85.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_84"
@@ -1379,7 +1438,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_84.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_84.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_83"
@@ -1388,7 +1451,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_83.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_83.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_82"
@@ -1397,7 +1464,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_82.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_82.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_81"
@@ -1406,7 +1477,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_81.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_81.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_80"
@@ -1415,7 +1490,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_80.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_80.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_79"
@@ -1424,7 +1503,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_79.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_79.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_78"
@@ -1433,7 +1516,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_78.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_78.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_77"
@@ -1442,7 +1529,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_77.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_77.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_76"
@@ -1451,7 +1542,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_76.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_76.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_75"
@@ -1460,7 +1555,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_75.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_75.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_74"
@@ -1469,7 +1568,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_74.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_74.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_73"
@@ -1478,7 +1581,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_73.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_73.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_72"
@@ -1487,7 +1594,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_72.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_72.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_71"
@@ -1496,7 +1607,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_71.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_71.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_70"
@@ -1505,7 +1620,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_70.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_70.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_69"
@@ -1514,7 +1633,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_69.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_69.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_68"
@@ -1523,7 +1646,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_68.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_68.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_67"
@@ -1532,7 +1659,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_67.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_67.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_66"
@@ -1541,7 +1672,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_66.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_66.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_65"
@@ -1550,7 +1685,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_65.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_65.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_64"
@@ -1559,7 +1698,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_64.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_64.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_63"
@@ -1568,7 +1711,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_63.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_63.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_62"
@@ -1577,7 +1724,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_62.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_62.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_61"
@@ -1586,7 +1737,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_61.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_61.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_60"
@@ -1595,7 +1750,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_60.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_60.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_59"
@@ -1604,7 +1763,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_59.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_59.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_58"
@@ -1613,7 +1776,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_58.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_58.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_57"
@@ -1622,7 +1789,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_57.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_57.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_56"
@@ -1631,7 +1802,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_56.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_56.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_55"
@@ -1640,7 +1815,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_55.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_55.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_54"
@@ -1649,7 +1828,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_54.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_54.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_53"
@@ -1658,7 +1841,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_53.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_53.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_52"
@@ -1667,7 +1854,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_52.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_52.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_51"
@@ -1676,7 +1867,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_51.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_51.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_50"
@@ -1685,7 +1880,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_50.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_50.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_49"
@@ -1694,7 +1893,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_49.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_49.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_48"
@@ -1703,7 +1906,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_48.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_48.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_47"
@@ -1712,7 +1919,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_47.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_47.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_46"
@@ -1721,7 +1932,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_46.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_46.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_45"
@@ -1730,7 +1945,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_45.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_45.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_44"
@@ -1739,7 +1958,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_44.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_44.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_43"
@@ -1748,7 +1971,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_43.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_43.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_42"
@@ -1757,7 +1984,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_42.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_42.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_41"
@@ -1766,7 +1997,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_41.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_41.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_40"
@@ -1775,7 +2010,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_40.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_40.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_39"
@@ -1784,7 +2023,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_39.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_39.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_38"
@@ -1793,7 +2036,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_38.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_38.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_37"
@@ -1802,7 +2049,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_37.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_37.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_36"
@@ -1811,7 +2062,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_36.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_36.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_35"
@@ -1820,7 +2075,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_35.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_35.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_34"
@@ -1829,7 +2088,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_34.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_34.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_33"
@@ -1838,7 +2101,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_33.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_33.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_32"
@@ -1847,14 +2114,22 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_32.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_32.key,
+            })}
+            onClick={onVertexClick}
           />
           <path
             id="v_31"
             d="M995 460.5a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0z"
             data-vertex-key={m.v.v_31.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_31.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_30"
@@ -1863,7 +2138,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_30.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_30.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_29"
@@ -1871,7 +2150,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 421.5 239.5)"
             data-vertex-key={m.v.v_29.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_29.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_28"
@@ -1879,7 +2162,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 421.5 201.5)"
             data-vertex-key={m.v.v_28.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_28.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_27"
@@ -1887,7 +2174,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 525.5 201.5)"
             data-vertex-key={m.v.v_27.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_27.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_26"
@@ -1895,7 +2186,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 525.5 239.5)"
             data-vertex-key={m.v.v_26.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_26.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_25"
@@ -1903,7 +2198,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 525.5 277.5)"
             data-vertex-key={m.v.v_25.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_25.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_24"
@@ -1911,7 +2210,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 600.5 239.5)"
             data-vertex-key={m.v.v_24.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_24.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_23"
@@ -1919,7 +2222,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 639.5 239.5)"
             data-vertex-key={m.v.v_23.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_23.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_22"
@@ -1927,7 +2234,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 671.5 239.5)"
             data-vertex-key={m.v.v_22.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_22.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_21"
@@ -1935,7 +2246,11 @@ function FloorMapSvg(props: AppProps) {
             transform="matrix(1 0 0 -1 600.5 105.5)"
             data-vertex-key={m.v.v_21.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_21.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_20"
@@ -1944,7 +2259,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_20.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_20.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_19"
@@ -1953,7 +2272,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_19.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_19.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_18"
@@ -1962,7 +2285,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_18.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_18.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_17"
@@ -1971,7 +2298,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_17.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_17.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_16"
@@ -1980,7 +2311,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_16.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_16.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_15"
@@ -1989,7 +2324,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_15.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_15.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_14"
@@ -1998,7 +2337,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_14.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_14.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_13"
@@ -2007,7 +2350,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_13.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_13.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_12"
@@ -2016,7 +2363,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_12.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_12.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_11"
@@ -2025,7 +2376,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_11.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_11.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_10"
@@ -2034,7 +2389,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_10.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_10.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_9"
@@ -2043,7 +2402,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_9.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_9.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_8"
@@ -2052,7 +2415,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_8.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_8.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_7"
@@ -2061,7 +2428,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_7.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_7.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_6"
@@ -2070,7 +2441,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_6.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_6.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_5"
@@ -2079,7 +2454,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_5.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_5.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_4"
@@ -2088,7 +2467,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_4.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_4.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_3"
@@ -2097,7 +2480,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_3.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_3.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_2"
@@ -2106,7 +2493,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_2.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_2.key,
+            })}
+            onClick={onVertexClick}
           />
           <circle
             id="v_1"
@@ -2115,7 +2506,11 @@ function FloorMapSvg(props: AppProps) {
             r={4.5}
             data-vertex-key={m.v.v_1.key}
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames({
+              [styles["Vertex"]]: true,
+              [styles["Vertex--active"]]: startVertex === m.v.v_1.key,
+            })}
+            onClick={onVertexClick}
           />
         </g>
         <g id="Objects">

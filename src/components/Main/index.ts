@@ -5,15 +5,17 @@ import { toggleSidebar } from "store/sidebar/actions";
 import { openModal } from "store/modals/actions";
 import { exitPathPreview } from "store/path/actions";
 import { searchProduct } from "store/search/actions";
+import { toggleEditMode } from "store/graph/actions";
 
 import { AppState } from "store/rootReducer";
 
 import Main from "./Main";
 
-const mapStateToProps = ({ sidebar, path, search }: AppState) => ({
+const mapStateToProps = ({ sidebar, path, search, graph }: AppState) => ({
   sidebar,
   path,
   search,
+  graph,
 });
 
 const mapDispatchToProps = {
@@ -21,6 +23,7 @@ const mapDispatchToProps = {
   openModal,
   exitPathPreview,
   searchProduct,
+  toggleEditMode,
 };
 
 const enhancer = compose(connect(mapStateToProps, mapDispatchToProps));

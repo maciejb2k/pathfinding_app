@@ -11,6 +11,7 @@ import styles from "./Layout.module.scss";
 function Layout() {
   return (
     <div className={styles["Layout"]}>
+      {/* Skip links */}
       <div className={styles["SkipLinks"]}>
         <a className={styles["SkipLink"]} href="#SearchInput">
           Szukaj produktu
@@ -19,6 +20,7 @@ function Layout() {
           Ustawienia
         </a>
       </div>
+
       {/* Page layout */}
       <Sidebar />
       <Main />

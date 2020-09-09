@@ -16,11 +16,13 @@ import { MODAL_SETTINGS } from "components/Modals/modalTypes";
 import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as PathState } from "store/path/reducer";
 import { IState as SearchState } from "store/search/reducer";
+import { IState as GraphState } from "store/graph/reducer";
 
 import { openModal } from "store/modals/actions";
 import { toggleSidebar } from "store/sidebar/actions";
 import { exitPathPreview } from "store/path/actions";
 import { searchProduct } from "store/search/actions";
+import { toggleEditMode } from "store/graph/actions";
 
 import Map from "components/Map";
 
@@ -30,10 +32,12 @@ type AppProps = {
   sidebar: SidebarState;
   path: PathState;
   search: SearchState;
+  graph: GraphState;
   toggleSidebar: typeof toggleSidebar;
   openModal: typeof openModal;
   exitPathPreview: typeof exitPathPreview;
   searchProduct: typeof searchProduct;
+  toggleEditMode: typeof toggleEditMode;
 };
 
 function Main(props: AppProps) {
@@ -45,6 +49,7 @@ function Main(props: AppProps) {
     openModal,
     exitPathPreview,
     searchProduct,
+    toggleEditMode,
   } = props;
 
   const [productPreviewName, setProductPreview] = useState("");
@@ -70,6 +75,13 @@ function Main(props: AppProps) {
     if (searchInput && searchInput.current) {
       searchInput.current.value = "";
       setProduct("");
+    }
+  };
+
+  const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!isPathPreview) {
+      toggleEditMode();
     }
   };
 
@@ -160,7 +172,8 @@ function Main(props: AppProps) {
                 [styles["ControlsButton"]]: true,
                 [styles["ControlsButton--user"]]: true,
               })}
-              aria-label="Get starting point on map"
+              aria-label="Change starting point on map"
+              onClick={toggleEdit}
             >
               <FiUser />
             </button>

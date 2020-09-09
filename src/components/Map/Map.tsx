@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { gsap } from "gsap";
 
 import FloorMapSvg from "components/FloorMapSvg";
 import { IState as GraphState } from "store/graph/reducer";
@@ -19,7 +20,7 @@ type AppProps = {
 
 function Map(props: AppProps) {
   const {
-    graph: { isGenerating: isGraphGenerating },
+    graph: { isGenerating: isGraphGenerating, isEditMode, startVertex },
     path: {
       isGenerating: isPathGenerating,
       pathTimeline,
@@ -30,6 +31,13 @@ function Map(props: AppProps) {
   const verticesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
   const edgesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
   const objectsRefs = React.useRef<{ [key: string]: HTMLElement }>({});
+
+  // useEffect(() => {
+  //   if (verticesRefs.current[startVertex]) {
+  //     verticesRefs.current[startVertex].style.opacity = "1";
+  //     verticesRefs.current[startVertex].style.fill = "#2ecc71";
+  //   }
+  // }, [startVertex]);
 
   useEffect(() => {
     if (pathTimeline && pathEdges && pathEdges.length) {
@@ -62,6 +70,22 @@ function Map(props: AppProps) {
       pathTimeline.resume();
     }
   }, [pathEdges, pathVertices, pathTimeline]);
+
+  useEffect(() => {
+    if (isEditMode) {
+      Object.keys(verticesRefs.current).forEach((key) => {
+        if (key !== startVertex) {
+          gsap.to(verticesRefs.current[key], { opacity: 1, cursor: "pointer" });
+        }
+      });
+    } else {
+      Object.keys(verticesRefs.current).forEach((key) => {
+        if (key !== startVertex) {
+          gsap.to(verticesRefs.current[key], { opacity: 0 });
+        }
+      });
+    }
+  }, [isEditMode, startVertex]);
 
   const vertexRefCallback = (el: HTMLElement | null) => {
     if (el && el.dataset.vertexKey) {
