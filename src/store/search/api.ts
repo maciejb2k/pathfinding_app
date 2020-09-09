@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type ProductType = {
+export type ProductType = {
   id: number;
   name: string;
   desc: string;
@@ -8,10 +8,10 @@ type ProductType = {
 };
 
 export const searchProductApi = (productName: string) => {
-  return axios({
-    url: `http://localhost:3001/products?name=${productName}`,
-    method: "GET",
-  }).catch((error) => {
-    // TODO
-  });
+  return axios
+    .get<ProductType>(`http://localhost:3001/products?name=${productName}`)
+    .then((res) => res.data)
+    .catch((error) => {
+      // TODO
+    });
 };

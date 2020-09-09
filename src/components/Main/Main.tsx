@@ -82,8 +82,6 @@ function Main(props: AppProps) {
       searchInput.current.value = "";
       setProduct("");
     }
-
-    return true;
   };
 
   const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {

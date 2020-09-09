@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import Loader from "react-loader-spinner";
 
 import FloorMapSvg from "components/FloorMapSvg";
 import { IState as GraphState } from "store/graph/reducer";
@@ -31,13 +32,6 @@ function Map(props: AppProps) {
   const verticesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
   const edgesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
   const objectsRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-
-  // useEffect(() => {
-  //   if (verticesRefs.current[startVertex]) {
-  //     verticesRefs.current[startVertex].style.opacity = "1";
-  //     verticesRefs.current[startVertex].style.fill = "#2ecc71";
-  //   }
-  // }, [startVertex]);
 
   useEffect(() => {
     if (pathTimeline && pathEdges && pathEdges.length) {
@@ -110,12 +104,7 @@ function Map(props: AppProps) {
 
   return isGraphGenerating || isPathGenerating ? (
     <div className={styles["LoadingScreen"]}>
-      <div className={styles["Loader"]}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
     </div>
   ) : (
     <div className={styles["Map"]}>

@@ -1,9 +1,86 @@
 @import "styles/themes.scss";
 
 .Modal--objectInfo {
-  width: 550px;
+  width: 400px;
+  max-height: 500px;
   padding: 30px 30px;
   border-radius: 7px;
   background: #ffffff;
   outline: 0;
+  overflow: hidden;
+}
+
+.ModalLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ObjectHeader {
+  .ObjectHeader-title {
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: #1b78d0;
+      margin: 20px auto 0px;
+    }
+  }
+}
+
+.ObjectBody {
+  .Object-emptyList {
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 20px;
+    color: #6c6c6c;
+  }
+
+  .ObjectList {
+    list-style-position: inside;
+    overflow-y: scroll;
+    max-height: 400px;
+    padding-right: 20px;
+    list-style-type: none;
+
+    .ObjectList-item {
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .ObjectList-itemInfo {
+        .ObjectList-itemTitle {
+          padding-bottom: 5px;
+        }
+        .ObjectList-itemDesc {
+          font-size: 1.2rem;
+        }
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #e1e2e2;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #e7e7e7;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #1b78d0;
+      border-radius: 10px;
+    }
+  }
 }

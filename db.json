@@ -105,44 +105,86 @@
     {
       "id": 1,
       "name": "żubr",
-      "desc": "Walisz 1 żubra i kładziesz się na dywan.",
+      "desc": "Browar prosto z bieszczad.",
+      "price": "2.50",
       "objectId": "o_1"
     },
     {
       "id": 2,
       "name": "sok",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_10"
     },
     {
       "id": 3,
       "name": "mleko",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_8"
     },
     {
       "id": 4,
       "name": "czekolada",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_25"
     },
     {
       "id": 5,
       "name": "łosoś",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_17"
     },
     {
       "id": 6,
       "name": "makaron",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_35"
     },
     {
       "id": 7,
       "name": "jajka",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_18"
+    },
+    {
+      "id": 8,
+      "name": "warka",
+      "desc": "Piwo dla budowlańców",
+      "price": "2.50",
+      "objectId": "o_1"
+    },
+    {
+      "id": 9,
+      "name": "tatra",
+      "desc": "Potężny konerniak XD",
+      "price": "2.50",
+      "objectId": "o_1"
+    },
+    {
+      "id": 10,
+      "name": "harnaś",
+      "desc": "Piwo dla prawdziwych mężczyzn",
+      "price": "2.50",
+      "objectId": "o_1"
+    },
+    {
+      "id": 11,
+      "name": "tyskie",
+      "desc": "Popularny browar polskiego polaka.",
+      "price": "2.50",
+      "objectId": "o_1"
+    },
+    {
+      "id": 12,
+      "name": "lech",
+      "desc": "Piwo do picia na speed.",
+      "price": "2.50",
+      "objectId": "o_1"
     }
   ],
   "object-to-category": [
@@ -338,7 +380,7 @@
     },
     {
       "id": 39,
-      "categoryId": 24,
+      "categoryId": 9,
       "objectId": "o_39"
     },
     {
