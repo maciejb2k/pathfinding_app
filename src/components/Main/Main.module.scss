@@ -1,0 +1,218 @@
+@import "styles/themes.scss";
+
+.Main {
+  background: #f3f7fa;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  .Controls {
+    .ControlsUpperLeft {
+      left: 30px;
+      position: absolute;
+      z-index: 2;
+      top: 30px;
+      display: flex;
+
+      .PathPreview {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30px;
+        background: #ffffff;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+        transition: 0.1s all;
+        padding-left: 30px;
+        opacity: 0;
+        border-left: 5px solid #2ecc71;
+
+        .PathPreview-button {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 0;
+          background: #ffffff;
+          color: #db3b3b;
+          font-size: 1.4rem;
+          position: relative;
+
+          &::after {
+            content: "";
+            left: 2px;
+            display: block;
+            position: absolute;
+            height: 30px;
+            width: 1px;
+            background: #f1f1f1;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .PathPreview-info {
+          padding-right: 100px;
+
+          .PathPreview-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .PathPreview--active {
+        opacity: 1;
+      }
+
+      .ControlsSearch {
+        display: flex;
+        align-items: center;
+
+        .ControlsSearch-form {
+          margin-left: 30px;
+          display: flex;
+          box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+
+          .ControlsSearch-icon {
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            background: #ffffff;
+            font-size: 0.8rem;
+            color: #1b78d0;
+            position: relative;
+
+            &::after {
+              content: "";
+              right: 0;
+              display: block;
+              position: absolute;
+              height: 30px;
+              width: 1px;
+              background: #e1ecee;
+            }
+          }
+
+          .ControlsSearch-input {
+            height: 50px;
+            width: 250px;
+            font-size: 1.4rem;
+            padding: 0 20px;
+
+            &::placeholder {
+              color: #afafaf;
+            }
+          }
+
+          .ControlsSearch-submit {
+            height: 50px;
+            width: 50px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+            background: #1b78d0;
+            font-size: 1.8rem;
+            cursor: pointer;
+          }
+
+          .ControlsSearch-submit--disabled {
+            background: #dadada;
+          }
+
+          .ControlsSearch-input,
+          .ControlsSearch-submit {
+            border: 0;
+          }
+        }
+      }
+    }
+
+    .ControlsUpperRight {
+      right: 30px;
+      position: absolute;
+      z-index: 2;
+      top: 30px;
+    }
+
+    .ControlsLowerRight {
+      right: 30px;
+      position: absolute;
+      z-index: 2;
+      bottom: 30px;
+
+      .ControlsButtons {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .ControlsButton {
+      width: 50px;
+      height: 50px;
+      border: 0;
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 5px;
+      box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+
+    .ControlsButton--hamburger {
+      background: #54a8f8;
+    }
+
+    .ControlsButton--hamburgerActive {
+      background: #1b78d0;
+    }
+
+    .ControlsButton--zoom {
+      background: #54a8f8;
+    }
+
+    .ControlsButton--user {
+      background: #54a8f8;
+    }
+
+    .ControlsButton--options {
+      background: #1b78d0;
+    }
+
+    .ControlsButton--closePreview {
+      color: #e23232;
+      background: 0;
+      border-radius: 50px;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .Map {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+}
