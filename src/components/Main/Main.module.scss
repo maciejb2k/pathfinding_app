@@ -25,6 +25,7 @@
         transition: 0.1s all;
         padding-left: 30px;
         opacity: 0;
+        visibility: hidden;
         border-left: 5px solid #2ecc71;
 
         .PathPreview-button {
@@ -66,6 +67,7 @@
 
       .PathPreview--active {
         opacity: 1;
+        visibility: visible;
       }
 
       .ControlsSearch {
@@ -124,6 +126,7 @@
             background: #1b78d0;
             font-size: 1.8rem;
             cursor: pointer;
+            transition: 0.3s all;
           }
 
           .ControlsSearch-submit--disabled {
@@ -174,9 +177,48 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: relative;
+      transition: 0.1s all;
 
       &:not(:last-child) {
         margin-bottom: 5px;
+      }
+    }
+
+    .ControlsButton--tooltip {
+      &:before {
+        content: attr(data-text);
+        position: absolute;
+        font-size: 1.2rem;
+        right: 60px;
+        height: 50px;
+        top: 0;
+        border-radius: 5px;
+        min-width: 100px;
+        background: #000;
+        color: #fff;
+        text-align: center;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+      }
+
+      &:after {
+        content: "";
+        display: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid #000;
+        right: 55px;
+      }
+
+      &:hover:before,
+      &:hover:after {
+        display: flex;
       }
     }
 
@@ -194,6 +236,10 @@
 
     .ControlsButton--user {
       background: #54a8f8;
+      position: relative;
+    }
+    .ControlsButton--editMode {
+      background: #2ecc71;
     }
 
     .ControlsButton--options {

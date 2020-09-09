@@ -7,17 +7,11 @@ import {
   INIT_GRAPH_REQUEST,
   INIT_GRAPH_SUCCESS,
   INIT_GRAPH_FAILED,
-  SET_START_VERTEX,
 } from "./constants";
 
 export function* buildGraph() {
   try {
     const graph = getGraphFromJSON(mapData);
-
-    yield put({
-      type: SET_START_VERTEX,
-      payload: "v_95",
-    });
 
     yield put({
       type: INIT_GRAPH_SUCCESS,

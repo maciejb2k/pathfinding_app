@@ -45,6 +45,7 @@ function Main(props: AppProps) {
     sidebar: { isOpen: isSidebarOpen },
     path: { isPathPreview },
     search: { searchResult },
+    graph: { isEditMode },
     toggleSidebar,
     openModal,
     exitPathPreview,
@@ -66,6 +67,11 @@ function Main(props: AppProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isEditMode) {
+      return false;
+    }
+
     searchProduct(product.toLowerCase().trim());
 
     if (pathPreviewButton && pathPreviewButton.current) {
@@ -76,6 +82,8 @@ function Main(props: AppProps) {
       searchInput.current.value = "";
       setProduct("");
     }
+
+    return true;
   };
 
   const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -129,7 +137,8 @@ function Main(props: AppProps) {
               <button
                 className={classnames({
                   [styles["ControlsSearch-submit"]]: true,
-                  [styles["ControlsSearch-submit--disabled"]]: isPathPreview,
+                  [styles["ControlsSearch-submit--disabled"]]:
+                    isPathPreview || isEditMode,
                 })}
                 disabled={!product || isPathPreview}
               >
@@ -171,8 +180,11 @@ function Main(props: AppProps) {
               className={classnames({
                 [styles["ControlsButton"]]: true,
                 [styles["ControlsButton--user"]]: true,
+                [styles["ControlsButton--tooltip"]]: true,
+                [styles["ControlsButton--editMode"]]: isEditMode,
               })}
               aria-label="Change starting point on map"
+              data-text="Change starting point"
               onClick={toggleEdit}
             >
               <FiUser />
@@ -181,9 +193,11 @@ function Main(props: AppProps) {
               className={classnames({
                 [styles["ControlsButton"]]: true,
                 [styles["ControlsButton--options"]]: true,
+                [styles["ControlsButton--tooltip"]]: true,
               })}
               onClick={() => openModal({ modalName: MODAL_SETTINGS })}
               aria-label="Open Settings"
+              data-text="Open Settings"
               id="Settings"
             >
               <FiSettings />
