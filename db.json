@@ -113,6 +113,36 @@
       "name": "sok",
       "desc": "",
       "objectId": "o_10"
+    },
+    {
+      "id": 3,
+      "name": "mleko",
+      "desc": "",
+      "objectId": "o_8"
+    },
+    {
+      "id": 4,
+      "name": "czekolada",
+      "desc": "",
+      "objectId": "o_25"
+    },
+    {
+      "id": 5,
+      "name": "łosoś",
+      "desc": "",
+      "objectId": "o_17"
+    },
+    {
+      "id": 6,
+      "name": "makaron",
+      "desc": "",
+      "objectId": "o_35"
+    },
+    {
+      "id": 7,
+      "name": "jajka",
+      "desc": "",
+      "objectId": "o_18"
     }
   ],
   "object-to-category": [

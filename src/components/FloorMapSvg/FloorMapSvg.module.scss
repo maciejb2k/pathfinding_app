@@ -25,46 +25,9 @@
   opacity: 1;
   cursor: pointer;
   position: relative;
-
-  &:before {
-    content: attr(data-text); /* here's the magic */
-    position: absolute;
-
-    /* vertically center */
-    top: 50%;
-    transform: translateY(-50%);
-
-    /* move to right */
-    left: 100%;
-    margin-left: 15px; /* and add a small left margin */
-
-    /* basic styles */
-    width: 200px;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
-  &:hover:before {
-    display: block;
-  }
 }
 
 .StartVertex--active {
-  fill: #2ecc71;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(221, 0, 0, 0.7);
-  }
-
-  70% {
-    box-shadow: 0 0 0 100px rgba(221, 0, 0, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(221, 0, 0, 0);
-  }
 }
 
 .Edge {

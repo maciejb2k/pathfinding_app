@@ -16,12 +16,12 @@ type ProductType = {
 
 export type IState = {
   readonly isPending: boolean;
-  readonly searchResult: ProductType | {};
+  readonly searchResult: ProductType | null;
 };
 
 export const initialState: IState = {
   isPending: false,
-  searchResult: {},
+  searchResult: null,
 };
 
 export const search: Reducer<IState, Action> = (
@@ -44,6 +44,7 @@ export const search: Reducer<IState, Action> = (
       return {
         ...state,
         isPending: false,
+        searchResult: {},
       };
     default:
       return state;

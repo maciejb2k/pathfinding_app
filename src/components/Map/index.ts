@@ -7,9 +7,10 @@ import { AppState } from "store/rootReducer";
 
 import Map from "./Map";
 
-const mapStateToProps = ({ graph, path }: AppState) => ({
+const mapStateToProps = ({ graph, path, search }: AppState) => ({
   graph,
   path,
+  search,
 });
 
 const mapDispatchToProps = {

@@ -14,7 +14,58 @@
       top: 30px;
       display: flex;
 
-      .ControlsMenu {
+      .PathPreview {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 30px;
+        background: #ffffff;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+        transition: 0.1s all;
+        padding-left: 30px;
+        opacity: 0;
+        border-left: 5px solid #2ecc71;
+
+        .PathPreview-button {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 0;
+          background: #ffffff;
+          color: #db3b3b;
+          font-size: 1.4rem;
+          position: relative;
+
+          &::after {
+            content: "";
+            left: 2px;
+            display: block;
+            position: absolute;
+            height: 30px;
+            width: 1px;
+            background: #f1f1f1;
+          }
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .PathPreview-info {
+          padding-right: 100px;
+
+          .PathPreview-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+          }
+        }
+      }
+
+      .PathPreview--active {
+        opacity: 1;
       }
 
       .ControlsSearch {
@@ -73,6 +124,10 @@
             background: #1b78d0;
             font-size: 1.8rem;
             cursor: pointer;
+          }
+
+          .ControlsSearch-submit--disabled {
+            background: #dadada;
           }
 
           .ControlsSearch-input,
@@ -146,9 +201,9 @@
     }
 
     .ControlsButton--closePreview {
-      background: #e23232;
+      color: #e23232;
+      background: 0;
       border-radius: 50px;
-      margin-left: 30px;
       width: 30px;
       height: 30px;
     }

@@ -4,4 +4,27 @@
   display: flex;
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+.SkipLink {
+  background: #1b78d0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  padding: 10px 20px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+  text-align: center;
+  z-index: 1000;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #ffffff;
+}
+
+.SkipLink:focus {
+  transform: translateY(0%);
 }

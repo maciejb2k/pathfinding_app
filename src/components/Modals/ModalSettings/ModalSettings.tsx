@@ -4,9 +4,20 @@ import classnames from "classnames";
 
 import { MODAL_SETTINGS } from "components/Modals/modalTypes";
 
+import { IState as SettingsState } from "store/settings/reducer";
+import { IState as ModalsState } from "store/modals/reducer";
+import { switchLang, switchTheme } from "store/settings/actions";
+import { closeModal } from "store/modals/actions";
+
 import styles from "./ModalSettings.module.scss";
 
-type AppProps = any;
+type AppProps = {
+  settings: SettingsState;
+  modals: ModalsState;
+  switchTheme: typeof switchTheme;
+  switchLang: typeof switchLang;
+  closeModal: typeof closeModal;
+};
 
 function ModalSettings(props: AppProps) {
   const themeToBoolean = (theme: string) => (theme === "dark" ? true : false);

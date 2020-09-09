@@ -20,7 +20,6 @@ import Vertex from "algorithms/graph/Vertex";
 export function* getPath(action: Action<Route>) {
   try {
     if (action.payload) {
-      console.log(action);
       const { graph } = yield select((state: AppState) => state.graph);
       const { startVertexKey, endVertexKey } = action.payload;
 
@@ -48,9 +47,6 @@ export function* getPath(action: Action<Route>) {
       });
     }
   } catch (error) {
-    console.log(error);
-    console.log(error.message);
-
     yield put({
       type: GET_PATH_FAILED,
     });

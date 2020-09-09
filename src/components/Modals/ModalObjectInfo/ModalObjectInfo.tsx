@@ -3,10 +3,15 @@ import Modal from "react-modal";
 import classnames from "classnames";
 
 import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
+import { IState as ModalsState } from "store/modals/reducer";
+import { closeModal } from "store/modals/actions";
 
 import styles from "./ModalObjectInfo.module.scss";
 
-type AppProps = any;
+type AppProps = {
+  modals: ModalsState;
+  closeModal: typeof closeModal;
+};
 
 function ModalObjectInfo(props: AppProps) {
   const {

@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useEffect } from "react";
 
 import FloorMapSvg from "components/FloorMapSvg";
-import { getPathFromDijkstra } from "algorithms/graph/Utils";
 import { IState as GraphState } from "store/graph/reducer";
 import { IState as PathState } from "store/path/reducer";
+import { IState as SearchState } from "store/search/reducer";
 import { getPath } from "store/path/actions";
 
 import Edge from "algorithms/graph/Edge";
-import dijkstra from "algorithms/graph/Dijkstra";
 
 import styles from "./Map.module.scss";
 
 type AppProps = {
   graph: GraphState;
   path: PathState;
+  search: SearchState;
   getPath: typeof getPath;
 };
 
 function Map(props: AppProps) {
   const {
-    graph: { graph, isGenerating },
+    graph: { isGenerating: isGraphGenerating },
     path: {
-      isPathPreview,
+      isGenerating: isPathGenerating,
       pathTimeline,
       dijkstra: { vertices: pathVertices, edges: pathEdges },
     },
@@ -85,7 +84,16 @@ function Map(props: AppProps) {
     }
   };
 
-  return (
+  return isGraphGenerating || isPathGenerating ? (
+    <div className={styles["LoadingScreen"]}>
+      <div className={styles["Loader"]}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  ) : (
     <div className={styles["Map"]}>
       <FloorMapSvg
         vertexRefCallback={vertexRefCallback}
