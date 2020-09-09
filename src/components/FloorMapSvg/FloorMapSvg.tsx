@@ -1274,8 +1274,13 @@ function FloorMapSvg(props: AppProps) {
             cy={386.5}
             r={4.5}
             data-vertex-key={m.v.v_95.key}
+            data-tooltip="Jesteś tutaj"
             ref={vertexRefCallback}
-            className={classNames(styles["Vertex"])}
+            className={classNames(
+              styles["Vertex"],
+              styles["StartVertex"],
+              styles["StartVertex--active"]
+            )}
           />
           <circle
             id="v_94"

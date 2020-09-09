@@ -1,12 +1,15 @@
 import { createAction } from "store/actions";
-import { INIT_GRAPH_REQUEST, GET_DIJKSTRA_REQUEST } from "./constants";
+import { INIT_GRAPH_REQUEST, SET_START_VERTEX } from "./constants";
 
 export type Route = {
   startVertexKey: string;
   endVertexKey: string;
 };
 
-export const initGraph = () => createAction(INIT_GRAPH_REQUEST);
+export const initGraph = () => {
+  return createAction(INIT_GRAPH_REQUEST);
+};
 
-export const getDijkstra = (data: Route) =>
-  createAction(GET_DIJKSTRA_REQUEST, data);
+export const setStartVertex = (startVertex: string) => {
+  return createAction(SET_START_VERTEX, startVertex);
+};

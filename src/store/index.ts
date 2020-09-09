@@ -24,6 +24,7 @@ const configureStore = () => {
 
 const store = configureStore();
 
+// Auto-update values after state changes to persist them
 store.subscribe(() => {
   const { settings } = store.getState();
 

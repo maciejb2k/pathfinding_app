@@ -2,34 +2,24 @@ import { Reducer } from "redux";
 import { Action } from "store/actions";
 
 import Graph from "algorithms/graph/Graph";
-import Vertex from "algorithms/graph/Vertex";
-import Edge from "algorithms/graph/Edge";
 
 import {
   INIT_GRAPH_REQUEST,
   INIT_GRAPH_SUCCESS,
   INIT_GRAPH_FAILED,
-  GET_DIJKSTRA_REQUEST,
-  GET_DIJKSTRA_SUCCESS,
-  GET_DIJKSTRA_FAILED,
+  SET_START_VERTEX,
 } from "./constants";
 
 export type IState = {
   readonly graph: Graph | null;
   readonly isGenerating: boolean;
-  readonly dijkstra: {
-    readonly vertices: Vertex[];
-    readonly edges: Edge[];
-  };
+  readonly startVertex: string;
 };
 
 export const initialState: IState = {
   graph: null,
   isGenerating: false,
-  dijkstra: {
-    vertices: [],
-    edges: [],
-  },
+  startVertex: "",
 };
 
 export const graph: Reducer<IState, Action> = (
@@ -53,24 +43,10 @@ export const graph: Reducer<IState, Action> = (
         ...state,
         isGenerating: false,
       };
-    case GET_DIJKSTRA_REQUEST:
+    case SET_START_VERTEX:
       return {
         ...state,
-        isGenerating: true,
-      };
-    case GET_DIJKSTRA_SUCCESS:
-      return {
-        ...state,
-        isGenerating: false,
-        dijkstra: {
-          vertices: action.payload.vertices,
-          edges: action.payload.edges,
-        },
-      };
-    case GET_DIJKSTRA_FAILED:
-      return {
-        ...state,
-        isGenerating: false,
+        startVertex: action.payload,
       };
     default:
       return state;

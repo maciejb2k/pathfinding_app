@@ -18,61 +18,67 @@
       }
 
       .ControlsSearch {
-        margin-left: 30px;
         display: flex;
-        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+        align-items: center;
 
-        .ControlsSearch-icon {
-          height: 50px;
-          width: 50px;
+        .ControlsSearch-form {
+          margin-left: 30px;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          border-bottom-left-radius: 5px;
-          border-top-left-radius: 5px;
-          background: #ffffff;
-          font-size: 0.8rem;
-          color: #1b78d0;
-          position: relative;
+          box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
 
-          &::after {
-            content: "";
-            right: 0;
-            display: block;
-            position: absolute;
-            height: 30px;
-            width: 1px;
-            background: #e1ecee;
+          .ControlsSearch-icon {
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+            background: #ffffff;
+            font-size: 0.8rem;
+            color: #1b78d0;
+            position: relative;
+
+            &::after {
+              content: "";
+              right: 0;
+              display: block;
+              position: absolute;
+              height: 30px;
+              width: 1px;
+              background: #e1ecee;
+            }
           }
-        }
 
-        .ControlsSearch-input {
-          height: 50px;
-          width: 250px;
-          font-size: 1.4rem;
-          padding: 0 20px;
+          .ControlsSearch-input {
+            height: 50px;
+            width: 250px;
+            font-size: 1.4rem;
+            padding: 0 20px;
 
-          &::placeholder {
-            color: #afafaf;
+            &::placeholder {
+              color: #afafaf;
+            }
           }
-        }
 
-        .ControlsSearch-submit {
-          height: 50px;
-          width: 50px;
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-bottom-right-radius: 5px;
-          border-top-right-radius: 5px;
-          background: #1b78d0;
-          font-size: 1.8rem;
-        }
+          .ControlsSearch-submit {
+            height: 50px;
+            width: 50px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+            background: #1b78d0;
+            font-size: 1.8rem;
+            cursor: pointer;
+          }
 
-        .ControlsSearch-input,
-        .ControlsSearch-submit {
-          border: 0;
+          .ControlsSearch-input,
+          .ControlsSearch-submit {
+            border: 0;
+          }
         }
       }
     }
@@ -112,6 +118,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
 
       &:not(:last-child) {
         margin-bottom: 5px;
@@ -136,6 +143,14 @@
 
     .ControlsButton--options {
       background: #1b78d0;
+    }
+
+    .ControlsButton--closePreview {
+      background: #e23232;
+      border-radius: 50px;
+      margin-left: 30px;
+      width: 30px;
+      height: 30px;
     }
   }
 

@@ -5,31 +5,54 @@ import {
   FiMenu,
   FiNavigation,
   FiCircle,
+  FiX,
 } from "react-icons/fi";
 import classnames from "classnames";
+import { Form, Field } from "react-final-form";
 
 import { MODAL_SETTINGS } from "components/Modals/modalTypes";
+
+import { IState as SidebarState } from "store/sidebar/reducer";
+import { IState as PathState } from "store/path/reducer";
+
 import { openModal } from "store/modals/actions";
 import { toggleSidebar } from "store/sidebar/actions";
+import { exitPathPreview } from "store/path/actions";
+import { searchProduct } from "store/search/actions";
 
 import Map from "components/Map";
 
 import styles from "./Main.module.scss";
 
 type AppProps = {
-  sidebar: {
-    isOpen: boolean;
-  };
+  sidebar: SidebarState;
+  path: PathState;
   toggleSidebar: typeof toggleSidebar;
   openModal: typeof openModal;
+  exitPathPreview: typeof exitPathPreview;
+  searchProduct: typeof searchProduct;
+};
+
+type SearchFormValues = {
+  search: string;
 };
 
 function Main(props: AppProps) {
   const {
     sidebar: { isOpen: isSidebarOpen },
+    path: { isPathPreview },
     toggleSidebar,
     openModal,
+    exitPathPreview,
+    searchProduct,
   } = props;
+
+  const onSearchSubmit = (values: SearchFormValues) => {
+    if (values.search) {
+      const { search } = values;
+      searchProduct(search);
+    }
+  };
 
   return (
     <div className={styles["Main"]}>
@@ -48,17 +71,46 @@ function Main(props: AppProps) {
             </button>
           </div>
           <div className={styles["ControlsSearch"]}>
-            <div className={styles["ControlsSearch-icon"]}>
-              <FiCircle />
-            </div>
-            <input
-              type="text"
-              className={styles["ControlsSearch-input"]}
-              placeholder="Punkt Końcowy"
+            <Form
+              onSubmit={onSearchSubmit}
+              initialValues={{ search: "" }}
+              render={({ handleSubmit, submitting, pristine }) => (
+                <form
+                  onSubmit={handleSubmit}
+                  className={styles["ControlsSearch-form"]}
+                >
+                  <div className={styles["ControlsSearch-icon"]}>
+                    <FiCircle />
+                  </div>
+                  <Field<string>
+                    name="search"
+                    component="input"
+                    type="text"
+                    className={styles["ControlsSearch-input"]}
+                    placeholder="Szukany produkt"
+                  />
+                  <button
+                    className={styles["ControlsSearch-submit"]}
+                    disabled={submitting || pristine}
+                  >
+                    <FiNavigation />
+                  </button>
+                </form>
+              )}
             />
-            <button className={styles["ControlsSearch-submit"]}>
-              <FiNavigation />
-            </button>
+            {isPathPreview ? (
+              <button
+                type="submit"
+                className={classnames({
+                  [styles["ControlsButton"]]: true,
+                  [styles["ControlsButton--closePreview"]]: true,
+                })}
+                title="Close path preview."
+                onClick={exitPathPreview}
+              >
+                <FiX />
+              </button>
+            ) : null}
           </div>
         </div>
         <div className={styles["ControlsUpperRight"]}></div>

@@ -10,4 +10,6 @@ export const openModal = <T>(data: ModalPayload<T>) => {
   return createAction(OPEN_MODAL, data);
 };
 
-export const closeModal = () => createAction(CLOSE_MODAL);
+export const closeModal = () => {
+  return createAction(CLOSE_MODAL);
+};

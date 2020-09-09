@@ -4,19 +4,23 @@ import { AppState } from "store/rootReducer";
 import { Action } from "store/actions";
 import { Route } from "store/graph/actions";
 
+import { gsap } from "gsap";
 import { getPathFromDijkstra } from "algorithms/graph/Utils";
 import dijkstra from "algorithms/graph/Dijkstra";
 
 import {
-  GET_DIJKSTRA_REQUEST,
-  GET_DIJKSTRA_SUCCESS,
-  GET_DIJKSTRA_FAILED,
+  GET_PATH_REQUEST,
+  GET_PATH_SUCCESS,
+  GET_PATH_FAILED,
+  EXIT_PATH_PREVIEW_REQUEST,
+  EXIT_PATH_PREVIEW_SUCCESS,
 } from "./constants";
 import Vertex from "algorithms/graph/Vertex";
 
 export function* getPath(action: Action<Route>) {
   try {
     if (action.payload) {
+      console.log(action);
       const { graph } = yield select((state: AppState) => state.graph);
       const { startVertexKey, endVertexKey } = action.payload;
 
@@ -30,23 +34,40 @@ export function* getPath(action: Action<Route>) {
         endVertex
       );
 
+      const timeline = gsap.timeline({
+        paused: true,
+      });
+
       yield put({
-        type: GET_DIJKSTRA_SUCCESS,
+        type: GET_PATH_SUCCESS,
         payload: {
           vertices,
           edges,
+          timeline,
         },
       });
     }
   } catch (error) {
     console.log(error);
+    console.log(error.message);
 
     yield put({
-      type: GET_DIJKSTRA_FAILED,
+      type: GET_PATH_FAILED,
     });
   }
 }
+export function* resetPath() {
+  try {
+    const { pathTimeline } = yield select((state: AppState) => state.path);
+    pathTimeline.reverse();
+
+    yield put({
+      type: EXIT_PATH_PREVIEW_SUCCESS,
+    });
+  } catch (error) {}
+}
 
 export function* pathRootSaga() {
-  yield all([takeLatest(GET_DIJKSTRA_REQUEST, getPath)]);
+  yield all([takeLatest(GET_PATH_REQUEST, getPath)]);
+  yield all([takeLatest(EXIT_PATH_PREVIEW_REQUEST, resetPath)]);
 }

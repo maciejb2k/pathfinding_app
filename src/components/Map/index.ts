@@ -1,18 +1,19 @@
 import { compose } from "redux";
 import { connect } from "react-redux";
 
-import { getDijkstra } from "store/graph/actions";
+import { getPath } from "store/path/actions";
 
 import { AppState } from "store/rootReducer";
 
 import Map from "./Map";
 
-const mapStateToProps = ({ graph }: AppState) => ({
+const mapStateToProps = ({ graph, path }: AppState) => ({
   graph,
+  path,
 });
 
 const mapDispatchToProps = {
-  getDijkstra,
+  getPath,
 };
 
 const enhancer = compose(connect(mapStateToProps, mapDispatchToProps));

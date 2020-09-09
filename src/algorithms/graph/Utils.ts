@@ -3,7 +3,7 @@ import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
 import { mapData } from "components/Map/mapData";
 
-const getGraphFromJSON = (map: mapData, isDirected = false) => {
+export const getGraphFromJSON = (map: mapData, isDirected = false) => {
   const graph = new Graph(isDirected);
 
   Object.values(map.v).forEach((v: any) => {
@@ -29,7 +29,7 @@ const getGraphFromJSON = (map: mapData, isDirected = false) => {
   return graph;
 };
 
-const getPathFromDijkstra = (
+export const getPathFromDijkstra = (
   edgesList: { [edgeName: string]: Edge },
   previousVertices: {
     [vertexKey: string]: Vertex | null;
@@ -70,4 +70,10 @@ const getPathFromDijkstra = (
   };
 };
 
-export { getPathFromDijkstra, getGraphFromJSON };
+export const objectToVertexKey = (objectKey: string) => {
+  const map: mapData = mapData;
+
+  if (map.o[objectKey]) {
+    return map.o[objectKey].ref;
+  }
+};

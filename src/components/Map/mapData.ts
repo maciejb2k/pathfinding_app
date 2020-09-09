@@ -1,10 +1,28 @@
-interface mapData {
-  v: { key: any };
-  e: { key: any };
-  o: { key: any };
-}
+export type mapData = {
+  v: {
+    [key: string]: {
+      key: string;
+      options: {
+        ref?: string | null;
+        objectId?: string;
+      };
+    };
+  };
+  e: {
+    [key: string]: {
+      key: string;
+      weight: number;
+    };
+  };
+  o: {
+    [key: string]: {
+      key: string;
+      ref: string;
+    };
+  };
+};
 
-const mapData: any = {
+export const mapData = {
   v: {
     v_1: {
       key: "v_1",
@@ -16,14 +34,14 @@ const mapData: any = {
       key: "v_2",
       options: {
         ref: null,
-        object: "o_17",
+        objectId: "o_17",
       },
     },
     v_3: {
       key: "v_3",
       options: {
         ref: null,
-        object: "o_29",
+        objectId: "o_29",
       },
     },
     v_4: {
@@ -42,7 +60,7 @@ const mapData: any = {
       key: "v_6",
       options: {
         ref: null,
-        object: "o_7",
+        objectId: "o_7",
       },
     },
     v_7: {
@@ -61,14 +79,14 @@ const mapData: any = {
       key: "v_9",
       options: {
         ref: null,
-        object: "o_8",
+        objectId: "o_8",
       },
     },
     v_10: {
       key: "v_10",
       options: {
         ref: null,
-        object: "o_2",
+        objectId: "o_2",
       },
     },
     v_11: {
@@ -81,7 +99,7 @@ const mapData: any = {
       key: "v_12",
       options: {
         ref: null,
-        object: "o_22",
+        objectId: "o_22",
       },
     },
     v_13: {
@@ -94,7 +112,7 @@ const mapData: any = {
       key: "v_14",
       options: {
         ref: null,
-        object: "o_4",
+        objectId: "o_4",
       },
     },
     v_15: {
@@ -107,7 +125,7 @@ const mapData: any = {
       key: "v_16",
       options: {
         ref: null,
-        object: "o_31",
+        objectId: "o_31",
       },
     },
     v_17: {
@@ -120,7 +138,7 @@ const mapData: any = {
       key: "v_18",
       options: {
         ref: null,
-        object: "o_23",
+        objectId: "o_23",
       },
     },
     v_19: {
@@ -145,14 +163,14 @@ const mapData: any = {
       key: "v_22",
       options: {
         ref: null,
-        object: "o_39",
+        objectId: "o_39",
       },
     },
     v_23: {
       key: "v_23",
       options: {
         ref: null,
-        object: "o_13",
+        objectId: "o_13",
       },
     },
     v_24: {
@@ -165,7 +183,7 @@ const mapData: any = {
       key: "v_25",
       options: {
         ref: null,
-        object: "o_32",
+        objectId: "o_32",
       },
     },
     v_26: {
@@ -178,14 +196,14 @@ const mapData: any = {
       key: "v_27",
       options: {
         ref: null,
-        object: "o_15",
+        objectId: "o_15",
       },
     },
     v_28: {
       key: "v_28",
       options: {
         ref: null,
-        object: "o_16",
+        objectId: "o_16",
       },
     },
     v_29: {
@@ -210,7 +228,7 @@ const mapData: any = {
       key: "v_32",
       options: {
         ref: null,
-        object: "o_18",
+        objectId: "o_18",
       },
     },
     v_33: {
@@ -228,7 +246,7 @@ const mapData: any = {
     v_35: {
       key: "v_35",
       options: {
-        ref: null,
+        ref: "o_41",
       },
     },
     v_36: {
@@ -241,7 +259,7 @@ const mapData: any = {
       key: "v_37",
       options: {
         ref: null,
-        object: "o_20",
+        objectId: "o_20",
       },
     },
     v_38: {
@@ -254,14 +272,14 @@ const mapData: any = {
       key: "v_39",
       options: {
         ref: null,
-        object: "o_21",
+        objectId: "o_21",
       },
     },
     v_40: {
       key: "v_40",
       options: {
         ref: null,
-        object: "o_19",
+        objectId: "o_19",
       },
     },
     v_41: {
@@ -298,7 +316,7 @@ const mapData: any = {
       key: "v_46",
       options: {
         ref: null,
-        object: "o_28",
+        objectId: "o_28",
       },
     },
     v_47: {
@@ -311,21 +329,21 @@ const mapData: any = {
       key: "v_48",
       options: {
         ref: null,
-        object: "o_33",
+        objectId: "o_33",
       },
     },
     v_49: {
       key: "v_49",
       options: {
         ref: null,
-        object: "o_34",
+        objectId: "o_34",
       },
     },
     v_50: {
       key: "v_50",
       options: {
         ref: null,
-        object: "o_30",
+        objectId: "o_30",
       },
     },
     v_51: {
@@ -350,7 +368,7 @@ const mapData: any = {
       key: "v_54",
       options: {
         ref: null,
-        object: "o_26",
+        objectId: "o_26",
       },
     },
     v_55: {
@@ -369,7 +387,7 @@ const mapData: any = {
       key: "v_57",
       options: {
         ref: null,
-        object: "o_25",
+        objectId: "o_25",
       },
     },
     v_58: {
@@ -382,14 +400,14 @@ const mapData: any = {
       key: "v_59",
       options: {
         ref: null,
-        object: "o_36",
+        objectId: "o_36",
       },
     },
     v_60: {
       key: "v_60",
       options: {
         ref: null,
-        object: "o_27",
+        objectId: "o_27",
       },
     },
     v_61: {
@@ -408,7 +426,7 @@ const mapData: any = {
       key: "v_63",
       options: {
         ref: null,
-        object: "o_38",
+        objectId: "o_38",
       },
     },
     v_64: {
@@ -439,7 +457,7 @@ const mapData: any = {
       key: "v_68",
       options: {
         ref: null,
-        object: "o_6",
+        objectId: "o_6",
       },
     },
     v_69: {
@@ -452,14 +470,14 @@ const mapData: any = {
       key: "v_70",
       options: {
         ref: null,
-        object: "o_14",
+        objectId: "o_14",
       },
     },
     v_71: {
       key: "v_71",
       options: {
         ref: null,
-        object: "o_24",
+        objectId: "o_24",
       },
     },
     v_72: {
@@ -472,7 +490,7 @@ const mapData: any = {
       key: "v_73",
       options: {
         ref: null,
-        object: "o_9",
+        objectId: "o_9",
       },
     },
     v_74: {
@@ -491,21 +509,21 @@ const mapData: any = {
       key: "v_76",
       options: {
         ref: null,
-        object: "o_3",
+        objectId: "o_3",
       },
     },
     v_77: {
       key: "v_77",
       options: {
         ref: null,
-        object: "o_10",
+        objectId: "o_10",
       },
     },
     v_78: {
       key: "v_78",
       options: {
         ref: null,
-        object: "o_40",
+        objectId: "o_40",
       },
     },
     v_79: {
@@ -517,7 +535,7 @@ const mapData: any = {
     v_80: {
       key: "v_80",
       options: {
-        ref: null,
+        ref: "o_42",
       },
     },
     v_81: {
@@ -536,7 +554,7 @@ const mapData: any = {
       key: "v_83",
       options: {
         ref: null,
-        object: "o_35",
+        objectId: "o_35",
       },
     },
     v_84: {
@@ -549,7 +567,7 @@ const mapData: any = {
       key: "v_85",
       options: {
         ref: null,
-        object: "o_37",
+        objectId: "o_37",
       },
     },
     v_86: {
@@ -562,14 +580,14 @@ const mapData: any = {
       key: "v_87",
       options: {
         ref: null,
-        object: "o_11",
+        objectId: "o_11",
       },
     },
     v_88: {
       key: "v_88",
       options: {
         ref: null,
-        object: "o_5",
+        objectId: "o_5",
       },
     },
     v_89: {
@@ -582,7 +600,7 @@ const mapData: any = {
       key: "v_90",
       options: {
         ref: null,
-        object: "o_1",
+        objectId: "o_1",
       },
     },
     v_91: {
@@ -595,14 +613,14 @@ const mapData: any = {
       key: "v_92",
       options: {
         ref: null,
-        object: "o_43",
+        objectId: "o_43",
       },
     },
     v_93: {
       key: "v_93",
       options: {
         ref: null,
-        object: "o_12",
+        objectId: "o_12",
       },
     },
     v_94: {
@@ -1059,140 +1077,175 @@ const mapData: any = {
   o: {
     o_1: {
       key: "o_1",
+      ref: "v_90",
     },
     o_2: {
       key: "o_2",
+      ref: "v_10",
     },
     o_3: {
       key: "o_3",
+      ref: "v_76",
     },
     o_4: {
       key: "o_4",
+      ref: "v_14",
     },
     o_5: {
       key: "o_5",
+      ref: "v_88",
     },
     o_6: {
       key: "o_6",
+      ref: "v_68",
     },
     o_7: {
       key: "o_7",
+      ref: "v_6",
     },
     o_8: {
       key: "o_8",
+      ref: "v_9",
     },
     o_9: {
       key: "o_9",
+      ref: "v_73",
     },
     o_10: {
       key: "o_10",
+      ref: "v_77",
     },
     o_11: {
       key: "o_11",
+      ref: "v_87",
     },
     o_12: {
       key: "o_12",
+      ref: "v_93",
     },
     o_13: {
       key: "o_13",
+      ref: "v_23",
     },
     o_14: {
       key: "o_14",
+      ref: "v_70",
     },
     o_15: {
       key: "o_15",
+      ref: "v_27",
     },
     o_16: {
       key: "o_16",
+      ref: "v_28",
     },
     o_17: {
       key: "o_17",
+      ref: "v_2",
     },
     o_18: {
       key: "o_18",
+      ref: "v_32",
     },
     o_19: {
       key: "o_19",
+      ref: "v_40",
     },
     o_20: {
       key: "o_20",
+      ref: "v_37",
     },
     o_21: {
       key: "o_21",
+      ref: "v_39",
     },
     o_22: {
       key: "o_22",
+      ref: "v_12",
     },
     o_23: {
       key: "o_23",
+      ref: "v_18",
     },
     o_24: {
       key: "o_24",
+      ref: "v_71",
     },
     o_25: {
       key: "o_25",
+      ref: "v_57",
     },
     o_26: {
       key: "o_26",
+      ref: "v_54",
     },
     o_27: {
       key: "o_27",
+      ref: "v_60",
     },
     o_28: {
       key: "o_28",
+      ref: "v_46",
     },
     o_29: {
       key: "o_29",
+      ref: "v_3",
     },
     o_30: {
       key: "o_30",
+      ref: "v_50",
     },
     o_31: {
       key: "o_31",
+      ref: "v_16",
     },
     o_32: {
       key: "o_32",
+      ref: "v_25",
     },
     o_33: {
       key: "o_33",
+      ref: "v_48",
     },
     o_34: {
       key: "o_34",
+      ref: "v_49",
     },
     o_35: {
       key: "o_35",
+      ref: "v_83",
     },
     o_36: {
       key: "o_36",
+      ref: "v_59",
     },
     o_37: {
       key: "o_37",
+      ref: "v_85",
     },
     o_38: {
       key: "o_38",
+      ref: "v_63",
     },
     o_39: {
       key: "o_39",
+      ref: "v_22",
     },
     o_40: {
       key: "o_40",
+      ref: "v_78",
     },
     o_41: {
       key: "o_41",
+      ref: "v_35",
     },
     o_42: {
       key: "o_42",
+      ref: "v_80",
     },
     o_43: {
       key: "o_43",
-    },
-    o_44: {
-      key: "o_44",
-    },
-    o_45: {
-      key: "o_45",
+      ref: "v_92",
     },
   },
 };
-
-export { mapData };

@@ -104,9 +104,15 @@
   "products": [
     {
       "id": 1,
-      "name": "Żubr",
+      "name": "żubr",
       "desc": "Walisz 1 żubra i kładziesz się na dywan.",
       "objectId": "o_1"
+    },
+    {
+      "id": 2,
+      "name": "sok",
+      "desc": "",
+      "objectId": "o_10"
     }
   ],
   "object-to-category": [
