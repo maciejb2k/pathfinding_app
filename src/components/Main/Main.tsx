@@ -8,6 +8,8 @@ import {
   FiX,
 } from "react-icons/fi";
 import classnames from "classnames";
+import Loader from "react-loader-spinner";
+import axios from "axios";
 
 import { capitalize } from "utils/helpers";
 
@@ -56,12 +58,63 @@ function Main(props: AppProps) {
   const [productPreviewName, setProductPreview] = useState("");
   const [product, setProduct] = useState("");
 
+  const [isAutocomplete, setIsAutocomplete] = useState(false);
+  const [isAutocompleteFetching, setIsAutocompleteFetching] = useState(false);
+  const [searchAutocomplete, setSearchAutocomplete] = useState([]);
+
   const pathPreviewButton = useRef<HTMLButtonElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
+
+  // TODO - Add a11y keyboard support for autocomplete
 
   const focusSearchInput = () => {
     if (searchInput && searchInput.current) {
       searchInput.current.focus();
+    }
+  };
+
+  const fetchAutocomplete = async (product: string) => {
+    setIsAutocompleteFetching(true);
+
+    const { data: productsData } = await axios.get(
+      `http://localhost:3001/products?name_like=${product}`
+    );
+
+    setIsAutocompleteFetching(false);
+
+    return productsData;
+  };
+
+  const onSearchFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (product) {
+      setIsAutocomplete(true);
+    }
+  };
+
+  const onSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    setProduct(value);
+
+    if (value) {
+      setIsAutocomplete(true);
+      const result = await fetchAutocomplete(value);
+      setSearchAutocomplete(result);
+    } else {
+      setIsAutocomplete(false);
+    }
+  };
+
+  const onSearchBlur = (e: React.FocusEvent) => {
+    e.preventDefault();
+    setIsAutocomplete(false);
+  };
+
+  const autocompleteInput = (e: React.MouseEvent<HTMLLIElement>) => {
+    const value = e.currentTarget.textContent;
+    if (searchInput.current && value) {
+      searchInput.current.value = value;
+      setProduct(value);
     }
   };
 
@@ -73,6 +126,7 @@ function Main(props: AppProps) {
     }
 
     searchProduct(product.toLowerCase().trim());
+    setIsAutocomplete(false);
 
     if (pathPreviewButton && pathPreviewButton.current) {
       pathPreviewButton.current.focus();
@@ -82,6 +136,8 @@ function Main(props: AppProps) {
       searchInput.current.value = "";
       setProduct("");
     }
+
+    return true;
   };
 
   const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -123,22 +179,56 @@ function Main(props: AppProps) {
               <div className={styles["ControlsSearch-icon"]}>
                 <FiCircle />
               </div>
-              <input
-                name="search"
-                type="text"
-                className={styles["ControlsSearch-input"]}
-                placeholder="Szukany produkt"
-                onChange={(e) => setProduct(e.target.value)}
-                id="SearchInput"
-                ref={searchInput}
-              />
+              <div className={styles["ControlsSearch-inputGroup"]}>
+                <input
+                  name="search"
+                  type="text"
+                  className={styles["ControlsSearch-input"]}
+                  placeholder="Szukany produkt"
+                  id="SearchInput"
+                  onFocus={onSearchFocus}
+                  onBlur={onSearchBlur}
+                  onChange={onSearchChange}
+                  ref={searchInput}
+                />
+                {isAutocomplete ? (
+                  <div className={styles["Autocomplete"]}>
+                    {isAutocompleteFetching ? (
+                      <div className={styles["Autocomplete-loader"]}>
+                        <Loader
+                          type="TailSpin"
+                          color="#1b78d0"
+                          height={20}
+                          width={20}
+                        />
+                      </div>
+                    ) : searchAutocomplete.length ? (
+                      <ul className={styles["Autocomplete-list"]}>
+                        {searchAutocomplete.map((item: any) => (
+                          <li
+                            key={item.id}
+                            onMouseDown={autocompleteInput}
+                            className={styles["Autocomplete-listItem"]}
+                          >
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className={styles["Autocomplete-empty"]}>
+                        Brak rezultatów
+                      </p>
+                    )}
+                  </div>
+                ) : null}
+              </div>
               <button
                 className={classnames({
                   [styles["ControlsSearch-submit"]]: true,
                   [styles["ControlsSearch-submit--disabled"]]:
                     isPathPreview || isEditMode,
                 })}
-                disabled={!product || isPathPreview}
+                disabled={isPathPreview}
               >
                 <FiNavigation />
               </button>

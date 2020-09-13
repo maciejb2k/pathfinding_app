@@ -8,24 +8,15 @@
 .Vertex {
   opacity: 0;
   fill: #e4e4e4;
+  cursor: pointer;
   position: relative;
-
-  &:after {
-    content: "";
-    display: block;
-    background: red;
-    width: 50px;
-    height: 50px;
-    z-index: 100;
-    position: absolute;
-  }
 }
 
 .Vertex--active {
   opacity: 1;
-  cursor: pointer;
   position: relative;
   fill: #2ecc71;
+  cursor: default;
 }
 
 .Edge {
@@ -42,8 +33,4 @@
     cursor: pointer;
     fill: #b2d5f6;
   }
-}
-
-.Object--active {
-  fill: red;
 }

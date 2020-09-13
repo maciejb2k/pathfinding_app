@@ -27,7 +27,6 @@ function ModalObjectInfo(props: AppProps) {
   const [isFetching, setIsFetching] = useState(false);
 
   const [categories, setCategoriesData] = useState<any>({});
-  const [objectToCategory, setObjectToCategoryData] = useState<any>({});
   const [products, setProductsData] = useState<any>([]);
 
   useEffect(() => {
@@ -44,7 +43,6 @@ function ModalObjectInfo(props: AppProps) {
         `http://localhost:3001/object-to-category?objectId=${data}`
       );
       const objectToCategoryData = apiArrayToObject(objectToCategoryFetch);
-      setObjectToCategoryData(objectToCategoryData);
 
       const { data: categoriesFetch } = await axios.get(
         `http://localhost:3001/categories?id=${objectToCategoryData.categoryId}`
@@ -89,26 +87,34 @@ function ModalObjectInfo(props: AppProps) {
           <header className={styles["ObjectHeader"]}>
             <h3 className={styles["ObjectHeader-title"]}>{categories.name}</h3>
           </header>
+          {/* TODO - Types */}
           <div className={styles["ObjectBody"]}>
             {!products.length ? (
               <p className={styles["Object-emptyList"]}>Brak produktów</p>
             ) : (
               <ul className={styles["ObjectList"]}>
-                {products.map((product: any) => (
-                  <li className={styles["ObjectList-item"]} key={product.id}>
-                    <div className={styles["ObjectList-itemInfo"]}>
-                      <h4 className={styles["ObjectList-itemTitle"]}>
-                        {capitalize(product.name)}
-                      </h4>
-                      <p className={styles["ObjectList-itemDesc"]}>
-                        {capitalize(product.desc)}
+                {products.map(
+                  (product: {
+                    id: string;
+                    name: string;
+                    desc: string;
+                    price: string;
+                  }) => (
+                    <li className={styles["ObjectList-item"]} key={product.id}>
+                      <div className={styles["ObjectList-itemInfo"]}>
+                        <h4 className={styles["ObjectList-itemTitle"]}>
+                          {capitalize(product.name)}
+                        </h4>
+                        <p className={styles["ObjectList-itemDesc"]}>
+                          {capitalize(product.desc)}
+                        </p>
+                      </div>
+                      <p className={styles["ObjectList-itemPrice"]}>
+                        {product.price} zł
                       </p>
-                    </div>
-                    <p className={styles["ObjectList-itemPrice"]}>
-                      {product.price} zł
-                    </p>
-                  </li>
-                ))}
+                    </li>
+                  )
+                )}
               </ul>
             )}
           </div>

@@ -131,13 +131,22 @@
       .CategoryHeader-title {
         font-weight: 700;
         font-size: 2.4rem;
+        text-transform: uppercase;
 
         .CategoryHeader-results {
           font-weight: 400;
           font-size: 1.6rem;
           padding-left: 8px;
+          text-transform: lowercase;
         }
       }
+    }
+
+    .Categories-loader {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .Category {
@@ -164,6 +173,7 @@
             flex-direction: column;
             justify-content: center;
             padding-left: 15px;
+            text-transform: capitalize;
 
             .CategoryItem-title {
               font-size: 1.6rem;

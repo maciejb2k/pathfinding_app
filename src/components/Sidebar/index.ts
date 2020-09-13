@@ -7,8 +7,9 @@ import { AppState } from "store/rootReducer";
 
 import Sidebar from "./Sidebar";
 
-const mapStateToProps = ({ sidebar }: AppState) => ({
-  storeState: sidebar,
+const mapStateToProps = ({ sidebar, api }: AppState) => ({
+  sidebar,
+  api,
 });
 
 const mapDispatchToProps = {

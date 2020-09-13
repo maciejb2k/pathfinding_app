@@ -1,21 +1,75 @@
-import React, { useState } from "react";
-import { FiSearch, FiChevronRight } from "react-icons/fi";
+import React, { useState, useEffect } from "react";
+import { FiChevronRight } from "react-icons/fi";
 import classnames from "classnames";
+import Loader from "react-loader-spinner";
+
+import { IState as SidebarState } from "store/sidebar/reducer";
+import { IState as ApiState } from "store/api/reducer";
 
 import styles from "./Sidebar.module.scss";
 
 type AppProps = {
-  storeState: {
-    isOpen: boolean;
-  };
+  sidebar: SidebarState;
+  api: ApiState;
+};
+
+const tabCategories = {
+  az: "a-z",
+  categories: "categories",
 };
 
 function Sidebar(props: AppProps) {
   const {
-    storeState: { isOpen },
+    sidebar: { isOpen },
+    api: { products, categories, objectToCategory, isFetching },
   } = props;
 
-  const [activeTab, setActiveTab] = useState<string>("a-z");
+  const [activeTab, setActiveTab] = useState<string>(tabCategories.az);
+
+  const [parsedProducts, setParsedProducts] = useState<any>({});
+
+  console.log(parsedProducts);
+
+  useEffect(() => {
+    const parseProductsAZ = () => {
+      if (products) {
+        const data: any = [];
+
+        products.forEach((product: any) => {
+          let firstLetter = product.name[0];
+
+          if (!data[firstLetter]) {
+            data[firstLetter] = {
+              len: 0,
+              category: "",
+              results: [],
+            };
+          }
+
+          objectToCategory.forEach((objToCat: any) => {
+            if (product.objectId === objToCat.objectId) {
+              categories.forEach((category: any) => {
+                if (category.id === objToCat.categoryId) {
+                  data[firstLetter].category = category.name;
+                }
+              });
+            }
+          });
+
+          data[firstLetter].results.push(product);
+          data[firstLetter].len = data[firstLetter].len + 1;
+        });
+
+        setParsedProducts(data);
+      }
+    };
+
+    if (!isFetching) {
+      if (activeTab === tabCategories.az) {
+        parseProductsAZ();
+      }
+    }
+  }, [activeTab, isFetching, categories, products, objectToCategory]);
 
   return (
     <div
@@ -30,7 +84,7 @@ function Sidebar(props: AppProps) {
         </h1>
         <p className={styles["Header-text"]}>ul. Przykładowa 123, Rzeszów</p>
       </header>
-      <div className={styles["Search"]}>
+      {/* <div className={styles["Search"]}>
         <input
           type="text"
           className={styles["Search-input"]}
@@ -39,23 +93,24 @@ function Sidebar(props: AppProps) {
         <button className={styles["Search-submit"]}>
           <FiSearch className={styles["Search-submitIcon"]} />
         </button>
-      </div>
+      </div> */}
       <div className={styles["Buttons"]} role="tablist">
         <button
           className={classnames({
             [styles["Button"]]: true,
-            [styles["Button--active"]]: activeTab === "a-z",
+            [styles["Button--active"]]: activeTab === tabCategories.az,
           })}
-          onClick={() => setActiveTab("a-z")}
+          onClick={() => setActiveTab(tabCategories.az)}
         >
           Alfabetycznie
         </button>
         <button
           className={classnames({
             [styles["Button"]]: true,
-            [styles["Button--active"]]: activeTab === "categories",
+            [styles["Button--active"]]: activeTab === tabCategories.categories,
           })}
-          onClick={() => setActiveTab("categories")}
+          onClick={() => setActiveTab(tabCategories.categories)}
+          disabled
         >
           Kategoriami
         </button>
@@ -66,54 +121,46 @@ function Sidebar(props: AppProps) {
           [styles["Categories--active"]]: activeTab === "a-z",
         })}
       >
-        <div className={styles["Category"]}>
-          <header className={styles["CategoryHeader"]}>
-            <h2 className={styles["CategoryHeader-title"]}>
-              A
-              <span className={styles["CategoryHeader-results"]}>
-                - 3 wyników
-              </span>
-            </h2>
-          </header>
-          <div className={styles["CategoryGroup"]}>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Ananas</h3>
-                <p className={styles["CategoryItem-subTitle"]}>
-                  Owoce i warzywa
-                </p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Agrest</h3>
-                <p className={styles["CategoryItem-subTitle"]}>
-                  Owoce i warzywa
-                </p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Arbuz</h3>
-                <p className={styles["CategoryItem-subTitle"]}>
-                  Owoce i warzywa
-                </p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
+        {isFetching ? (
+          <div className={styles["Categories-loader"]}>
+            <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
           </div>
-        </div>
+        ) : (
+          <>
+            {Object.keys(parsedProducts).map(
+              (letter: string, index: number) => (
+                <div key={index} className={styles["Category"]}>
+                  <header className={styles["CategoryHeader"]}>
+                    <h2 className={styles["CategoryHeader-title"]}>
+                      {letter}
+                      <span className={styles["CategoryHeader-results"]}>
+                        - {parsedProducts[letter].len} wyników
+                      </span>
+                    </h2>
+                  </header>
+                  <div className={styles["CategoryGroup"]}>
+                    {parsedProducts[letter].results.map((item: any) => (
+                      <div key={item.id} className={styles["CategoryItem"]}>
+                        <div className={styles["CategoryItem-photo"]}></div>
+                        <div className={styles["CategoryItem-text"]}>
+                          <h3 className={styles["CategoryItem-title"]}>
+                            {item.name}
+                          </h3>
+                          <p className={styles["CategoryItem-subTitle"]}>
+                            {parsedProducts[letter].category}
+                          </p>
+                        </div>
+                        <div className={styles["CategoryItem-link"]}>
+                          <FiChevronRight />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
+          </>
+        )}
       </div>
       <div
         className={classnames({
