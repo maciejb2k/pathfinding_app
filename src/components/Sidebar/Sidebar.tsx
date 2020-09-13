@@ -25,10 +25,7 @@ function Sidebar(props: AppProps) {
   } = props;
 
   const [activeTab, setActiveTab] = useState<string>(tabCategories.az);
-
   const [parsedProducts, setParsedProducts] = useState<any>({});
-
-  console.log(parsedProducts);
 
   useEffect(() => {
     const parseProductsAZ = () => {

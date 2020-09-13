@@ -17,5 +17,6 @@ git clone https://github.com/maciejb2k/wayfinding-js.git
 Install and run, this command will run in parallel dev server and json-server:
 
 ```
+yarn install
 yarn start
 ```

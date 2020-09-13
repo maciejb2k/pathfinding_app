@@ -34,8 +34,6 @@ function* fetchData() {
       objectToCategory: objectToCategoryData,
     };
 
-    console.log(payload);
-
     yield put({
       type: FETCH_API_SUCCESS,
       payload,
