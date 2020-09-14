@@ -59,6 +59,11 @@ export function* resetPath() {
     const { pathTimeline } = yield select((state: AppState) => state.path);
     pathTimeline.reverse();
 
+    // GSAP isn't removing inline styles after reversing,
+    // so i have to manually add and remove this class,
+    // to allow theme switching.
+    pathTimeline._last._targets[0].classList.remove("Object--active");
+
     yield put({
       type: EXIT_PATH_PREVIEW_SUCCESS,
     });

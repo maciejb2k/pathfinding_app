@@ -56,21 +56,11 @@ function Map(props: AppProps) {
       if (objectsRefs && lastVertex.options && lastVertex.options.objectId) {
         const mapObject = objectsRefs.current[lastVertex.options.objectId];
 
-        let objectColors = {
-          fill: "#C7FFCC",
-          stroke: "#4FBA5A",
-        };
-
-        if (document.body.dataset.theme === "dark") {
-          objectColors = {
-            fill: "#72ec7d",
-            stroke: "#4fba5a",
-          };
-        }
-
         pathTimeline.to(mapObject, {
           duration: 0.03,
-          ...objectColors,
+          onComplete: () => {
+            mapObject.classList.add("Object--active");
+          },
         });
       }
 
