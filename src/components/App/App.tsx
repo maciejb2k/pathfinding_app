@@ -23,7 +23,7 @@ function App(props: AppProps) {
   } = props;
 
   useEffect(() => {
-    document.title = "Wayfinding";
+    document.title = "Pathfinding";
   }, []);
 
   useEffect(() => {

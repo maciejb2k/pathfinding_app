@@ -1,4 +1,4 @@
-# Wayfinding - Interactive SVG Map
+# Pathfinding - Interactive SVG Map
 
 My goal of this project was to implement from scratch Graph data structure and Dijkstra algorithm in Typescript.
 
