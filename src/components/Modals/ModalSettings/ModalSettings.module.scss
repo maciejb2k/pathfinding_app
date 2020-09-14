@@ -4,7 +4,7 @@
   width: 550px;
   padding: 30px 30px;
   border-radius: 7px;
-  background: #ffffff;
+  background: var(--modal-bg);
   outline: 0;
 
   .Settings {
@@ -12,6 +12,7 @@
       font-size: 2.6rem;
       font-weight: 400;
       margin-bottom: 30px;
+      color: var(--modal-text);
 
       &::after {
         content: "";
@@ -19,7 +20,7 @@
         margin-top: 10px;
         width: 100%;
         height: 1px;
-        background: #e1e2e2;
+        background: var(--modal-settings-titleUnderline);
       }
     }
 
@@ -31,9 +32,11 @@
       .SettingsItem-info {
         .SettingsItem-title {
           font-weight: 600;
+          color: var(--modal-text);
         }
+
         .SettingsItem-text {
-          color: #2e2e2e;
+          color: var(--modal-text-light);
           font-size: 1.4rem;
         }
       }
@@ -44,7 +47,9 @@
       }
 
       .SelectLang {
-        border: 1px solid #e1e2e2;
+        border: 1px solid var(--modal-settings-langBorder);
+        background: var(--modal-settings-langBg);
+        color: var(--modal-settings-langColor);
         padding: 10px;
         border-radius: 5px;
       }
@@ -52,7 +57,7 @@
       .Switch {
         .Switch-input {
           &:checked + .Switch-label {
-            background: #1b78d0;
+            background: var(--primary);
           }
 
           &:checked + .Switch-label:after {
@@ -61,7 +66,7 @@
           }
 
           &:focus + .Switch-label {
-            outline: #5d9dd5 solid 2px;
+            outline: var(--modal-switch-outline) solid 2px;
           }
         }
 
@@ -69,7 +74,7 @@
           cursor: pointer;
           width: 60px;
           height: 30px;
-          background: #e1e2e2;
+          background: var(--modal-switch-bg);
           display: block;
           border-radius: 100px;
           position: relative;
@@ -81,15 +86,11 @@
             left: 5px;
             width: 20px;
             height: 20px;
-            background: #fff;
+            background: var(--modal-switch-dot);
             border-radius: 90px;
             transition: 0.3s;
           }
         }
-      }
-
-      .ThemeSwitch-input:focus + .ThemeSwitch-label {
-        background: red;
       }
 
       &:not(:last-child) {

@@ -2,10 +2,193 @@
 
 // Default colors
 :root {
-  --color-bg: #{$color-bg--light};
+  --primary-white: #ffffff;
+  --green: #2ecc71;
+
+  --primary: #1b78d0;
+  --primary--light: #54a8f8;
+  --primary--dark: #000000;
+
+  --floor: #ffffff;
+  --floor-stroke: #f8f8f8;
+
+  --vertex: #e4e4e4;
+  --object-fill: #d6ebff;
+  --object-fill--hover: #b2d5f6;
+  --object-stroke: #87b6e2;
+
+  --map-bg: #f3f7fa;
+
+  --close-red: #db3b3b;
+
+  --input-bg: #ffffff;
+  --input-separator: #f1f1f1;
+  --input-placeholder: #afafaf;
+
+  --searchProduct-icon: #ffffff;
+  --searchProduct-input: #ffffff;
+  --searchProduct-input-color: #000000;
+  --searchProduct-input-placeholder: #ffffff;
+  --searchProduct-submit-color: #ffffff;
+  --searchProduct-submit-bg: #1b78d0;
+
+  --autocomplete-bg: #ffffff;
+  --autocomplete-text: #6c6c6c;
+  --autocomplete-hover: #f7fbff;
+  --autocomplete-borderTop: #e1ecee;
+  --autocomplete-border: #e1ecee;
+
+  --pathPreview-bg: #ffffff;
+  --pathPreview-text: #000000;
+
+  --button-disabled: #dadada;
+  --button-editMode: #2ecc71;
+  --button-color: #ffffff;
+  --button-tooltip-bg: #000000;
+  --button-tooltip-color: #ffffff;
+
+  --object-fill--active: #2ecc71;
+  --object-stroke--active: #27ae60;
+
+  --scrollbar-track: #e7e7e7;
+  --scrollbar-thumb: #1b78d0;
+  --scrollbar-thumb--sidebar: #a9a9a9;
+
+  --modal-bg: #ffffff;
+  --modal-text: #000000;
+  --modal-text-light: #6c6c6c;
+  --modal-border: #e1e2e2;
+
+  --modal-settings-titleUnderline: #e1e2e2;
+  --modal-settings-text: #2e2e2e;
+  --modal-settings-langBorder: #4e4e4e;
+  --modal-settings-langBg: 0;
+  --modal-settings-langColor: #000000;
+
+  --modal-switch-bg: #e1e2e2;
+  --modal-switch-dot: #ffffff;
+  --modal-switch-outline: #5d9dd5;
+
+  --modal-settings-langBorder: #e1e2e2;
+
+  --sidebar-bg: #ffffff;
+  --sidebar-headerTitle: #000000;
+  --sidebar-headerText: #6c6c6c;
+
+  --sidebar-buttonMain-bg: #1b78d0;
+  --sidebar-buttonMain-bg--hover: #166bbb;
+  --sidebar-buttonMain-text: #ffffff;
+
+  --sidebar-category-letter: #000000;
+  --sidebar-category-results: #000000;
+
+  --sidebar-buttonSecond-bg: #daebff;
+  --sidebar-buttonSecond-bg--hover: #cadff6;
+  --sidebar-buttonSecond-text: #2668a6;
+
+  --sidebar-categoryItem-bg: #f4faff;
+  --sidebar-categoryItem-photo: #d4e8ff;
+  --sidebar-categoryItem-title: #000000;
+  --sidebar-categoryItem-text: #000000;
+  --sidebar-categoryItem-itemLink: #daebff;
+
+  --sidebar-footer: #000000;
+
+  --skiplink-text: #ffffff;
 }
 
 // Dark theme colors
 [data-theme="dark"] {
-  --color-bg: #{$color-bg--dark};
+  --primary-white: #ffffff;
+  --green: #2ecc71;
+
+  --primary: #1b78d0;
+  --primary--light: #54a8f8;
+  --primary--dark: #000000;
+
+  --floor: #343947;
+  --floor-stroke: #414757;
+
+  --vertex: #4c5f6e;
+  --object-fill: #355877;
+  --object-fill--hover: #477eaf;
+  --object-stroke: #66b4ff;
+
+  --map-bg: #1a1f27;
+
+  --close-red: #db3b3b;
+
+  --input-bg: #282a30;
+  --input-separator: #4e4e4e;
+  --input-placeholder: #afafaf;
+
+  --searchProduct-icon: #282a30;
+  --searchProduct-input: #282a30;
+  --searchProduct-input-color: #ffffff;
+  --searchProduct-input-placeholder: #6c6c6c;
+  --searchProduct-submit-color: #ffffff;
+  --searchProduct-submit-bg: #1b78d0;
+
+  --autocomplete-bg: #282a30;
+  --autocomplete-text: #afafaf;
+  --autocomplete-hover: #0b0b0c;
+  --autocomplete-border: #4e4e4e;
+
+  --pathPreview-bg: #282a30;
+  --pathPreview-text: #ffffff;
+
+  --button-disabled: #3b3f49;
+  --button-editMode: #2ecc71;
+  --button-color: #ffffff;
+  --button-tooltip-bg: #ffffff;
+  --button-tooltip-color: #000000;
+
+  --object-fill--active: #1ba354;
+  --object-stroke--active: #27ae60;
+
+  --scrollbar-track: #4e4e4e;
+  --scrollbar-thumb: #1b78d0;
+  --scrollbar-thumb--sidebar: #4e4e4e;
+
+  --modal-bg: #32343b;
+  --modal-text: #ffffff;
+  --modal-text-light: #bdbdbd;
+  --modal-border: #4e4e4e;
+
+  --modal-settings-titleUnderline: #4e4e4e;
+  --modal-settings-text: #2e2e2e;
+  --modal-settings-langBorder: #4e4e4e;
+  --modal-settings-langBg: #ffffff;
+  --modal-settings-langColor: #000000;
+
+  --modal-switch-bg: #e1e2e2;
+  --modal-switch-dot: #ffffff;
+  --modal-switch-outline: #5d9dd5;
+
+  --modal-settings-langBorder: #e1e2e2;
+
+  --sidebar-bg: #282a30;
+  --sidebar-headerTitle: #ffffff;
+  --sidebar-headerText: #c1c1c1;
+
+  --sidebar-buttonMain-bg: #1b78d0;
+  --sidebar-buttonMain-bg--hover: #166bbb;
+  --sidebar-buttonMain-text: #ffffff;
+
+  --sidebar-buttonSecond-bg: #3f4862;
+  --sidebar-buttonSecond-bg--hover: #333b53;
+  --sidebar-buttonSecond-text: #ffffff;
+
+  --sidebar-category-letter: #ffffff;
+  --sidebar-category-results: #c1c1c1;
+
+  --sidebar-categoryItem-bg: #363941;
+  --sidebar-categoryItem-photo: #282a30;
+  --sidebar-categoryItem-title: #ffffff;
+  --sidebar-categoryItem-text: #c1c1c1;
+  --sidebar-categoryItem-itemLink: #99caf8;
+
+  --sidebar-footer: #ffffff;
+
+  --skiplink-text: #ffffff;
 }

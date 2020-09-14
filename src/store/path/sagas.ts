@@ -62,7 +62,9 @@ export function* resetPath() {
     yield put({
       type: EXIT_PATH_PREVIEW_SUCCESS,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function* pathRootSaga() {

@@ -1,7 +1,7 @@
 @import "styles/themes.scss";
 
 .Main {
-  background: #f3f7fa;
+  background: var(--map-bg);
   width: 100%;
   height: 100%;
   position: relative;
@@ -20,13 +20,14 @@
         align-items: center;
         justify-content: center;
         margin-left: 30px;
-        background: #ffffff;
+        background: var(--pathPreview-bg);
+        color: var(--pathPreview-text);
         box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
         transition: 0.1s all;
         padding-left: 30px;
         opacity: 0;
         visibility: hidden;
-        border-left: 5px solid #2ecc71;
+        border-left: 5px solid var(--green);
 
         .PathPreview-button {
           width: 50px;
@@ -35,8 +36,8 @@
           align-items: center;
           justify-content: center;
           border: 0;
-          background: #ffffff;
-          color: #db3b3b;
+          background: var(--pathPreview-button);
+          color: var(--close-red);
           font-size: 1.4rem;
           position: relative;
 
@@ -47,7 +48,7 @@
             position: absolute;
             height: 30px;
             width: 1px;
-            background: #f1f1f1;
+            background: var(--input-separator);
           }
 
           &:hover {
@@ -89,9 +90,9 @@
             justify-content: center;
             border-bottom-left-radius: 5px;
             border-top-left-radius: 5px;
-            background: #ffffff;
+            background: var(--searchProduct-input);
             font-size: 0.8rem;
-            color: #1b78d0;
+            color: var(--primary);
 
             &::after {
               content: "";
@@ -100,7 +101,7 @@
               position: absolute;
               height: 30px;
               width: 1px;
-              background: #e1ecee;
+              background: var(--input-separator);
             }
           }
           .ControlsSearch-inputGroup {
@@ -111,9 +112,11 @@
               width: 250px;
               font-size: 1.4rem;
               padding: 0 20px;
+              background: var(--searchProduct-input);
+              color: var(--searchProduct-input-color);
 
               &::placeholder {
-                color: #afafaf;
+                color: var(--input-placeholder);
               }
             }
 
@@ -122,9 +125,10 @@
               left: 0px;
               top: 50px;
               font-size: 1.4rem;
-              background: white;
+              background: var(--autocomplete-bg);
               width: 250px;
-              border: 1px solid #e1ecee;
+              border: 1px solid var(--autocomplete-border);
+              box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
 
               .Autocomplete-list {
                 list-style-position: inside;
@@ -134,16 +138,30 @@
 
                 .Autocomplete-listItem {
                   padding: 10px 20px;
-                  color: #6c6c6c;
+                  color: var(--autocomplete-text);
 
                   &:hover {
-                    background: #f7fbff;
+                    background: var(--autocomplete-hover);
                     cursor: pointer;
                   }
 
                   &:not(:first-child) {
-                    border-top: 1px solid #e1ecee;
+                    border-top: 1px solid var(--autocomplete-border);
                   }
+                }
+
+                &::-webkit-scrollbar {
+                  width: 5px;
+                }
+
+                &::-webkit-scrollbar-track {
+                  background-color: var(--scrollbar-track);
+                  border-radius: 10px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                  background-color: var(--scrollbar-thumb);
+                  border-radius: 10px;
                 }
               }
 
@@ -156,7 +174,7 @@
 
               .Autocomplete-empty {
                 text-align: center;
-                color: #6c6c6c;
+                color: var(--autocomplete-text);
                 padding: 10px;
               }
             }
@@ -165,20 +183,20 @@
           .ControlsSearch-submit {
             height: 50px;
             width: 50px;
-            color: #ffffff;
+            color: var(--searchProduct-submit-color);
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom-right-radius: 5px;
             border-top-right-radius: 5px;
-            background: #1b78d0;
+            background: var(--searchProduct-submit-bg);
             font-size: 1.8rem;
             cursor: pointer;
             transition: 0.3s all;
           }
 
           .ControlsSearch-submit--disabled {
-            background: #dadada;
+            background: var(--button-disabled);
           }
 
           .ControlsSearch-input,
@@ -216,7 +234,6 @@
       width: 50px;
       height: 50px;
       border: 0;
-      color: #ffffff;
       font-weight: 600;
       border-radius: 5px;
       box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
@@ -243,8 +260,8 @@
         top: 0;
         border-radius: 5px;
         min-width: 100px;
-        background: #000;
-        color: #fff;
+        background: var(--button-tooltip-bg);
+        color: var(--button-tooltip-color);
         text-align: center;
         display: none;
         align-items: center;
@@ -271,31 +288,38 @@
     }
 
     .ControlsButton--hamburger {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
     }
 
     .ControlsButton--hamburgerActive {
-      background: #1b78d0;
+      background: var(--primary);
+      color: var(--button-color);
     }
 
     .ControlsButton--zoom {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
     }
 
     .ControlsButton--user {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
       position: relative;
     }
     .ControlsButton--editMode {
-      background: #2ecc71;
+      background: var(--button-editMode);
+      color: var(--button-color);
     }
 
     .ControlsButton--options {
-      background: #1b78d0;
+      background: var(--primary);
+      color: var(--button-color);
     }
 
     .ControlsButton--closePreview {
-      color: #e23232;
+      color: var(--close-red);
+      color: var(--button-color);
       background: 0;
       border-radius: 50px;
       width: 30px;

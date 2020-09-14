@@ -28,8 +28,12 @@ function App(props: AppProps) {
     fetchApiData();
   }, [fetchApiData, initGraph]);
 
+  useEffect(() => {
+    document.body.dataset.theme = theme;
+  }, [theme]);
+
   return (
-    <div id="app" data-theme={theme}>
+    <div id="app">
       <Layout />
     </div>
   );

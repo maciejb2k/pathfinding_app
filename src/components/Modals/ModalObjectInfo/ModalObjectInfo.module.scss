@@ -5,7 +5,7 @@
   max-height: 500px;
   padding: 30px 30px;
   border-radius: 7px;
-  background: #ffffff;
+  background: var(--modal-bg);
   outline: 0;
   overflow: hidden;
 }
@@ -22,13 +22,14 @@
     font-size: 2rem;
     text-transform: capitalize;
     text-align: center;
+    color: var(--modal-text);
 
     &:after {
       content: "";
       display: block;
       width: 50px;
       height: 2px;
-      background: #1b78d0;
+      background: var(--primary);
       margin: 20px auto 0px;
     }
   }
@@ -39,7 +40,7 @@
     text-align: center;
     font-size: 1.2rem;
     padding-top: 20px;
-    color: #6c6c6c;
+    color: var(--modal-text-light);
   }
 
   .ObjectList {
@@ -56,16 +57,25 @@
       justify-content: space-between;
 
       .ObjectList-itemInfo {
+        color: var(--modal-text);
+
         .ObjectList-itemTitle {
           padding-bottom: 5px;
+          color: var(--modal-text);
         }
+
         .ObjectList-itemDesc {
           font-size: 1.2rem;
+          color: var(--modal-text-light);
         }
       }
 
+      .ObjectList-itemPrice {
+        color: var(--modal-text);
+      }
+
       &:not(:last-child) {
-        border-bottom: 1px solid #e1e2e2;
+        border-bottom: 1px solid var(--modal-border);
       }
     }
 
@@ -74,12 +84,12 @@
     }
 
     &::-webkit-scrollbar-track {
-      background-color: #e7e7e7;
+      background-color: var(--scrollbar-track);
       border-radius: 10px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #1b78d0;
+      background-color: var(--scrollbar-thumb);
       border-radius: 10px;
     }
   }

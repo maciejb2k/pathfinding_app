@@ -52,12 +52,25 @@ function Map(props: AppProps) {
 
       const lastVertex = pathVertices[pathVertices.length - 1];
 
+      // Adding
       if (objectsRefs && lastVertex.options && lastVertex.options.objectId) {
         const mapObject = objectsRefs.current[lastVertex.options.objectId];
-        pathTimeline.to(mapObject, {
-          duration: 0.03,
+
+        let objectColors = {
           fill: "#C7FFCC",
           stroke: "#4FBA5A",
+        };
+
+        if (document.body.dataset.theme === "dark") {
+          objectColors = {
+            fill: "#72ec7d",
+            stroke: "#4fba5a",
+          };
+        }
+
+        pathTimeline.to(mapObject, {
+          duration: 0.03,
+          ...objectColors,
         });
       }
 
