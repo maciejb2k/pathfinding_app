@@ -185,6 +185,20 @@
       "desc": "Piwo do picia na speed.",
       "price": "2.50",
       "objectId": "o_1"
+    },
+    {
+      "id": 13,
+      "name": "lays Zielona Cebulka",
+      "desc": "Najlepsze chipsy.",
+      "price": "5.99",
+      "objectId": "o_28"
+    },
+    {
+      "id": 14,
+      "name": "pieprz",
+      "desc": "Można nasypać do oczu.",
+      "price": "2.00",
+      "objectId": "o_15"
     }
   ],
   "object-to-category": [

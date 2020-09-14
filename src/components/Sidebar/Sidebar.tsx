@@ -6,11 +6,14 @@ import Loader from "react-loader-spinner";
 import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as ApiState } from "store/api/reducer";
 
+import { searchProduct } from "store/search/actions";
+
 import styles from "./Sidebar.module.scss";
 
 type AppProps = {
   sidebar: SidebarState;
   api: ApiState;
+  searchProduct: typeof searchProduct;
 };
 
 const tabCategories = {
@@ -22,11 +25,13 @@ function Sidebar(props: AppProps) {
   const {
     sidebar: { isOpen },
     api: { products, categories, objectToCategory, isFetching },
+    searchProduct,
   } = props;
 
   const [activeTab, setActiveTab] = useState<string>(tabCategories.az);
   const [parsedProducts, setParsedProducts] = useState<any>({});
 
+  // TODO - Types !!!!!
   useEffect(() => {
     const parseProductsAZ = () => {
       if (products) {
@@ -38,20 +43,9 @@ function Sidebar(props: AppProps) {
           if (!data[firstLetter]) {
             data[firstLetter] = {
               len: 0,
-              category: "",
               results: [],
             };
           }
-
-          objectToCategory.forEach((objToCat: any) => {
-            if (product.objectId === objToCat.objectId) {
-              categories.forEach((category: any) => {
-                if (category.id === objToCat.categoryId) {
-                  data[firstLetter].category = category.name;
-                }
-              });
-            }
-          });
 
           data[firstLetter].results.push(product);
           data[firstLetter].len = data[firstLetter].len + 1;
@@ -67,6 +61,14 @@ function Sidebar(props: AppProps) {
       }
     }
   }, [activeTab, isFetching, categories, products, objectToCategory]);
+
+  const navigateToProduct = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    const product = e.currentTarget.dataset.product;
+    if (product) {
+      searchProduct(product);
+    }
+  };
 
   return (
     <div
@@ -137,7 +139,12 @@ function Sidebar(props: AppProps) {
                   </header>
                   <div className={styles["CategoryGroup"]}>
                     {parsedProducts[letter].results.map((item: any) => (
-                      <div key={item.id} className={styles["CategoryItem"]}>
+                      <div
+                        key={item.id}
+                        data-product={item.name}
+                        className={styles["CategoryItem"]}
+                        onClick={navigateToProduct}
+                      >
                         <div className={styles["CategoryItem-photo"]}></div>
                         <div className={styles["CategoryItem-text"]}>
                           <h3 className={styles["CategoryItem-title"]}>
@@ -210,7 +217,7 @@ function Sidebar(props: AppProps) {
       </div>
       <footer className={styles["Footer"]}>
         <p className={styles["Footer-text"]}>
-          Made to learn <b>React & Typescript</b>
+          Made by <b>Maciej Biel</b>
         </p>
       </footer>
     </div>

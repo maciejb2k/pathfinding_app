@@ -19,9 +19,7 @@ export const fetchProductApi = () => {
 
 export const fetchCategoriesApi = () => {
   return axios
-    .get<CategoriesApiType>(
-      `http://localhost:3001/categories?_sort=name&_order=asc`
-    )
+    .get<CategoriesApiType>(`http://localhost:3001/categories`)
     .then((res) => res.data)
     .catch((error) => {
       // TODO

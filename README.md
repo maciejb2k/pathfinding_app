@@ -1,6 +1,10 @@
 # Wayfinding - Interactive SVG Map
 
-The goal of this project is to make React + Typescript app, which implements Dijkstra algorithm to find shortest path on SVG map.
+My goal of this project was to implement from scratch Graph data structure and Dijkstra algorithm in Typescript.
+
+To visualize how it's working, you can find shortest path on map of shop to product you're searching for from different starting points.
+
+Technology stack: `React` `Typescript`
 
 ## Getting started
 
@@ -12,18 +16,18 @@ git clone https://github.com/maciejb2k/wayfinding-js.git
 
 Install and run, this command will run in parallel dev server and json-server:
 
-Using Yarn:
-
-```
-yarn install
-yarn start
-```
-
 Using NPM:
 
 ```
 npm install
 npm run start
+```
+
+Using Yarn:
+
+```
+yarn install
+yarn start
 ```
 
 ## Design
