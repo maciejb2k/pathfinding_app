@@ -36,6 +36,13 @@ function ModalObjectInfo(props: AppProps) {
   }, [activeModal]);
 
   useEffect(() => {
+    if (!isModalOpen) {
+      setIsModalOpen(false);
+    }
+  }, [isModalOpen]);
+
+  // TODO Types
+  useEffect(() => {
     const fetchData = async () => {
       setIsFetching(true);
 
@@ -62,12 +69,6 @@ function ModalObjectInfo(props: AppProps) {
       fetchData();
     }
   }, [data]);
-
-  useEffect(() => {
-    if (!isModalOpen) {
-      setIsModalOpen(false);
-    }
-  }, [isModalOpen]);
 
   return (
     <Modal

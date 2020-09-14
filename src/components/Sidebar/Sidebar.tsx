@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 
 import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as ApiState } from "store/api/reducer";
+import { ProductsApiType } from "store/api/reducer";
 
 import { searchProduct } from "store/search/actions";
 
@@ -35,9 +36,14 @@ function Sidebar(props: AppProps) {
   useEffect(() => {
     const parseProductsAZ = () => {
       if (products) {
-        const data: any = [];
+        const data: {
+          [key: string]: {
+            len: number;
+            results: Array<ProductsApiType>;
+          };
+        } = {};
 
-        products.forEach((product: any) => {
+        products.forEach((product: ProductsApiType) => {
           let firstLetter = product.name[0];
 
           if (!data[firstLetter]) {
@@ -83,16 +89,6 @@ function Sidebar(props: AppProps) {
         </h1>
         <p className={styles["Header-text"]}>ul. Przykładowa 123, Rzeszów</p>
       </header>
-      {/* <div className={styles["Search"]}>
-        <input
-          type="text"
-          className={styles["Search-input"]}
-          placeholder="np. Czekolada"
-        />
-        <button className={styles["Search-submit"]}>
-          <FiSearch className={styles["Search-submitIcon"]} />
-        </button>
-      </div> */}
       <div className={styles["Buttons"]} role="tablist">
         <button
           className={classnames({

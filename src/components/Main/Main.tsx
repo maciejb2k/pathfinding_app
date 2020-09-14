@@ -19,6 +19,7 @@ import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as PathState } from "store/path/reducer";
 import { IState as SearchState } from "store/search/reducer";
 import { IState as GraphState } from "store/graph/reducer";
+import { ProductsApiType } from "store/api/reducer";
 
 import { openModal } from "store/modals/actions";
 import { toggleSidebar } from "store/sidebar/actions";
@@ -60,7 +61,9 @@ function Main(props: AppProps) {
 
   const [isAutocomplete, setIsAutocomplete] = useState(false);
   const [isAutocompleteFetching, setIsAutocompleteFetching] = useState(false);
-  const [searchAutocomplete, setSearchAutocomplete] = useState([]);
+  const [searchAutocomplete, setSearchAutocomplete] = useState<
+    Array<ProductsApiType>
+  >([]);
 
   const pathPreviewButton = useRef<HTMLButtonElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
@@ -69,6 +72,7 @@ function Main(props: AppProps) {
 
   const focusSearchInput = () => {
     if (searchInput && searchInput.current) {
+      console.log(searchInput);
       searchInput.current.focus();
     }
   };
@@ -76,7 +80,7 @@ function Main(props: AppProps) {
   const fetchAutocomplete = async (product: string) => {
     setIsAutocompleteFetching(true);
 
-    const { data: productsData } = await axios.get(
+    const { data: productsData } = await axios.get<Array<ProductsApiType>>(
       `http://localhost:3001/products?name_like=${product}`
     );
 
@@ -87,12 +91,15 @@ function Main(props: AppProps) {
 
   const onSearchFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     e.preventDefault();
+
     if (product) {
       setIsAutocomplete(true);
     }
   };
 
   const onSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
     const value = e.currentTarget.value;
     setProduct(value);
 
@@ -142,6 +149,7 @@ function Main(props: AppProps) {
 
   const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     if (!isPathPreview) {
       toggleEditMode();
     }
@@ -204,7 +212,7 @@ function Main(props: AppProps) {
                       </div>
                     ) : searchAutocomplete.length ? (
                       <ul className={styles["Autocomplete-list"]}>
-                        {searchAutocomplete.map((item: any) => (
+                        {searchAutocomplete.map((item: ProductsApiType) => (
                           <li
                             key={item.id}
                             onMouseDown={autocompleteInput}

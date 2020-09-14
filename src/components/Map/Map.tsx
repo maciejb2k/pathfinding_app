@@ -84,21 +84,21 @@ function Map(props: AppProps) {
     }
   }, [isEditMode, startVertex]);
 
-  const vertexRefCallback = (el: HTMLElement | null) => {
+  const vertexRefCallback = (el: HTMLElement) => {
     if (el && el.dataset.vertexKey) {
       let key = el.dataset.vertexKey.trim().toLowerCase();
       verticesRefs.current[key] = el;
     }
   };
 
-  const objectRefCallback = (el: HTMLElement | null) => {
+  const objectRefCallback = (el: HTMLElement) => {
     if (el && el.dataset.objectKey) {
       let key = el.dataset.objectKey.trim().toLowerCase();
       objectsRefs.current[key] = el;
     }
   };
 
-  const edgeRefCallback = (el: HTMLElement | null) => {
+  const edgeRefCallback = (el: HTMLElement) => {
     if (el && el.dataset.edgeKey) {
       let key = el.dataset.edgeKey.trim().toLowerCase();
       edgesRefs.current[key] = el;

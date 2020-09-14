@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import classnames from "classnames";
 
@@ -20,6 +20,7 @@ type AppProps = {
 };
 
 function ModalSettings(props: AppProps) {
+  // Helper functions for this component
   const themeToBoolean = (theme: string) => (theme === "dark" ? true : false);
   const booleanToTheme = (bool: boolean) => (bool ? "dark" : "light");
 
@@ -35,6 +36,18 @@ function ModalSettings(props: AppProps) {
   const [isThemeSwitchOn, setTheme] = React.useState(themeToBoolean(theme));
   const [siteLang, setSiteLang] = React.useState(lang);
 
+  useEffect(() => {
+    if (activeModal === MODAL_SETTINGS) {
+      setIsModalOpen(true);
+    }
+  }, [activeModal]);
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      setIsModalOpen(false);
+    }
+  }, [isModalOpen]);
+
   const handleThemeSwitch = () => {
     const newValue = !isThemeSwitchOn;
 
@@ -48,18 +61,6 @@ function ModalSettings(props: AppProps) {
     setSiteLang(newLang);
     switchLang(newLang);
   };
-
-  React.useEffect(() => {
-    if (activeModal === MODAL_SETTINGS) {
-      setIsModalOpen(true);
-    }
-  }, [activeModal]);
-
-  React.useEffect(() => {
-    if (!isModalOpen) {
-      setIsModalOpen(false);
-    }
-  }, [isModalOpen]);
 
   return (
     <Modal

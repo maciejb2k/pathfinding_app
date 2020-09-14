@@ -8,7 +8,7 @@ import {
 
 export const fetchProductApi = () => {
   return axios
-    .get<ProductsApiType>(
+    .get<Array<ProductsApiType>>(
       `http://localhost:3001/products?_sort=name&_order=asc`
     )
     .then((res) => res.data)
@@ -19,7 +19,7 @@ export const fetchProductApi = () => {
 
 export const fetchCategoriesApi = () => {
   return axios
-    .get<CategoriesApiType>(`http://localhost:3001/categories`)
+    .get<Array<CategoriesApiType>>(`http://localhost:3001/categories`)
     .then((res) => res.data)
     .catch((error) => {
       // TODO
@@ -28,7 +28,9 @@ export const fetchCategoriesApi = () => {
 
 export const fetchObjectToCategoryApi = () => {
   return axios
-    .get<ObjectToCategoryApiType>(`http://localhost:3001/object-to-category`)
+    .get<Array<ObjectToCategoryApiType>>(
+      `http://localhost:3001/object-to-category`
+    )
     .then((res) => res.data)
     .catch((error) => {
       // TODO

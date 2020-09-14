@@ -76,4 +76,6 @@ export const objectToVertexKey = (objectKey: string) => {
   if (map.o[objectKey]) {
     return map.o[objectKey].ref;
   }
+
+  return false;
 };
