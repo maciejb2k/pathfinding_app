@@ -1,4 +1,4 @@
-export const apiArrayToObject = (arr: Array<any>) => {
+export const apiArrayToObject = <T>(arr: Array<T>) => {
   return arr[0];
 };
 

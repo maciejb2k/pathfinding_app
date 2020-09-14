@@ -52,6 +52,10 @@
         color: var(--modal-settings-langColor);
         padding: 10px;
         border-radius: 5px;
+
+        &[disabled]:hover {
+          cursor: not-allowed;
+        }
       }
 
       .Switch {

@@ -157,6 +157,25 @@
         }
       }
 
+      .CategoriesList {
+        list-style-position: inside;
+        list-style-type: none;
+
+        .CategoriesList-item {
+          background: var(--sidebar-categoryItem-bg);
+          color: var(--sidebar-categoryItem-title);
+          border-radius: 5px;
+          padding: 15px 20px;
+          text-transform: capitalize;
+          text-align: center;
+          font-weight: 600;
+
+          &:not(:last-child) {
+            margin-bottom: 10px;
+          }
+        }
+      }
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -186,6 +205,15 @@
       text-align: center;
       font-size: 1.4rem;
       color: var(--sidebar-footer);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .Footer-icon {
+        font-size: 1.8rem;
+        margin-right: 5px;
+        color: #61dafb;
+      }
     }
   }
 

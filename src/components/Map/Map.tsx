@@ -29,9 +29,9 @@ function Map(props: AppProps) {
     },
   } = props;
 
-  const verticesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-  const edgesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-  const objectsRefs = React.useRef<{ [key: string]: HTMLElement }>({});
+  const verticesRefs = React.useRef<{ [key: string]: SVGElement }>({});
+  const edgesRefs = React.useRef<{ [key: string]: SVGElement }>({});
+  const objectsRefs = React.useRef<{ [key: string]: SVGElement }>({});
 
   useEffect(() => {
     if (pathTimeline && pathEdges && pathEdges.length) {
@@ -84,21 +84,21 @@ function Map(props: AppProps) {
     }
   }, [isEditMode, startVertex]);
 
-  const vertexRefCallback = (el: HTMLElement) => {
+  const vertexRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.vertexKey) {
       let key = el.dataset.vertexKey.trim().toLowerCase();
       verticesRefs.current[key] = el;
     }
   };
 
-  const objectRefCallback = (el: HTMLElement) => {
+  const objectRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.objectKey) {
       let key = el.dataset.objectKey.trim().toLowerCase();
       objectsRefs.current[key] = el;
     }
   };
 
-  const edgeRefCallback = (el: HTMLElement) => {
+  const edgeRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.edgeKey) {
       let key = el.dataset.edgeKey.trim().toLowerCase();
       edgesRefs.current[key] = el;

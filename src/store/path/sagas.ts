@@ -68,7 +68,6 @@ export function* resetPath() {
       type: EXIT_PATH_PREVIEW_SUCCESS,
     });
   } catch (error) {
-    console.log(error);
   }
 }
 

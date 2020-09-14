@@ -23,6 +23,10 @@ function App(props: AppProps) {
   } = props;
 
   useEffect(() => {
+    document.title = "Wayfinding";
+  }, []);
+
+  useEffect(() => {
     initLocalStorageSettings();
     initGraph();
     fetchApiData();

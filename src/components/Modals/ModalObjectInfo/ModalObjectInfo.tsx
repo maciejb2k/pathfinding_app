@@ -7,6 +7,11 @@ import Loader from "react-loader-spinner";
 import { apiArrayToObject, capitalize } from "utils/helpers";
 import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
 import { IState as ModalsState } from "store/modals/reducer";
+import {
+  ProductsApiType,
+  CategoriesApiType,
+  ObjectToCategoryApiType,
+} from "store/api/reducer";
 import { closeModal } from "store/modals/actions";
 
 import styles from "./ModalObjectInfo.module.scss";
@@ -26,8 +31,8 @@ function ModalObjectInfo(props: AppProps) {
 
   const [isFetching, setIsFetching] = useState(false);
 
-  const [categories, setCategoriesData] = useState<any>({});
-  const [products, setProductsData] = useState<any>([]);
+  const [category, setCategoriesData] = useState<CategoriesApiType>(Object());
+  const [products, setProductsData] = useState<Array<ProductsApiType>>([]);
 
   useEffect(() => {
     if (activeModal === MODAL_OBJECT_INFO) {
@@ -41,23 +46,24 @@ function ModalObjectInfo(props: AppProps) {
     }
   }, [isModalOpen]);
 
-  // TODO Types
   useEffect(() => {
     const fetchData = async () => {
       setIsFetching(true);
 
-      const { data: objectToCategoryFetch } = await axios.get(
-        `http://localhost:3001/object-to-category?objectId=${data}`
-      );
+      const { data: objectToCategoryFetch } = await axios.get<
+        Array<ObjectToCategoryApiType>
+      >(`http://localhost:3001/object-to-category?objectId=${data}`);
       const objectToCategoryData = apiArrayToObject(objectToCategoryFetch);
 
-      const { data: categoriesFetch } = await axios.get(
+      const { data: categoriesFetch } = await axios.get<
+        Array<CategoriesApiType>
+      >(
         `http://localhost:3001/categories?id=${objectToCategoryData.categoryId}`
       );
       const categoriesData = apiArrayToObject(categoriesFetch);
       setCategoriesData(categoriesData);
 
-      const { data: productsData } = await axios.get(
+      const { data: productsData } = await axios.get<Array<ProductsApiType>>(
         `http://localhost:3001/products?objectId=${objectToCategoryData.objectId}`
       );
       setProductsData(productsData);
@@ -83,39 +89,31 @@ function ModalObjectInfo(props: AppProps) {
         <div className={styles["ModalLoader"]}>
           <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
         </div>
-      ) : categories && products ? (
+      ) : category && products ? (
         <>
           <header className={styles["ObjectHeader"]}>
-            <h3 className={styles["ObjectHeader-title"]}>{categories.name}</h3>
+            <h3 className={styles["ObjectHeader-title"]}>{category.name}</h3>
           </header>
-          {/* TODO - Types */}
           <div className={styles["ObjectBody"]}>
             {!products.length ? (
               <p className={styles["Object-emptyList"]}>Brak produktów</p>
             ) : (
               <ul className={styles["ObjectList"]}>
-                {products.map(
-                  (product: {
-                    id: string;
-                    name: string;
-                    desc: string;
-                    price: string;
-                  }) => (
-                    <li className={styles["ObjectList-item"]} key={product.id}>
-                      <div className={styles["ObjectList-itemInfo"]}>
-                        <h4 className={styles["ObjectList-itemTitle"]}>
-                          {capitalize(product.name)}
-                        </h4>
-                        <p className={styles["ObjectList-itemDesc"]}>
-                          {capitalize(product.desc)}
-                        </p>
-                      </div>
-                      <p className={styles["ObjectList-itemPrice"]}>
-                        {product.price} zł
+                {products.map((product: ProductsApiType) => (
+                  <li className={styles["ObjectList-item"]} key={product.id}>
+                    <div className={styles["ObjectList-itemInfo"]}>
+                      <h4 className={styles["ObjectList-itemTitle"]}>
+                        {capitalize(product.name)}
+                      </h4>
+                      <p className={styles["ObjectList-itemDesc"]}>
+                        {capitalize(product.desc)}
                       </p>
-                    </li>
-                  )
-                )}
+                    </div>
+                    <p className={styles["ObjectList-itemPrice"]}>
+                      {product.price} zł
+                    </p>
+                  </li>
+                ))}
               </ul>
             )}
           </div>

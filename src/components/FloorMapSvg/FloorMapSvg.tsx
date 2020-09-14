@@ -11,9 +11,9 @@ import { IState as GraphState } from "store/graph/reducer";
 import styles from "./FloorMapSvg.module.scss";
 
 type AppProps = {
-  vertexRefCallback: any;
-  edgeRefCallback: any;
-  objectRefCallback: any;
+  vertexRefCallback: (el: SVGElement | null) => void;
+  edgeRefCallback: (el: SVGElement | null) => void;
+  objectRefCallback: (el: SVGElement | null) => void;
   graph: GraphState;
   openModal: typeof openModal;
   setStartVertex: typeof setStartVertex;

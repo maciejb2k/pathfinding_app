@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiChevronRight } from "react-icons/fi";
+import { DiReact } from "react-icons/di";
 import classnames from "classnames";
 import Loader from "react-loader-spinner";
 
@@ -17,6 +18,13 @@ type AppProps = {
   searchProduct: typeof searchProduct;
 };
 
+type ParsedProducts = {
+  [key: string]: {
+    len: number;
+    results: Array<ProductsApiType>;
+  };
+};
+
 const tabCategories = {
   az: "a-z",
   categories: "categories",
@@ -30,18 +38,12 @@ function Sidebar(props: AppProps) {
   } = props;
 
   const [activeTab, setActiveTab] = useState<string>(tabCategories.az);
-  const [parsedProducts, setParsedProducts] = useState<any>({});
+  const [parsedProducts, setParsedProducts] = useState<ParsedProducts>({});
 
-  // TODO - Types !!!!!
   useEffect(() => {
     const parseProductsAZ = () => {
       if (products) {
-        const data: {
-          [key: string]: {
-            len: number;
-            results: Array<ProductsApiType>;
-          };
-        } = {};
+        const data: ParsedProducts = {};
 
         products.forEach((product: ProductsApiType) => {
           let firstLetter = product.name[0];
@@ -105,7 +107,6 @@ function Sidebar(props: AppProps) {
             [styles["Button--active"]]: activeTab === tabCategories.categories,
           })}
           onClick={() => setActiveTab(tabCategories.categories)}
-          disabled
         >
           Kategorie
         </button>
@@ -134,27 +135,29 @@ function Sidebar(props: AppProps) {
                     </h2>
                   </header>
                   <div className={styles["CategoryGroup"]}>
-                    {parsedProducts[letter].results.map((item: any) => (
-                      <div
-                        key={item.id}
-                        data-product={item.name}
-                        className={styles["CategoryItem"]}
-                        onClick={navigateToProduct}
-                      >
-                        <div className={styles["CategoryItem-photo"]}></div>
-                        <div className={styles["CategoryItem-text"]}>
-                          <h3 className={styles["CategoryItem-title"]}>
-                            {item.name}
-                          </h3>
-                          <p className={styles["CategoryItem-subTitle"]}>
-                            {item.desc}
-                          </p>
+                    {parsedProducts[letter].results.map(
+                      (item: ProductsApiType) => (
+                        <div
+                          key={item.id}
+                          data-product={item.name}
+                          className={styles["CategoryItem"]}
+                          onClick={navigateToProduct}
+                        >
+                          <div className={styles["CategoryItem-photo"]}></div>
+                          <div className={styles["CategoryItem-text"]}>
+                            <h3 className={styles["CategoryItem-title"]}>
+                              {item.name}
+                            </h3>
+                            <p className={styles["CategoryItem-subTitle"]}>
+                              {item.desc}
+                            </p>
+                          </div>
+                          <div className={styles["CategoryItem-link"]}>
+                            <FiChevronRight />
+                          </div>
                         </div>
-                        <div className={styles["CategoryItem-link"]}>
-                          <FiChevronRight />
-                        </div>
-                      </div>
-                    ))}
+                      )
+                    )}
                   </div>
                 </div>
               )
@@ -169,51 +172,21 @@ function Sidebar(props: AppProps) {
         })}
       >
         <div className={styles["Category"]}>
-          <header className={styles["CategoryHeader"]}>
-            <h2 className={styles["CategoryHeader-title"]}>
-              S
-              <span className={styles["CategoryHeader-results"]}>
-                - 3 wyników
-              </span>
-            </h2>
-          </header>
-          <div className={styles["CategoryGroup"]}>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Rurki z kremem</h3>
-                <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Ciastka</h3>
-                <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
-            <div className={styles["CategoryItem"]}>
-              <div className={styles["CategoryItem-photo"]}></div>
-              <div className={styles["CategoryItem-text"]}>
-                <h3 className={styles["CategoryItem-title"]}>Wafelki</h3>
-                <p className={styles["CategoryItem-subTitle"]}>Słodycze</p>
-              </div>
-              <div className={styles["CategoryItem-link"]}>
-                <FiChevronRight />
-              </div>
-            </div>
-          </div>
+          <ul className={styles["CategoriesList"]}>
+            {categories.map((category) => (
+              <li key={category.id} className={styles["CategoriesList-item"]}>
+                {category.name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <footer className={styles["Footer"]}>
         <p className={styles["Footer-text"]}>
-          Made by <b>Maciej Biel</b>
+          <DiReact className={styles["Footer-icon"]} />
+          <span>
+            Made by <b>Maciej Biel</b>
+          </span>
         </p>
       </footer>
     </div>

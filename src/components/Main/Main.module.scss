@@ -225,6 +225,10 @@
 
           .ControlsSearch-submit--disabled {
             background: var(--button-disabled);
+
+            &:hover {
+              cursor: not-allowed;
+            }
           }
 
           .ControlsSearch-input,
@@ -275,6 +279,14 @@
 
       &:not(:last-child) {
         margin-bottom: 5px;
+      }
+
+      &[disabled] {
+        background: var(--button-disabled);
+      }
+
+      &[disabled]:hover {
+        cursor: not-allowed;
       }
     }
 

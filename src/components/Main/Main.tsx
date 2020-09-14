@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
-  FiUser,
+  FiMapPin,
   FiSettings,
   FiMenu,
   FiNavigation,
@@ -72,7 +72,6 @@ function Main(props: AppProps) {
 
   const focusSearchInput = () => {
     if (searchInput && searchInput.current) {
-      console.log(searchInput);
       searchInput.current.focus();
     }
   };
@@ -282,8 +281,9 @@ function Main(props: AppProps) {
               aria-label="Change starting point on map"
               data-text="Change starting point"
               onClick={toggleEdit}
+              disabled={isPathPreview}
             >
-              <FiUser />
+              <FiMapPin />
             </button>
             <button
               className={classnames({

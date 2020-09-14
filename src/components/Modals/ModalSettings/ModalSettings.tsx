@@ -112,6 +112,7 @@ function ModalSettings(props: AppProps) {
               className={styles["SelectLang"]}
               onChange={handleLangSwitch}
               value={siteLang}
+              disabled
             >
               <option value="pl">PL</option>
               <option value="en">EN</option>

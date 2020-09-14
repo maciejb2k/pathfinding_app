@@ -22,6 +22,8 @@ export type CategoriesApiType = {
 
 export type ObjectToCategoryApiType = {
   id: number;
+  categoryId: number;
+  objectId: string;
 };
 
 export type IState = {
