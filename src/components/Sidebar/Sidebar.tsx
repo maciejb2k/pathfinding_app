@@ -101,7 +101,7 @@ function Sidebar(props: AppProps) {
           })}
           onClick={() => setActiveTab(tabCategories.az)}
         >
-          Alfabetycznie
+          Lista Produktów
         </button>
         <button
           className={classnames({
@@ -111,7 +111,7 @@ function Sidebar(props: AppProps) {
           onClick={() => setActiveTab(tabCategories.categories)}
           disabled
         >
-          Kategoriami
+          Kategorie
         </button>
       </div>
       <div
@@ -151,7 +151,7 @@ function Sidebar(props: AppProps) {
                             {item.name}
                           </h3>
                           <p className={styles["CategoryItem-subTitle"]}>
-                            {parsedProducts[letter].category}
+                            {item.desc}
                           </p>
                         </div>
                         <div className={styles["CategoryItem-link"]}>

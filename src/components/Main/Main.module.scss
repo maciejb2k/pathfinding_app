@@ -27,6 +27,7 @@
         padding-left: 30px;
         opacity: 0;
         visibility: hidden;
+        animation: pulse 2s infinite;
         border-left: 5px solid var(--green);
 
         .PathPreview-button {
@@ -62,6 +63,33 @@
           .PathPreview-title {
             font-weight: 600;
             font-size: 1.4rem;
+          }
+        }
+
+        @-webkit-keyframes pulse {
+          0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.1);
+          }
+          70% {
+            -webkit-box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+          }
+          100% {
+            -webkit-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+          }
+        }
+
+        @keyframes pulse {
+          0% {
+            -moz-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.1);
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.3);
+          }
+          70% {
+            -moz-box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
+            box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
+          }
+          100% {
+            -moz-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
           }
         }
       }
@@ -277,7 +305,7 @@
         height: 0;
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-left: 5px solid #000;
+        border-left: 5px solid var(--button-tooltip-bg);
         right: 55px;
       }
 
