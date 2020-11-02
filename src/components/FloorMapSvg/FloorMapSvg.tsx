@@ -19,7 +19,7 @@ type AppProps = {
   setStartVertex: typeof setStartVertex;
 };
 
-function FloorMapSvg(props: AppProps) {
+function FloorMapSvg(props: AppProps | any) {
   const {
     vertexRefCallback,
     edgeRefCallback,
@@ -33,7 +33,7 @@ function FloorMapSvg(props: AppProps) {
     e.preventDefault();
 
     const objId = e.currentTarget.id;
-    openModal<string>({ modalName: MODAL_OBJECT_INFO, data: objId });
+    openModal({ modalName: MODAL_OBJECT_INFO, data: objId });
   };
 
   const onVertexClick = (e: React.MouseEvent<SVGElement>) => {
@@ -2521,6 +2521,7 @@ function FloorMapSvg(props: AppProps) {
             id="o_43"
             d="M156.5 411.5h27v204h-27z"
             data-object-key={m.o.o_43.key}
+            data-testid="test_o_43"
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
             onClick={onObjectClick}
