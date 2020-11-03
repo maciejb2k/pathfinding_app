@@ -246,7 +246,8 @@ export const mapData = {
     v_35: {
       key: "v_35",
       options: {
-        ref: "o_41",
+        ref: null,
+        objectId: "o_41",
       },
     },
     v_36: {
