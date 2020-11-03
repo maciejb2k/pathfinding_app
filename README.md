@@ -34,4 +34,6 @@ yarn start
 
 Below I've made concept UI of how it's going to looks like.
 
+![preview](https://user-images.githubusercontent.com/6316812/98004910-c3d7fa00-1df0-11eb-8810-b1fb6179c1af.png)
+
 ![preview](https://user-images.githubusercontent.com/6316812/90241083-a5361880-de2a-11ea-843b-d3b08a6e83ca.jpg)

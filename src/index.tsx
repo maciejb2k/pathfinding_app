@@ -15,7 +15,7 @@ import App from "components/App";
 
 WebFont.load({
   google: {
-    families: ["Montserrat:400,600,700", "Source Sans Pro:300,400,500,600,700"],
+    families: ["Montserrat:400,600,700"],
   },
 });
 
