@@ -1,4 +1,5 @@
 # Pathfinding - Interactive SVG Map
+[![Project Status: Inactive – The project has reached a stable, usable state but is no longer being actively developed; support/maintenance will be provided as time allows.](https://www.repostatus.org/badges/latest/inactive.svg)](https://www.repostatus.org/#inactive)
 
 My goal of this project was to implement from scratch Graph data structure and Dijkstra algorithm in Typescript.
 
