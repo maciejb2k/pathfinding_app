@@ -23,7 +23,7 @@
     "classnames": "^2.2.6",
     "concurrently": "^5.3.0",
     "final-form": "^4.20.1",
-    "gsap": "^3.4.2",
+    "gsap": "^3.6.0",
     "history": "^5.0.0",
     "i18next": "^19.7.0",
     "json-server": "^0.16.1",
