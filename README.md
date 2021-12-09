@@ -5,6 +5,8 @@ My goal of this project was to implement from scratch Graph data structure and D
 
 To visualize how it's working, you can find shortest path on map of shop to product you're searching for from different starting points.
 
+Online version: https://pathfinding-app.vercel.app
+
 Technology stack: `React` `Typescript`
 
 ## Getting started
