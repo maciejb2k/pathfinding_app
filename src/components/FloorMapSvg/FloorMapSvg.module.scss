@@ -5,45 +5,39 @@
   margin-top: 50px;
 }
 
+.Floor {
+  fill: var(--floor);
+}
+.Floor-border {
+  stroke: var(--floor-stroke);
+}
+
 .Vertex {
   opacity: 0;
-  fill: #e4e4e4;
+  fill: var(--vertex);
+  cursor: pointer;
   position: relative;
-
-  &:after {
-    content: "";
-    display: block;
-    background: red;
-    width: 50px;
-    height: 50px;
-    z-index: 100;
-    position: absolute;
-  }
 }
 
 .Vertex--active {
   opacity: 1;
-  cursor: pointer;
   position: relative;
-  fill: #2ecc71;
+  fill: var(--green);
+  cursor: default;
 }
 
 .Edge {
-  fill: #2ecc71;
+  fill: var(--green);
   opacity: 0;
 }
 
 .Object {
-  fill: #d6ebff;
-  stroke: #87b6e2;
+  fill: var(--object-fill);
+  stroke: var(--object-stroke);
   transition: 0.1s all;
 
   &:hover {
     cursor: pointer;
-    fill: #b2d5f6;
+    fill: var(--object-fill--hover);
   }
-}
-
-.Object--active {
-  fill: red;
 }

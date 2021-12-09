@@ -105,44 +105,359 @@
     {
       "id": 1,
       "name": "żubr",
-      "desc": "Walisz 1 żubra i kładziesz się na dywan.",
-      "objectId": "o_1"
+      "desc": "Browar prosto z bieszczad.",
+      "price": "2.50",
+      "objectId": "o_5"
     },
     {
       "id": 2,
       "name": "sok",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_10"
     },
     {
       "id": 3,
       "name": "mleko",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_8"
     },
     {
       "id": 4,
       "name": "czekolada",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_25"
     },
     {
       "id": 5,
       "name": "łosoś",
-      "desc": "",
-      "objectId": "o_17"
+      "desc": "-",
+      "price": "2.50",
+      "objectId": "o_21"
     },
     {
       "id": 6,
       "name": "makaron",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_35"
     },
     {
       "id": 7,
       "name": "jajka",
-      "desc": "",
+      "desc": "-",
+      "price": "2.50",
       "objectId": "o_18"
+    },
+    {
+      "id": 8,
+      "name": "warka",
+      "desc": "Piwo dla budowlańców",
+      "price": "2.50",
+      "objectId": "o_11"
+    },
+    {
+      "id": 9,
+      "name": "tatra",
+      "desc": "Potężny konerniak XD",
+      "price": "2.50",
+      "objectId": "o_11"
+    },
+    {
+      "id": 10,
+      "name": "harnaś",
+      "desc": "Piwo dla prawdziwych mężczyzn",
+      "price": "2.50",
+      "objectId": "o_1"
+    },
+    {
+      "id": 11,
+      "name": "tyskie",
+      "desc": "Popularny browar polskiego polaka.",
+      "price": "2.50",
+      "objectId": "o_5"
+    },
+    {
+      "id": 12,
+      "name": "lech",
+      "desc": "Piwo do picia na speed.",
+      "price": "2.50",
+      "objectId": "o_5"
+    },
+    {
+      "id": 13,
+      "name": "lays zielona cebulka",
+      "desc": "Najlepsze chipsy.",
+      "price": "5.99",
+      "objectId": "o_28"
+    },
+    {
+      "id": 14,
+      "name": "pieprz",
+      "desc": "Można nasypać do oczu.",
+      "price": "2.00",
+      "objectId": "o_15"
+    },
+    {
+      "id": 15,
+      "name": "pierogi",
+      "desc": "Pyszne pierożki.",
+      "price": "9.99",
+      "objectId": "o_24"
+    },
+    {
+      "id": 16,
+      "name": "zupka chińska",
+      "desc": "-",
+      "price": "2.50",
+      "objectId": "o_14"
+    },
+    {
+      "id": 17,
+      "name": "sól",
+      "desc": "Do frytek czy potraw.",
+      "price": "1.00",
+      "objectId": "o_16"
+    },
+    {
+      "id": 18,
+      "name": "kawa",
+      "desc": "-",
+      "price": "15.00",
+      "objectId": "o_33"
+    },
+    {
+      "id": 19,
+      "name": "herbata czarna",
+      "desc": "-",
+      "price": "1.00",
+      "objectId": "o_32"
+    },
+    {
+      "id": 20,
+      "name": "herbata zielona",
+      "desc": "-",
+      "price": "1.00",
+      "objectId": "o_32"
+    },
+    {
+      "id": 21,
+      "name": "pomidory",
+      "desc": "-",
+      "price": "2.00",
+      "objectId": "o_34"
+    },
+    {
+      "id": 22,
+      "name": "banany",
+      "desc": "Dla skaczących @",
+      "price": "4.99",
+      "objectId": "o_30"
+    },
+    {
+      "id": 23,
+      "name": "jabłka",
+      "desc": "Dobre polskie",
+      "price": "3.99",
+      "objectId": "o_30"
+    },
+    {
+      "id": 24,
+      "name": "paluszki",
+      "desc": "-",
+      "price": "3.99",
+      "objectId": "o_28"
+    },
+    {
+      "id": 25,
+      "name": "rurki z kremem",
+      "desc": "Takie by sie zalepić cukrem.",
+      "price": "4.50",
+      "objectId": "o_26"
+    },
+    {
+      "id": 26,
+      "name": "wafelki",
+      "desc": "-",
+      "price": "4.50",
+      "objectId": "o_27"
+    },
+    {
+      "id": 27,
+      "name": "ciastka amerykańskie",
+      "desc": "For true polish people.",
+      "price": "4.39",
+      "objectId": "o_25"
+    },
+    {
+      "id": 28,
+      "name": "chleb",
+      "desc": "Taki pyszny że hoho.",
+      "price": "3.00",
+      "objectId": "o_38"
+    },
+    {
+      "id": 29,
+      "name": "chałka",
+      "desc": "-",
+      "price": "3.29",
+      "objectId": "o_43"
+    },
+    {
+      "id": 30,
+      "name": "kukurydza",
+      "desc": "W puszce.",
+      "price": "2.40",
+      "objectId": "o_36"
+    },
+    {
+      "id": 31,
+      "name": "przecier pomidorowy",
+      "desc": "-",
+      "price": "5.19",
+      "objectId": "o_37"
+    },
+    {
+      "id": 32,
+      "name": "ser gouda",
+      "desc": "-",
+      "price": "5.19",
+      "objectId": "o_13"
+    },
+    {
+      "id": 33,
+      "name": "ser morski",
+      "desc": "-",
+      "price": "6.00",
+      "objectId": "o_39"
+    },
+    {
+      "id": 34,
+      "name": "szynka konserwowa",
+      "desc": "-",
+      "price": "5.00",
+      "objectId": "o_42"
+    },
+    {
+      "id": 35,
+      "name": "salami",
+      "desc": "Z osła dla osłów.",
+      "price": "3.00",
+      "objectId": "o_41"
+    },
+    {
+      "id": 36,
+      "name": "orzechy ziemne",
+      "desc": "-",
+      "price": "6.00",
+      "objectId": "o_22"
+    },
+    {
+      "id": 37,
+      "name": "miód",
+      "desc": "I to nie z uszu.",
+      "price": "20.00",
+      "objectId": "o_22"
+    },
+    {
+      "id": 38,
+      "name": "dżem",
+      "desc": "Na każdych juwenaliach.",
+      "price": "7.00",
+      "objectId": "o_23"
+    },
+    {
+      "id": 39,
+      "name": "proszek do prania",
+      "desc": "W kartonie.",
+      "price": "25.00",
+      "objectId": "o_31"
+    },
+    {
+      "id": 40,
+      "name": "karma dla psa",
+      "desc": "-",
+      "price": "30.00",
+      "objectId": "o_29"
+    },
+    {
+      "id": 41,
+      "name": "lody na patyku",
+      "desc": "-",
+      "price": "2.89",
+      "objectId": "o_20"
+    },
+    {
+      "id": 42,
+      "name": "warzywa na patelnie",
+      "desc": "-",
+      "price": "12.00",
+      "objectId": "o_17"
+    },
+    {
+      "id": 43,
+      "name": "bombonierka",
+      "desc": "-",
+      "price": "5.00",
+      "objectId": "o_19"
+    },
+    {
+      "id": 44,
+      "name": "jogurt naturalny",
+      "desc": "-",
+      "price": "3.00",
+      "objectId": "o_7"
+    },
+    {
+      "id": 45,
+      "name": "biały ser",
+      "desc": "-",
+      "price": "3.00",
+      "objectId": "o_2"
+    },
+    {
+      "id": 46,
+      "name": "woda gazowana",
+      "desc": "-",
+      "price": "1.79",
+      "objectId": "o_4"
+    },
+    {
+      "id": 47,
+      "name": "woda lecznicza",
+      "desc": "-",
+      "price": "2.79",
+      "objectId": "o_9"
+    },
+    {
+      "id": 48,
+      "name": "cola",
+      "desc": "-",
+      "price": "4.79",
+      "objectId": "o_6"
+    },
+    {
+      "id": 49,
+      "name": "oranżada",
+      "desc": "-",
+      "price": "4.79",
+      "objectId": "o_3"
+    },
+    {
+      "id": 50,
+      "name": "wódka",
+      "desc": "Na wieczór.",
+      "price": "25.00",
+      "objectId": "o_12"
+    },
+    {
+      "id": 51,
+      "name": "gumy do żucia",
+      "desc": "-",
+      "price": "3.00",
+      "objectId": "o_40"
     }
   ],
   "object-to-category": [
@@ -153,7 +468,7 @@
     },
     {
       "id": 2,
-      "categoryId": 1,
+      "categoryId": 22,
       "objectId": "o_2"
     },
     {
@@ -338,12 +653,12 @@
     },
     {
       "id": 39,
-      "categoryId": 24,
+      "categoryId": 9,
       "objectId": "o_39"
     },
     {
       "id": 40,
-      "categoryId": 8,
+      "categoryId": 24,
       "objectId": "o_40"
     },
     {

@@ -1,18 +1,18 @@
 import Vertex from "algorithms/graph/Vertex";
 import Edge from "algorithms/graph/Edge";
 import Graph from "algorithms/graph/Graph";
-import { mapData } from "components/Map/mapData";
+import { mapData, vertexData, edgeData } from "components/Map/mapData";
 
 export const getGraphFromJSON = (map: mapData, isDirected = false) => {
   const graph = new Graph(isDirected);
 
-  Object.values(map.v).forEach((v: any) => {
+  Object.values(map.v).forEach((v: vertexData) => {
     let key = v.key.trim().toLowerCase();
     let vertex = new Vertex(key, { ...v.options });
     graph.addVertex(vertex);
   });
 
-  Object.values(map.e).forEach((e: any) => {
+  Object.values(map.e).forEach((e: edgeData) => {
     let [startVertex, endVertex] = e.key
       .split("__")
       .map((item: string) => item.trim().toLowerCase());
@@ -76,4 +76,6 @@ export const objectToVertexKey = (objectKey: string) => {
   if (map.o[objectKey]) {
     return map.o[objectKey].ref;
   }
+
+  return false;
 };

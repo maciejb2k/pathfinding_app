@@ -7,6 +7,7 @@ import { modals, IState as ModalState } from "./modals/reducer";
 import { graph, IState as GraphState } from "./graph/reducer";
 import { path, IState as PathState } from "./path/reducer";
 import { search, IState as SearchState } from "./search/reducer";
+import { api, IState as ApiState } from "./api/reducer";
 
 export interface AppState {
   settings: SettingsState;
@@ -15,6 +16,7 @@ export interface AppState {
   graph: GraphState;
   path: PathState;
   search: SearchState;
+  api: ApiState;
 }
 
 const rootReducer = combineReducers<AppState>({
@@ -24,6 +26,7 @@ const rootReducer = combineReducers<AppState>({
   graph,
   path,
   search,
+  api,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

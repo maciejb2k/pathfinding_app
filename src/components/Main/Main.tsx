@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import {
-  FiUser,
+  FiMapPin,
   FiSettings,
   FiMenu,
   FiNavigation,
@@ -8,6 +8,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import classnames from "classnames";
+import Loader from "react-loader-spinner";
 
 import { capitalize } from "utils/helpers";
 
@@ -17,6 +18,7 @@ import { IState as SidebarState } from "store/sidebar/reducer";
 import { IState as PathState } from "store/path/reducer";
 import { IState as SearchState } from "store/search/reducer";
 import { IState as GraphState } from "store/graph/reducer";
+import { ProductsApiType } from "store/api/reducer";
 
 import { openModal } from "store/modals/actions";
 import { toggleSidebar } from "store/sidebar/actions";
@@ -27,6 +29,7 @@ import { toggleEditMode } from "store/graph/actions";
 import Map from "components/Map";
 
 import styles from "./Main.module.scss";
+import { fetchProductsAutcompleteApi } from "store/api/api";
 
 type AppProps = {
   sidebar: SidebarState;
@@ -45,6 +48,7 @@ function Main(props: AppProps) {
     sidebar: { isOpen: isSidebarOpen },
     path: { isPathPreview },
     search: { searchResult },
+    graph: { isEditMode },
     toggleSidebar,
     openModal,
     exitPathPreview,
@@ -55,8 +59,16 @@ function Main(props: AppProps) {
   const [productPreviewName, setProductPreview] = useState("");
   const [product, setProduct] = useState("");
 
+  const [isAutocomplete, setIsAutocomplete] = useState(false);
+  const [isAutocompleteFetching, setIsAutocompleteFetching] = useState(false);
+  const [searchAutocomplete, setSearchAutocomplete] = useState<
+    Array<ProductsApiType>
+  >([]);
+
   const pathPreviewButton = useRef<HTMLButtonElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
+
+  // TODO - Add a11y keyboard support for autocomplete
 
   const focusSearchInput = () => {
     if (searchInput && searchInput.current) {
@@ -64,9 +76,59 @@ function Main(props: AppProps) {
     }
   };
 
+  const fetchAutocomplete = async (product: string) => {
+    setIsAutocompleteFetching(true);
+    const productsData = await fetchProductsAutcompleteApi(product);
+    setIsAutocompleteFetching(false);
+
+    return productsData;
+  };
+
+  const onSearchFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    if (product) {
+      setIsAutocomplete(true);
+    }
+  };
+
+  const onSearchChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const value = e.currentTarget.value;
+    setProduct(value);
+
+    if (value) {
+      setIsAutocomplete(true);
+      const result = await fetchAutocomplete(value);
+      setSearchAutocomplete(result);
+    } else {
+      setIsAutocomplete(false);
+    }
+  };
+
+  const onSearchBlur = (e: React.FocusEvent) => {
+    e.preventDefault();
+    setIsAutocomplete(false);
+  };
+
+  const autocompleteInput = (e: React.MouseEvent<HTMLLIElement>) => {
+    const value = e.currentTarget.textContent;
+    if (searchInput.current && value) {
+      searchInput.current.value = value;
+      setProduct(value);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isEditMode) {
+      return false;
+    }
+
     searchProduct(product.toLowerCase().trim());
+    setIsAutocomplete(false);
 
     if (pathPreviewButton && pathPreviewButton.current) {
       pathPreviewButton.current.focus();
@@ -76,10 +138,13 @@ function Main(props: AppProps) {
       searchInput.current.value = "";
       setProduct("");
     }
+
+    return true;
   };
 
   const toggleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
     if (!isPathPreview) {
       toggleEditMode();
     }
@@ -117,21 +182,56 @@ function Main(props: AppProps) {
               <div className={styles["ControlsSearch-icon"]}>
                 <FiCircle />
               </div>
-              <input
-                name="search"
-                type="text"
-                className={styles["ControlsSearch-input"]}
-                placeholder="Szukany produkt"
-                onChange={(e) => setProduct(e.target.value)}
-                id="SearchInput"
-                ref={searchInput}
-              />
+              <div className={styles["ControlsSearch-inputGroup"]}>
+                <input
+                  name="search"
+                  type="text"
+                  className={styles["ControlsSearch-input"]}
+                  placeholder="Search for product"
+                  id="SearchInput"
+                  onFocus={onSearchFocus}
+                  onBlur={onSearchBlur}
+                  onChange={onSearchChange}
+                  ref={searchInput}
+                />
+                {isAutocomplete ? (
+                  <div className={styles["Autocomplete"]}>
+                    {isAutocompleteFetching ? (
+                      <div className={styles["Autocomplete-loader"]}>
+                        <Loader
+                          type="TailSpin"
+                          color="#1b78d0"
+                          height={20}
+                          width={20}
+                        />
+                      </div>
+                    ) : searchAutocomplete.length ? (
+                      <ul className={styles["Autocomplete-list"]}>
+                        {searchAutocomplete.map((item: ProductsApiType) => (
+                          <li
+                            key={item.id}
+                            onMouseDown={autocompleteInput}
+                            className={styles["Autocomplete-listItem"]}
+                          >
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className={styles["Autocomplete-empty"]}>
+                        Brak rezultatów
+                      </p>
+                    )}
+                  </div>
+                ) : null}
+              </div>
               <button
                 className={classnames({
                   [styles["ControlsSearch-submit"]]: true,
-                  [styles["ControlsSearch-submit--disabled"]]: isPathPreview,
+                  [styles["ControlsSearch-submit--disabled"]]:
+                    isPathPreview || isEditMode,
                 })}
-                disabled={!product || isPathPreview}
+                disabled={isPathPreview}
               >
                 <FiNavigation />
               </button>
@@ -171,19 +271,25 @@ function Main(props: AppProps) {
               className={classnames({
                 [styles["ControlsButton"]]: true,
                 [styles["ControlsButton--user"]]: true,
+                [styles["ControlsButton--tooltip"]]: true,
+                [styles["ControlsButton--editMode"]]: isEditMode,
               })}
               aria-label="Change starting point on map"
+              data-text="Change starting point"
               onClick={toggleEdit}
+              disabled={isPathPreview}
             >
-              <FiUser />
+              <FiMapPin />
             </button>
             <button
               className={classnames({
                 [styles["ControlsButton"]]: true,
                 [styles["ControlsButton--options"]]: true,
+                [styles["ControlsButton--tooltip"]]: true,
               })}
               onClick={() => openModal({ modalName: MODAL_SETTINGS })}
               aria-label="Open Settings"
+              data-text="Open Settings"
               id="Settings"
             >
               <FiSettings />

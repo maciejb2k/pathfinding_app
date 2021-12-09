@@ -8,7 +8,7 @@
 }
 
 .SkipLink {
-  background: #1b78d0;
+  background: var(--primary);
   height: 30px;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
   z-index: 1000;
   font-weight: 400;
   font-size: 1.4rem;
-  color: #ffffff;
+  color: var(--skiplink-text);
 }
 
 .SkipLink:focus {

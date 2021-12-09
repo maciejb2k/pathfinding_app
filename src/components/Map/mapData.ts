@@ -1,25 +1,25 @@
+export type vertexData = {
+  key: string;
+  options: {
+    ref?: string | null;
+    objectId?: string;
+  };
+};
+
+export type edgeData = {
+  key: string;
+  weight: number;
+};
+
+export type objectData = {
+  key: string;
+  ref: string;
+};
+
 export type mapData = {
-  v: {
-    [key: string]: {
-      key: string;
-      options: {
-        ref?: string | null;
-        objectId?: string;
-      };
-    };
-  };
-  e: {
-    [key: string]: {
-      key: string;
-      weight: number;
-    };
-  };
-  o: {
-    [key: string]: {
-      key: string;
-      ref: string;
-    };
-  };
+  v: { [key: string]: vertexData };
+  e: { [key: string]: edgeData };
+  o: { [key: string]: objectData };
 };
 
 export const mapData = {
@@ -246,7 +246,8 @@ export const mapData = {
     v_35: {
       key: "v_35",
       options: {
-        ref: "o_41",
+        ref: null,
+        objectId: "o_41",
       },
     },
     v_36: {

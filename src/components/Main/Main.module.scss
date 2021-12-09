@@ -1,7 +1,7 @@
 @import "styles/themes.scss";
 
 .Main {
-  background: #f3f7fa;
+  background: var(--map-bg);
   width: 100%;
   height: 100%;
   position: relative;
@@ -20,12 +20,15 @@
         align-items: center;
         justify-content: center;
         margin-left: 30px;
-        background: #ffffff;
+        background: var(--pathPreview-bg);
+        color: var(--pathPreview-text);
         box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
         transition: 0.1s all;
         padding-left: 30px;
         opacity: 0;
-        border-left: 5px solid #2ecc71;
+        visibility: hidden;
+        animation: pulse 2s infinite;
+        border-left: 5px solid var(--green);
 
         .PathPreview-button {
           width: 50px;
@@ -34,8 +37,8 @@
           align-items: center;
           justify-content: center;
           border: 0;
-          background: #ffffff;
-          color: #db3b3b;
+          background: var(--pathPreview-button);
+          color: var(--close-red);
           font-size: 1.4rem;
           position: relative;
 
@@ -46,7 +49,7 @@
             position: absolute;
             height: 30px;
             width: 1px;
-            background: #f1f1f1;
+            background: var(--input-separator);
           }
 
           &:hover {
@@ -62,10 +65,38 @@
             font-size: 1.4rem;
           }
         }
+
+        @-webkit-keyframes pulse {
+          0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.1);
+          }
+          70% {
+            -webkit-box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+          }
+          100% {
+            -webkit-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+          }
+        }
+
+        @keyframes pulse {
+          0% {
+            -moz-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.1);
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.3);
+          }
+          70% {
+            -moz-box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
+            box-shadow: 0 0 0 20px rgba(46, 204, 113, 0);
+          }
+          100% {
+            -moz-box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+          }
+        }
       }
 
       .PathPreview--active {
         opacity: 1;
+        visibility: visible;
       }
 
       .ControlsSearch {
@@ -75,9 +106,11 @@
         .ControlsSearch-form {
           margin-left: 30px;
           display: flex;
+          position: relative;
           box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
 
           .ControlsSearch-icon {
+            position: relative;
             height: 50px;
             width: 50px;
             display: flex;
@@ -85,10 +118,9 @@
             justify-content: center;
             border-bottom-left-radius: 5px;
             border-top-left-radius: 5px;
-            background: #ffffff;
+            background: var(--searchProduct-input);
             font-size: 0.8rem;
-            color: #1b78d0;
-            position: relative;
+            color: var(--primary);
 
             &::after {
               content: "";
@@ -97,37 +129,106 @@
               position: absolute;
               height: 30px;
               width: 1px;
-              background: #e1ecee;
+              background: var(--input-separator);
             }
           }
+          .ControlsSearch-inputGroup {
+            position: relative;
 
-          .ControlsSearch-input {
-            height: 50px;
-            width: 250px;
-            font-size: 1.4rem;
-            padding: 0 20px;
+            .ControlsSearch-input {
+              height: 50px;
+              width: 250px;
+              font-size: 1.4rem;
+              padding: 0 20px;
+              background: var(--searchProduct-input);
+              color: var(--searchProduct-input-color);
 
-            &::placeholder {
-              color: #afafaf;
+              &::placeholder {
+                color: var(--input-placeholder);
+              }
+            }
+
+            .Autocomplete {
+              position: absolute;
+              left: 0px;
+              top: 50px;
+              font-size: 1.4rem;
+              background: var(--autocomplete-bg);
+              width: 250px;
+              border: 1px solid var(--autocomplete-border);
+              box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
+
+              .Autocomplete-list {
+                list-style-position: inside;
+                list-style-type: none;
+                max-height: 180px;
+                overflow-y: scroll;
+
+                .Autocomplete-listItem {
+                  padding: 10px 20px;
+                  color: var(--autocomplete-text);
+
+                  &:hover {
+                    background: var(--autocomplete-hover);
+                    cursor: pointer;
+                  }
+
+                  &:not(:first-child) {
+                    border-top: 1px solid var(--autocomplete-border);
+                  }
+                }
+
+                &::-webkit-scrollbar {
+                  width: 5px;
+                }
+
+                &::-webkit-scrollbar-track {
+                  background-color: var(--scrollbar-track);
+                  border-radius: 10px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                  background-color: var(--scrollbar-thumb);
+                  border-radius: 10px;
+                }
+              }
+
+              .Autocomplete-loader {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+              }
+
+              .Autocomplete-empty {
+                text-align: center;
+                color: var(--autocomplete-text);
+                padding: 10px;
+              }
             }
           }
 
           .ControlsSearch-submit {
             height: 50px;
             width: 50px;
-            color: #ffffff;
+            color: var(--searchProduct-submit-color);
             display: flex;
             align-items: center;
             justify-content: center;
             border-bottom-right-radius: 5px;
             border-top-right-radius: 5px;
-            background: #1b78d0;
+            background: var(--searchProduct-submit-bg);
             font-size: 1.8rem;
             cursor: pointer;
+            transition: 0.3s all;
           }
 
           .ControlsSearch-submit--disabled {
-            background: #dadada;
+            background: var(--button-disabled);
+
+            &:hover {
+              cursor: not-allowed;
+            }
           }
 
           .ControlsSearch-input,
@@ -165,7 +266,6 @@
       width: 50px;
       height: 50px;
       border: 0;
-      color: #ffffff;
       font-weight: 600;
       border-radius: 5px;
       box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.05);
@@ -174,34 +274,92 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      position: relative;
+      transition: 0.1s all;
 
       &:not(:last-child) {
         margin-bottom: 5px;
       }
+
+      &[disabled] {
+        background: var(--button-disabled);
+      }
+
+      &[disabled]:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    .ControlsButton--tooltip {
+      &:before {
+        content: attr(data-text);
+        position: absolute;
+        font-size: 1.2rem;
+        right: 60px;
+        height: 50px;
+        top: 0;
+        border-radius: 5px;
+        min-width: 100px;
+        background: var(--button-tooltip-bg);
+        color: var(--button-tooltip-color);
+        text-align: center;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+      }
+
+      &:after {
+        content: "";
+        display: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid var(--button-tooltip-bg);
+        right: 55px;
+      }
+
+      &:hover:before,
+      &:hover:after {
+        display: flex;
+      }
     }
 
     .ControlsButton--hamburger {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
     }
 
     .ControlsButton--hamburgerActive {
-      background: #1b78d0;
+      background: var(--primary);
+      color: var(--button-color);
     }
 
     .ControlsButton--zoom {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
     }
 
     .ControlsButton--user {
-      background: #54a8f8;
+      background: var(--primary--light);
+      color: var(--button-color);
+      position: relative;
+    }
+    .ControlsButton--editMode {
+      background: var(--button-editMode);
+      color: var(--button-color);
     }
 
     .ControlsButton--options {
-      background: #1b78d0;
+      background: var(--primary);
+      color: var(--button-color);
     }
 
     .ControlsButton--closePreview {
-      color: #e23232;
+      color: var(--close-red);
+      color: var(--button-color);
       background: 0;
       border-radius: 50px;
       width: 30px;

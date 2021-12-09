@@ -2,7 +2,6 @@ import { createAction } from "store/actions";
 import { GET_PATH_REQUEST, EXIT_PATH_PREVIEW_REQUEST } from "./constants";
 
 export type Route = {
-  startVertexKey: string;
   endVertexKey: string;
 };
 

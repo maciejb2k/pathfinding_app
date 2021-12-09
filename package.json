@@ -1,9 +1,10 @@
 {
   "name": "wayfinding-app",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.10",
@@ -12,6 +13,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-loader-spinner": "^3.1.0",
     "@types/react-modal": "^3.10.6",
     "@types/react-redux": "^7.1.9",
     "@types/react-world-flags": "^1.4.0",
@@ -20,10 +22,12 @@
     "@types/webfontloader": "^1.6.32",
     "axios": "^0.20.0",
     "classnames": "^2.2.6",
+    "concurrently": "^5.3.0",
     "final-form": "^4.20.1",
     "gsap": "^3.4.2",
     "history": "^5.0.0",
     "i18next": "^19.7.0",
+    "json-server": "^0.16.1",
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
@@ -31,10 +35,11 @@
     "react-final-form": "^6.5.1",
     "react-i18next": "^11.7.1",
     "react-icons": "^3.11.0",
+    "react-loader-spinner": "^3.1.14",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "react-responsive-pinch-zoom-pan": "^0.3.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.0",
     "react-world-flags": "^1.4.0",
     "react-zoom-pan-pinch": "^1.6.1",
     "redux": "^4.0.5",
@@ -50,8 +55,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "testtest": "jest"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

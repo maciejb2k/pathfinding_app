@@ -1,4 +1,4 @@
-@import-normalize;
+@import "styles/themes.scss";
 
 *,
 h1,
@@ -59,7 +59,7 @@ body {
   bottom: 0px;
   overflow: hidden;
   transition: opacity 200ms ease-in-out;
-  background: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(0, 0, 0, 0.6) !important;
   z-index: 10;
 }
 
@@ -73,4 +73,12 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap; /* added line */
   border: 0;
+}
+
+// GSAP isn't removing inline styles after reversing,
+// so i have to manually add and remove this class,
+// to allow theme switching.
+.Object--active {
+  fill: var(--object-fill--active) !important;
+  stroke: var(--object-stroke--active) !important;
 }

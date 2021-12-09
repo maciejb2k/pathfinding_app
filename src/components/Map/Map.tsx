@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
+import Loader from "react-loader-spinner";
 
 import FloorMapSvg from "components/FloorMapSvg";
 import { IState as GraphState } from "store/graph/reducer";
@@ -28,16 +29,9 @@ function Map(props: AppProps) {
     },
   } = props;
 
-  const verticesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-  const edgesRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-  const objectsRefs = React.useRef<{ [key: string]: HTMLElement }>({});
-
-  // useEffect(() => {
-  //   if (verticesRefs.current[startVertex]) {
-  //     verticesRefs.current[startVertex].style.opacity = "1";
-  //     verticesRefs.current[startVertex].style.fill = "#2ecc71";
-  //   }
-  // }, [startVertex]);
+  const verticesRefs = React.useRef<{ [key: string]: SVGElement }>({});
+  const edgesRefs = React.useRef<{ [key: string]: SVGElement }>({});
+  const objectsRefs = React.useRef<{ [key: string]: SVGElement }>({});
 
   useEffect(() => {
     if (pathTimeline && pathEdges && pathEdges.length) {
@@ -58,12 +52,15 @@ function Map(props: AppProps) {
 
       const lastVertex = pathVertices[pathVertices.length - 1];
 
+      // Adding
       if (objectsRefs && lastVertex.options && lastVertex.options.objectId) {
         const mapObject = objectsRefs.current[lastVertex.options.objectId];
+
         pathTimeline.to(mapObject, {
           duration: 0.03,
-          fill: "#C7FFCC",
-          stroke: "#4FBA5A",
+          onComplete: () => {
+            mapObject.classList.add("Object--active");
+          },
         });
       }
 
@@ -87,21 +84,21 @@ function Map(props: AppProps) {
     }
   }, [isEditMode, startVertex]);
 
-  const vertexRefCallback = (el: HTMLElement | null) => {
+  const vertexRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.vertexKey) {
       let key = el.dataset.vertexKey.trim().toLowerCase();
       verticesRefs.current[key] = el;
     }
   };
 
-  const objectRefCallback = (el: HTMLElement | null) => {
+  const objectRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.objectKey) {
       let key = el.dataset.objectKey.trim().toLowerCase();
       objectsRefs.current[key] = el;
     }
   };
 
-  const edgeRefCallback = (el: HTMLElement | null) => {
+  const edgeRefCallback = (el: SVGElement | null) => {
     if (el && el.dataset.edgeKey) {
       let key = el.dataset.edgeKey.trim().toLowerCase();
       edgesRefs.current[key] = el;
@@ -110,12 +107,7 @@ function Map(props: AppProps) {
 
   return isGraphGenerating || isPathGenerating ? (
     <div className={styles["LoadingScreen"]}>
-      <div className={styles["Loader"]}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <Loader type="TailSpin" color="#1b78d0" height={50} width={50} />
     </div>
   ) : (
     <div className={styles["Map"]}>

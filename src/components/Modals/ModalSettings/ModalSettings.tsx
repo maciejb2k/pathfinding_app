@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "react-modal";
 import classnames from "classnames";
 
@@ -20,6 +20,7 @@ type AppProps = {
 };
 
 function ModalSettings(props: AppProps) {
+  // Helper functions for this component
   const themeToBoolean = (theme: string) => (theme === "dark" ? true : false);
   const booleanToTheme = (bool: boolean) => (bool ? "dark" : "light");
 
@@ -35,6 +36,18 @@ function ModalSettings(props: AppProps) {
   const [isThemeSwitchOn, setTheme] = React.useState(themeToBoolean(theme));
   const [siteLang, setSiteLang] = React.useState(lang);
 
+  useEffect(() => {
+    if (activeModal === MODAL_SETTINGS) {
+      setIsModalOpen(true);
+    }
+  }, [activeModal]);
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      setIsModalOpen(false);
+    }
+  }, [isModalOpen]);
+
   const handleThemeSwitch = () => {
     const newValue = !isThemeSwitchOn;
 
@@ -49,18 +62,6 @@ function ModalSettings(props: AppProps) {
     switchLang(newLang);
   };
 
-  React.useEffect(() => {
-    if (activeModal === MODAL_SETTINGS) {
-      setIsModalOpen(true);
-    }
-  }, [activeModal]);
-
-  React.useEffect(() => {
-    if (!isModalOpen) {
-      setIsModalOpen(false);
-    }
-  }, [isModalOpen]);
-
   return (
     <Modal
       isOpen={isOpen}
@@ -71,12 +72,12 @@ function ModalSettings(props: AppProps) {
       overlayClassName="ModalOverlay"
     >
       <div className={styles["Settings"]}>
-        <h2 className={styles["Settings-title"]}>Ustawienia</h2>
+        <h2 className={styles["Settings-title"]}>Settings</h2>
         <div className={styles["SettingsItem"]}>
           <div className={styles["SettingsItem-info"]}>
-            <h3 className={styles["SettingsItem-title"]}>Ciemny Motyw</h3>
+            <h3 className={styles["SettingsItem-title"]}>Dark Theme</h3>
             <p className={styles["SettingsItem-text"]}>
-              Przełączanie motywu między jasnym a ciemnym.
+              Switch between dark and light theme.
             </p>
           </div>
           <div
@@ -101,9 +102,9 @@ function ModalSettings(props: AppProps) {
         </div>
         <div className={styles["SettingsItem"]}>
           <div className={styles["SettingsItem-info"]}>
-            <h3 className={styles["SettingsItem-title"]}>Język</h3>
+            <h3 className={styles["SettingsItem-title"]}>Language</h3>
             <p className={styles["SettingsItem-text"]}>
-              Zmiana języka witryny.
+              Change site language
             </p>
           </div>
           <div className={styles["SettingsItem-input"]}>
@@ -111,6 +112,7 @@ function ModalSettings(props: AppProps) {
               className={styles["SelectLang"]}
               onChange={handleLangSwitch}
               value={siteLang}
+              disabled
             >
               <option value="pl">PL</option>
               <option value="en">EN</option>

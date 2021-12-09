@@ -11,15 +11,15 @@ import { IState as GraphState } from "store/graph/reducer";
 import styles from "./FloorMapSvg.module.scss";
 
 type AppProps = {
-  vertexRefCallback: any;
-  edgeRefCallback: any;
-  objectRefCallback: any;
+  vertexRefCallback: (el: SVGElement | null) => void;
+  edgeRefCallback: (el: SVGElement | null) => void;
+  objectRefCallback: (el: SVGElement | null) => void;
   graph: GraphState;
   openModal: typeof openModal;
   setStartVertex: typeof setStartVertex;
 };
 
-function FloorMapSvg(props: AppProps) {
+function FloorMapSvg(props: AppProps | any) {
   const {
     vertexRefCallback,
     edgeRefCallback,
@@ -33,7 +33,7 @@ function FloorMapSvg(props: AppProps) {
     e.preventDefault();
 
     const objId = e.currentTarget.id;
-    openModal<string>({ modalName: MODAL_OBJECT_INFO, data: objId });
+    openModal({ modalName: MODAL_OBJECT_INFO, data: objId });
   };
 
   const onVertexClick = (e: React.MouseEvent<SVGElement>) => {
@@ -49,10 +49,13 @@ function FloorMapSvg(props: AppProps) {
     <svg viewBox="0 0 1113 773" className={styles["FloorMap"]}>
       <g id="Map">
         <g id="floor" filter="url(#filter0_d)">
-          <path d="M1057.5 55H55v663h715l287.5-220.5V55z" fill="#fff" />
           <path
             d="M1057.5 55H55v663h715l287.5-220.5V55z"
-            stroke="#F8F8F8"
+            className={styles["Floor"]}
+          />
+          <path
+            d="M1057.5 55H55v663h715l287.5-220.5V55z"
+            className={styles["Floor-border"]}
             strokeWidth={10}
           />
         </g>
@@ -2518,6 +2521,7 @@ function FloorMapSvg(props: AppProps) {
             id="o_43"
             d="M156.5 411.5h27v204h-27z"
             data-object-key={m.o.o_43.key}
+            data-testid="test_o_43"
             className={classNames(styles["Object"])}
             ref={objectRefCallback}
             onClick={onObjectClick}
