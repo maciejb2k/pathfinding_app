@@ -185,7 +185,7 @@ function Sidebar(props: AppProps) {
         <p className={styles["Footer-text"]}>
           <DiReact className={styles["Footer-icon"]} />
           <span>
-            Made by <b><a target="_blank" className={styles["Footer-link"]} href="https://github.com/maciejb2k/pathfinding_app">Maciej Biel</a></b>
+            Made by <b><a target="_blank" rel="noopener noreferrer" className={styles["Footer-link"]} href="https://github.com/maciejb2k/pathfinding_app">Maciej Biel</a></b>
           </span>
         </p>
       </footer>

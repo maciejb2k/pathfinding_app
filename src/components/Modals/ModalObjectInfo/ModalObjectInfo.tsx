@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import classnames from "classnames";
-import axios from "axios";
 import Loader from "react-loader-spinner";
 
 import { apiArrayToObject, capitalize } from "utils/helpers";
@@ -9,8 +8,7 @@ import { MODAL_OBJECT_INFO } from "components/Modals/modalTypes";
 import { IState as ModalsState } from "store/modals/reducer";
 import {
   ProductsApiType,
-  CategoriesApiType,
-  ObjectToCategoryApiType,
+  CategoriesApiType
 } from "store/api/reducer";
 import { closeModal } from "store/modals/actions";
 
