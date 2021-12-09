@@ -87,9 +87,9 @@ function Sidebar(props: AppProps) {
     >
       <header className={styles["Header"]}>
         <h1 className={styles["Header-title"]}>
-          Mapa <b>Marketu</b>
+          Map of <b>Groceries</b>
         </h1>
-        <p className={styles["Header-text"]}>ul. Przykładowa 123, Rzeszów</p>
+        <p className={styles["Header-text"]}>Dijkstra pathfinding example.</p>
       </header>
       <div className={styles["Buttons"]} role="tablist">
         <button
@@ -99,7 +99,7 @@ function Sidebar(props: AppProps) {
           })}
           onClick={() => setActiveTab(tabCategories.az)}
         >
-          Lista Produktów
+          Products List
         </button>
         <button
           className={classnames({
@@ -108,7 +108,7 @@ function Sidebar(props: AppProps) {
           })}
           onClick={() => setActiveTab(tabCategories.categories)}
         >
-          Kategorie
+          Categories
         </button>
       </div>
       <div
@@ -130,7 +130,7 @@ function Sidebar(props: AppProps) {
                     <h2 className={styles["CategoryHeader-title"]}>
                       {letter}
                       <span className={styles["CategoryHeader-results"]}>
-                        - {parsedProducts[letter].len} wyników
+                        - {parsedProducts[letter].len} results
                       </span>
                     </h2>
                   </header>
@@ -185,7 +185,7 @@ function Sidebar(props: AppProps) {
         <p className={styles["Footer-text"]}>
           <DiReact className={styles["Footer-icon"]} />
           <span>
-            Made by <b>Maciej Biel</b>
+            Made by <b><a target="_blank" className={styles["Footer-link"]} href="https://github.com/maciejb2k/pathfinding_app">Maciej Biel</a></b>
           </span>
         </p>
       </footer>

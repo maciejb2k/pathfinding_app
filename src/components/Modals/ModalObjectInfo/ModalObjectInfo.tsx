@@ -15,6 +15,7 @@ import {
 import { closeModal } from "store/modals/actions";
 
 import styles from "./ModalObjectInfo.module.scss";
+import { fetchCategoryIdFromCategories, fetchObjectIdFromObjectCategories, fetchProductsByObjectId } from "store/api/api";
 
 type AppProps = {
   modals: ModalsState;
@@ -50,22 +51,14 @@ function ModalObjectInfo(props: AppProps) {
     const fetchData = async () => {
       setIsFetching(true);
 
-      const { data: objectToCategoryFetch } = await axios.get<
-        Array<ObjectToCategoryApiType>
-      >(`http://localhost:3001/object-to-category?objectId=${data}`);
+      const objectToCategoryFetch = await fetchObjectIdFromObjectCategories(data)
       const objectToCategoryData = apiArrayToObject(objectToCategoryFetch);
 
-      const { data: categoriesFetch } = await axios.get<
-        Array<CategoriesApiType>
-      >(
-        `http://localhost:3001/categories?id=${objectToCategoryData.categoryId}`
-      );
+      const categoriesFetch = await fetchCategoryIdFromCategories(objectToCategoryData.categoryId);
       const categoriesData = apiArrayToObject(categoriesFetch);
       setCategoriesData(categoriesData);
 
-      const { data: productsData } = await axios.get<Array<ProductsApiType>>(
-        `http://localhost:3001/products?objectId=${objectToCategoryData.objectId}`
-      );
+      const productsData = await fetchProductsByObjectId(objectToCategoryData.objectId);
       setProductsData(productsData);
 
       setIsFetching(false);

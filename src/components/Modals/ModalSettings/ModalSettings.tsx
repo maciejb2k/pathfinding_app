@@ -72,12 +72,12 @@ function ModalSettings(props: AppProps) {
       overlayClassName="ModalOverlay"
     >
       <div className={styles["Settings"]}>
-        <h2 className={styles["Settings-title"]}>Ustawienia</h2>
+        <h2 className={styles["Settings-title"]}>Settings</h2>
         <div className={styles["SettingsItem"]}>
           <div className={styles["SettingsItem-info"]}>
-            <h3 className={styles["SettingsItem-title"]}>Ciemny Motyw</h3>
+            <h3 className={styles["SettingsItem-title"]}>Dark Theme</h3>
             <p className={styles["SettingsItem-text"]}>
-              Przełączanie motywu między jasnym a ciemnym.
+              Switch between dark and light theme.
             </p>
           </div>
           <div
@@ -102,9 +102,9 @@ function ModalSettings(props: AppProps) {
         </div>
         <div className={styles["SettingsItem"]}>
           <div className={styles["SettingsItem-info"]}>
-            <h3 className={styles["SettingsItem-title"]}>Język</h3>
+            <h3 className={styles["SettingsItem-title"]}>Language</h3>
             <p className={styles["SettingsItem-text"]}>
-              Zmiana języka witryny.
+              Change site language
             </p>
           </div>
           <div className={styles["SettingsItem-input"]}>

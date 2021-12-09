@@ -9,7 +9,6 @@ import {
 } from "react-icons/fi";
 import classnames from "classnames";
 import Loader from "react-loader-spinner";
-import axios from "axios";
 
 import { capitalize } from "utils/helpers";
 
@@ -30,6 +29,7 @@ import { toggleEditMode } from "store/graph/actions";
 import Map from "components/Map";
 
 import styles from "./Main.module.scss";
+import { fetchProductsAutcompleteApi } from "store/api/api";
 
 type AppProps = {
   sidebar: SidebarState;
@@ -78,11 +78,7 @@ function Main(props: AppProps) {
 
   const fetchAutocomplete = async (product: string) => {
     setIsAutocompleteFetching(true);
-
-    const { data: productsData } = await axios.get<Array<ProductsApiType>>(
-      `http://localhost:3001/products?name_like=${product}`
-    );
-
+    const productsData = await fetchProductsAutcompleteApi(product);
     setIsAutocompleteFetching(false);
 
     return productsData;
@@ -191,7 +187,7 @@ function Main(props: AppProps) {
                   name="search"
                   type="text"
                   className={styles["ControlsSearch-input"]}
-                  placeholder="Szukany produkt"
+                  placeholder="Search for product"
                   id="SearchInput"
                   onFocus={onSearchFocus}
                   onBlur={onSearchBlur}

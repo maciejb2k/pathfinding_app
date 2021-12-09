@@ -1,13 +1,14 @@
-import axios from "axios";
 import { ProductsApiType } from "store/api/reducer";
+import db from "store/api/db";
 
 export const searchProductApi = (productName: string) => {
-  return axios
-    .get<Array<ProductsApiType>>(
-      `http://localhost:3001/products?name=${productName}`
-    )
-    .then((res) => res.data)
-    .catch((error) => {
-      // TODO
+  return new Promise<Array<ProductsApiType>>((resolve) => {
+    const arr = [...db["products"]];
+
+    const results = arr.filter((item) => {
+      return item.name === productName;
     });
+
+    resolve(results);
+  });
 };

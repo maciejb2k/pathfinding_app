@@ -214,6 +214,19 @@
         margin-right: 5px;
         color: #61dafb;
       }
+
+      .Footer-link {
+        color: black;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:visited {
+          color: black;
+        }
+      }
     }
   }
 
