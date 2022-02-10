@@ -28,7 +28,7 @@
     "history": "^5.0.0",
     "i18next": "^19.7.0",
     "json-server": "^0.16.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
